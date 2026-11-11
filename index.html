@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Oppikofer • Studio Web | Design Contemporâneo & Engenharia Frontend</title>
+    <meta name="description" content="Desenvolvimento de sites profissionais de alta performance, landing pages, catálogos interativos e convites digitais exclusivos com confirmação de presença (RSVP).">
+    
+    <!-- Open Graph / Prévia de Compartilhamento (WhatsApp & Instagram) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Oppikofer • Studio Web | Design Contemporâneo & Engenharia Frontend">
+    <meta property="og:description" content="Sites profissionais ultrarrápidos, páginas de alta conversão, catálogos interativos e convites digitais exclusivos sob medida.">
+    <meta property="og:image" content="Assets/imagens/logo-horizontal.png">
+    
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href="Assets/icones/favicon-transp.png">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: {
+                            base: '#050C1A',       /* Fundo Noturno Ultra Profundo */
+                            surface: '#0B1528',    /* Superfície de Card Escuro */
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            borderLight: 'rgba(255, 255, 255, 0.15)',
+                            cobalt: '#1D4ED8',     /* Azul Royal Sólido da Marca */
+                            cyan: '#06B6D4',       /* Ciano Elétrico da Logo */
+                        },
+                        studio: {
+                            bg: '#F1F5F9',         /* Base Claro Estilo Apple Studio */
+                            surface: '#FFFFFF',
+                            border: '#E2E8F0',
+                            text: '#0F172A',
+                            muted: '#64748B',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Scrollbar Suave */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #050C1A; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+        
+        /* Ocultar scrollbar mantendo rolagem em carrosséis mobile */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Estilos dos botões de filtro (evita que o texto suma no toque mobile) */
+        .filter-pill.active {
+            background-color: #0f172a !important; /* bg-slate-900 */
+            color: #ffffff !important;
+            font-weight: 700 !important;
+        }
+        .filter-pill.active:hover {
+            color: #ffffff !important;
+            background-color: #0f172a !important;
+        }
+
+        /* Luzes Noturnas do Fundo (Hero & Rodapé) */
+        .ambient-glow-hero {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            max-width: 100vw;
+            height: 500px;
+            background: radial-gradient(circle at 50% 25%, rgba(29, 78, 216, 0.32) 0%, rgba(6, 182, 212, 0.14) 45%, transparent 75%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ambient-glow-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            max-width: 100vw;
+            height: 400px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.16) 0%, rgba(29, 78, 216, 0.12) 50%, transparent 75%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Grade Técnica Noturna */
+        .tech-grid {
+            background-size: 36px 36px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        }
+
+        /* Iluminação Azulada Suave no Palco Claro (Estilo Apple Glass Stage) */
+        .studio-stage-lighting {
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 30%, rgba(29, 78, 216, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 15% 70%, rgba(6, 182, 212, 0.05) 0%, transparent 40%);
+        }
+
+        /* MOLDURA E EFEITO SUSPENSO DO SMARTPHONE (APPLE STYLE) */
+        .floating-device {
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+        }
+        @media (hover: hover) {
+            .group:hover .floating-device {
+                transform: translateY(-8px);
+            }
+            .group:hover .device-drop-shadow {
+                transform: scale(0.9) translateY(4px);
+                opacity: 0.35;
+                filter: blur(8px);
+            }
+        }
+
+        /* Sombra de Oclusão sob o Smartphone */
+        .device-drop-shadow {
+            width: 170px;
+            height: 16px;
+            background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.15) 50%, transparent 80%);
+            margin: 10px auto 0;
+            border-radius: 50%;
+            filter: blur(5px);
+            transition: all 0.4s ease;
+        }
+
+        /* Reflexo de Vidro Físico na Tela */
+        .screen-glare {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 35%, transparent 60%);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Feedback tátil mobile */
+        .touch-action {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .touch-action:active {
+            transform: scale(0.97);
+        }
+
+        /* Shimmer animado sutil */
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .animate-shimmer-run {
+            animation: shimmer 3s infinite;
+        }
+    </style>
+</head>
+<body class="bg-deep-base text-slate-200 font-sans antialiased selection:bg-deep-cobalt selection:text-white relative min-h-screen">
+
+    <!-- 1. BARRA SUPERIOR PROMOCIONAL (URGENCY BANNER) -->
+    <div class="bg-gradient-to-r from-blue-950 via-deep-cobalt to-cyan-950 text-white text-[11px] sm:text-xs py-2 px-4 text-center font-semibold tracking-wide relative z-50 border-b border-white/10">
+        <span class="inline-flex items-center gap-1.5 flex-wrap justify-center">
+            <span class="text-cyan-300">⚡</span> Presença digital sob medida entregue em <strong class="text-cyan-300 font-bold px-1.5 py-0.5 rounded bg-white/10">até 48 horas*</strong> • Atendimento direto via WhatsApp
+        </span>
+    </div>
+
+    <!-- 2. NAVBAR FIXA DE VIDRO NOTURNO -->
+    <header class="sticky top-0 left-0 w-full bg-deep-base/90 backdrop-blur-xl z-40 border-b border-deep-border/80 transition duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
+            <!-- BLOCO ESQUERDO: LOGO OFICIAL COM LEITURA NÍTIDA -->
+            <div class="flex-1 flex items-center justify-start">
+                <a href="#" class="flex items-center touch-action">
+                    <img src="Assets/imagens/logo-horiz-transp.png" 
+                         alt="Oppikofer Studio Web" 
+                         class="h-10 sm:h-12 w-auto object-contain transition duration-200 hover:opacity-90"
+                         onerror="this.onerror=null; this.src='Assets/imagens/logo-horizontal.png';">
+                </a>
+            </div>
+
+            <!-- BLOCO CENTRAL: MENU MATEMATICAMENTE CENTRALIZADO ENTRE LOGO E CTA -->
+            <nav class="hidden md:flex items-center justify-center gap-8 text-xs uppercase tracking-wider font-bold text-slate-300">
+                <a href="#portfolio" class="hover:text-deep-cyan transition flex items-center gap-1.5 py-1">
+                    <span>Portfólio</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-deep-cyan animate-pulse"></span>
+                </a>
+                <a href="#metodo" class="hover:text-deep-cyan transition py-1">Como Funciona</a>
+                <a href="#sobre" class="hover:text-deep-cyan transition py-1">Sobre</a>
+                <a href="#faq" class="hover:text-deep-cyan transition py-1">Dúvidas</a>
+            </nav>
+
+            <!-- BLOCO DIREITO: CTA PRINCIPAL -->
+            <div class="flex-1 flex items-center justify-end">
+                <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20site%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20um%20orçamento." 
+                   target="_blank" 
+                   class="touch-action relative group overflow-hidden bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 text-white font-bold px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm transition duration-300 flex items-center gap-2 shadow-lg shadow-blue-900/40 shrink-0 border border-white/20 active:scale-95">
+                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer-run"></span>
+                    <i class="fa-brands fa-whatsapp text-sm text-green-300"></i>
+                    <span>Iniciar Projeto</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. HERO SECTION (DEEP TECH NOTURNO DE ALTO IMPACTO) -->
+    <section class="relative z-10 pt-16 sm:pt-24 pb-20 px-4 w-full tech-grid overflow-hidden border-b border-deep-border/50">
+        <div class="ambient-glow-hero"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <!-- Badge de Especialidade com Efeito Glow -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-deep-surface/90 border border-deep-cyan/40 shadow-lg shadow-cyan-950/60 text-xs font-semibold text-cyan-300 mb-6 backdrop-blur-md">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-deep-cyan opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-deep-cyan"></span>
+                </span>
+                <span>Design Contemporâneo & Engenharia Frontend</span>
+            </div>
+
+            <!-- Título Principal com Gradiente Luminoso -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-[1.12] max-w-4xl mx-auto mb-6">
+                Soluções digitais de alto impacto que transformam ideias em <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-deep-cyan to-cyan-200">experiências memoráveis.</span>
+            </h1>
+
+            <!-- Subtítulo Equilibrado -->
+            <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+                Desenvolvemos sites profissionais de carregamento ultrarrápido, landing pages de alta conversão, catálogos interativos e convites digitais exclusivos com confirmação de presença (RSVP). Projetos leves, sem burocracia e 100% personalizados para o seu objetivo.
+            </p>
+
+            <!-- Botões de Ação do Hero -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#portfolio" 
+                   class="touch-action w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 text-white font-bold rounded-xl text-sm transition duration-300 shadow-xl shadow-blue-900/60 flex items-center justify-center gap-2 border border-white/25 active:scale-95">
+                    <span>Explorar Projetos Prontos</span>
+                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+                <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20portfólio%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." 
+                   target="_blank" 
+                   class="touch-action w-full sm:w-auto px-8 py-3.5 bg-deep-surface/90 hover:bg-slate-800 text-slate-100 font-bold rounded-xl text-sm transition duration-300 border border-deep-borderLight shadow-md flex items-center justify-center gap-2 backdrop-blur-md active:scale-95">
+                    <i class="fa-brands fa-whatsapp text-cyan-400"></i>
+                    <span>Falar Diretamente Comigo</span>
+                </a>
+            </div>
+
+            <!-- Selos de Performance com CONTADORES DINÂMICOS (Mobile-Friendly) -->
+            <div id="stats-container" class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto text-left">
+                <!-- Card 1 -->
+                <div class="p-4 sm:p-5 bg-deep-surface/85 rounded-2xl border border-white/10 backdrop-blur-md shadow-lg">
+                    <div class="flex items-baseline gap-0.5">
+                        <span class="counter-number text-2xl sm:text-4xl font-black text-cyan-400" data-target="100">0</span>
+                        <span class="text-lg sm:text-xl font-bold text-cyan-400">%</span>
+                    </div>
+                    <span class="block text-xs sm:text-sm text-white font-semibold mt-1">Multi-Telas</span>
+                    <span class="block text-[11px] sm:text-xs text-slate-300 font-normal leading-tight">Mobile-First & Desktop</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-4 sm:p-5 bg-deep-surface/85 rounded-2xl border border-white/10 backdrop-blur-md shadow-lg">
+                    <div class="flex items-baseline gap-0.5">
+                        <span class="text-base sm:text-xl font-bold text-cyan-400">&lt;</span>
+                        <span class="counter-number text-2xl sm:text-4xl font-black text-cyan-400" data-target="1.0" data-decimal="true">0</span>
+                        <span class="text-base sm:text-xl font-bold text-cyan-400">s</span>
+                    </div>
+                    <span class="block text-xs sm:text-sm text-white font-semibold mt-1">Carregamento</span>
+                    <span class="block text-[11px] sm:text-xs text-slate-300 font-normal leading-tight">Abertura instantânea</span>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-4 sm:p-5 bg-deep-surface/85 rounded-2xl border border-white/10 backdrop-blur-md shadow-lg">
+                    <div class="flex items-baseline gap-0.5">
+                        <span class="counter-number text-2xl sm:text-4xl font-black text-cyan-400" data-target="48">0</span>
+                        <span class="text-lg sm:text-xl font-bold text-cyan-400">h*</span>
+                    </div>
+                    <span class="block text-xs sm:text-sm text-white font-semibold mt-1">Prazo de Entrega</span>
+                    <span class="block text-[11px] sm:text-xs text-slate-300 font-normal leading-tight">Lançamento ágil</span>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="p-4 sm:p-5 bg-deep-surface/85 rounded-2xl border border-white/10 backdrop-blur-md shadow-lg">
+                    <div class="flex items-baseline gap-0.5">
+                        <span class="text-2xl sm:text-4xl font-black text-cyan-400">Zero</span>
+                    </div>
+                    <span class="block text-xs sm:text-sm text-white font-semibold mt-1">Mensalidades</span>
+                    <span class="block text-[11px] sm:text-xs text-slate-300 font-normal leading-tight">Sem taxas de plataforma</span>
+                </div>
+            </div>
+            
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-4 text-center italic">*Prazo contado a partir da entrega de 100% dos materiais e briefing aprovado.</p>
+        </div>
+    </section>
+
+    <!-- 4. VITRINE DE PROJETOS (ESTÚDIO CLARO ESTILO APPLE COM ILUMINAÇÃO AZULADA E MOCKUPS SUSPENSOS) -->
+    <section id="portfolio" class="relative z-20 py-20 sm:py-28 px-4 bg-gradient-to-b from-slate-100 via-studio-bg to-slate-200 border-t border-b border-slate-300 text-studio-text studio-stage-lighting overflow-hidden">
+        
+        <!-- Luzes difusas sutis nas bordas da base clara para conectar com a identidade azul -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-cyan-400/10 blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[300px] bg-blue-600/10 blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            
+            <!-- Cabeçalho do Portfólio -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8">
+                <div>
+                    <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cobalt font-bold mb-2">
+                        <span class="w-2 h-2 rounded-full bg-deep-cobalt"></span>
+                        Casos de Aplicação Real
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+                        Portfólio de Soluções
+                    </h2>
+                </div>
+                <p class="text-slate-600 text-xs sm:text-sm mt-3 md:mt-0 max-w-sm font-normal leading-relaxed">
+                    <strong class="text-slate-900 font-bold">Conceito Mobile-First com resposta impecável no desktop:</strong> otimizado para o celular (de onde vem 90% do tráfego) e com expansão fluida para monitores e notebooks.
+                </p>
+            </div>
+
+            <!-- BADGE DE PERSONALIZAÇÃO 100% SOB MEDIDA -->
+            <div class="w-full flex justify-center mb-6 sm:mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-slate-300 shadow-sm text-xs text-slate-700 font-medium text-center">
+                    <span class="text-deep-cobalt font-bold"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Modelos Interativos de Referência:</span>
+                    <span>Cada cor, tipografia, botão, formulário e interação é 100% adaptável à sua marca ou ao seu evento.</span>
+                </div>
+            </div>
+
+            <!-- CONTROLE EM PÍLULA ESTILO APPLE (SEGMENTED CONTROL TOUCH-FRIENDLY & CENTRALIZADO) -->
+            <div class="w-full flex items-center justify-start sm:justify-center mb-8 sm:mb-12 overflow-x-auto no-scrollbar py-2">
+                <div class="inline-flex p-1.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-300/80 shadow-sm gap-1 shrink-0 mx-auto sm:mx-0">
+                    <button class="filter-pill touch-action active px-4 py-2 rounded-xl text-xs font-bold transition duration-200 bg-slate-900 text-white shadow-sm" data-filter="all">
+                        Todos (8)
+                    </button>
+                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="saude">
+                        🩺 Saúde & Estética
+                    </button>
+                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="eventos">
+                        💍 Convites & Eventos
+                    </button>
+                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="gastronomia">
+                        🍔 Gastronomia
+                    </button>
+                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="servicos">
+                        ✂️ Barbearia & Serviços
+                    </button>
+                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="moda">
+                        ✨ Moda & Catálogo
+                    </button>
+                </div>
+            </div>
+
+            <!-- DICA VISUAL PARA MOBILE: ARRASTE PARA O LADO -->
+            <div class="sm:hidden flex items-center justify-between text-[11px] text-slate-500 font-medium mb-3 px-1">
+                <span class="flex items-center gap-1"><i class="fa-solid fa-arrow-left-long text-slate-400"></i> Deslize ou use os filtros acima</span>
+                <span id="mobile-model-count" class="text-[10px] bg-slate-200/80 px-2 py-0.5 rounded-full font-bold">8 Modelos</span>
+            </div>
+
+            <!-- CARROSSEL TOUCH MOBILE / GRADE DESKTOP (CARD 100% CENTRALIZADO SEM SOBRA DO PRÓXIMO) -->
+            <div id="portfolio-carousel" class="flex overflow-x-auto sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-4 sm:pb-0 snap-x snap-mandatory no-scrollbar w-full justify-items-stretch">
+
+                <!-- CARD 1: CLÍNICA DE ESTÉTICA ÉLYSÉE (VERSÃO PREMIUM) -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-gradient-to-b from-white via-amber-50/20 to-white rounded-[2rem] border-2 border-amber-300/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_20px_45px_rgba(217,119,6,0.12)] hover:shadow-[0_25px_50px_rgba(217,119,6,0.22)] hover:border-amber-400 transition-all duration-300 relative overflow-hidden" data-category="saude">
+                    
+                    <!-- Selo de Destaque Flutuante no Topo do Card -->
+                    <div class="absolute top-4 right-4 z-20">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white font-extrabold text-[10px] sm:text-[11px] tracking-wider uppercase shadow-md shadow-amber-900/20">
+                            <i class="fa-solid fa-crown text-[10px]"></i>
+                            <span>Versão Premium</span>
+                        </span>
+                    </div>
+
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO COM EFEITO SUSPENSO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-amber-50/50 to-slate-100/90 border border-amber-200/60 mb-6 flex flex-col items-center justify-center">
+                            
+                            <!-- Celular Suspenso com Frame Realista -->
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-950 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/clinica-premium.jpeg" 
+                                         alt="Projeto Clínica Élysée - Versão Premium" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <!-- Sombra de Oclusão sob o Celular -->
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                Saúde & Estética
+                            </span>
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 border border-amber-200">
+                                Alto Padrão
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-amber-700 transition duration-200">
+                            Élysée • Dermatologia & Longevidade
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Experiência digital premium com direção de arte editorial, catálogo modal interativo de protocolos corporais e faciais, e canal de triagem VIP direto no WhatsApp.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-clinica-premium.vercel.app/" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-gradient-to-r from-slate-900 via-slate-800 to-amber-950 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-md active:scale-95">
+                        <i class="fa-solid fa-crown text-amber-400 text-xs"></i>
+                        <span>Abrir Demonstração Premium</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- CARD 2: CONVITE DE CASAMENTO (LUCAS & ISABELLA) -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-rose-400/40 transition-all duration-300" data-category="eventos">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO COM EFEITO SUSPENSO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-rose-50/50 to-slate-100/90 border border-rose-200/50 mb-6 flex flex-col items-center justify-center">
+                            
+                            <!-- Celular Suspenso com Frame Realista -->
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-950 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/casamento.jpeg" 
+                                         alt="Convite Interativo de Casamento" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <!-- Sombra de Oclusão sob o Celular -->
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-rose-100 text-rose-800 border border-rose-200">
+                                Convites & Eventos
+                            </span>
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
+                                Casamento
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-rose-700 transition duration-200">
+                            Lucas & Isabella • Casamento
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Convite interativo elegante com confirmação de presença (RSVP), trilha sonora com player, rota direta no Waze/Google Maps, lista de presentes e mural.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-site-casamento.netlify.app" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-rose-700 text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- CARD 3: CONVITE FESTA INFANTIL (LUCAS 5 ANOS) -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-blue-400/40 transition-all duration-300" data-category="eventos">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO COM EFEITO SUSPENSO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-blue-50/50 to-slate-100/90 border border-blue-200/50 mb-6 flex flex-col items-center justify-center">
+                            
+                            <!-- Celular Suspenso com Frame Realista -->
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-950 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/festa-infantil.jpeg" 
+                                         alt="Convite Interativo Festa Infantil" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <!-- Sombra de Oclusão sob o Celular -->
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 border border-blue-200">
+                                Convites & Eventos
+                            </span>
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-amber-100 text-amber-800 border border-amber-200">
+                                Festa Infantil
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition duration-200">
+                            Lucas 5 Anos • Alerta do Aranha
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Experiência temática gamificada para aniversário com confirmação de presença (RSVP), localização do buffet com rota no GPS e mural de fotos.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-festa-infantil.netlify.app" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-blue-700 text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- CARD 4: BARBEARIA VIKING -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="servicos">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO COM EFEITO SUSPENSO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
+                            
+                            <!-- Celular Suspenso com Frame Realista -->
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-950 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/barbearia-viking.jpeg" 
+                                         alt="Projeto Barbearia Viking" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <!-- Sombra de Oclusão sob o Celular (Gera o efeito de flutuar sobre a mesa) -->
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-amber-100 text-amber-800 border border-amber-200">
+                                Barbearia & Serviços
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                            Viking Blade Barber Club
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Agendamento formatado para WhatsApp com triagem interativa e catálogo visual de serviços em modo escuro.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-viking-barber.netlify.app" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- CARD 5: HAMBURGUERIA BULL & BUN -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="gastronomia">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
+                            
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-stone-100 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/hamb-bull.jpeg" 
+                                         alt="Projeto Hamburgueria Bull & Bun" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-orange-100 text-orange-800 border border-orange-200">
+                                Gastronomia & Delivery
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                            Bull & Bun • Craft Burgers
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Cardápio horizontal no estilo aplicativo gourmet com carrinho dinâmico somando pedidos em tempo real.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-bullandbun.netlify.app" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- CARD 6: ORIGEM CAFÉ -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="gastronomia">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
+                            
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-stone-100 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/cafeteria.jpeg" 
+                                         alt="Projeto Origem Café" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                Cafeteria & Coworking
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                            Origem • Café & Botânica
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Foco em visitação presencial com abas dinâmicas de cardápio e integração com rotas do Google Maps e Waze.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-origem-cafe.netlify.app" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- CARD 7: DRA. MARIANA • NUTRIÇÃO & BIO SITE -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="saude">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
+                            
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-950 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/Bio-site-nutri.jpeg" 
+                                         alt="Projeto Dra. Mariana Nutrição & Bio Site" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-cyan-100 text-cyan-800 border border-cyan-200">
+                                Saúde & Profissionais
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                            Dra. Mariana • Nutrição & Bio Site
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Bio site em blocos modulares (Bento Grid) com autoridade imediata, prova social, agendamento de telemedicina e sticky CTA.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-bio-site-nutri.netlify.app" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- CARD 8: CATÁLOGO SEMIJOIAS -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="moda">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
+                            
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-stone-900 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/catalogo-biju.jpeg" 
+                                         alt="Projeto Catálogo Semijoias" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-stone-200 text-stone-800 border border-stone-300">
+                                Moda & Acessórios
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                            Aura • Semijoias & Acessórios
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Catálogo em grade de 2 colunas com filtros instantâneos de categorias e sacola interativa com envio para WhatsApp.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-catalogo-joias.netlify.app" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- INDICADOR DE PAGINAÇÃO MOBILE SUAVE (DIRETAMENTE ABAIXO DOS CARDS) -->
+            <div id="carousel-dots" class="sm:hidden flex items-center justify-center gap-1.5 mt-5 mb-8">
+                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-6 bg-deep-cobalt" data-index="0"></span>
+                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="1"></span>
+                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="2"></span>
+                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="3"></span>
+                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="4"></span>
+                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="5"></span>
+                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="6"></span>
+                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="7"></span>
+            </div>
+
+            <!-- BOTÃO CARREGAR MAIS MODELOS (EXCLUSIVO PARA DESKTOP) -->
+            <div id="load-more-container" class="hidden sm:flex justify-center mt-8 mb-4">
+                <button id="load-more-btn" class="touch-action group px-8 py-3.5 rounded-full bg-white border border-slate-300 hover:border-slate-900 text-slate-800 font-bold text-xs sm:text-sm shadow-md hover:bg-slate-900 hover:text-white transition-all duration-300 flex items-center gap-2.5 active:scale-95 cursor-pointer">
+                    <span class="w-2 h-2 rounded-full bg-deep-cobalt group-hover:bg-cyan-400 transition-colors"></span>
+                    <span id="load-more-text">Ver Mais Modelos (+2)</span>
+                    <i id="load-more-icon" class="fa-solid fa-chevron-down text-xs transition-transform duration-300 group-hover:translate-y-0.5"></i>
+                </button>
+            </div>
+
+            <!-- BANNER DEDICADO: PROJETO SOB MEDIDA (DEPOIS DOS CARDS E DAS BOLINHAS) -->
+            <div class="mt-6 sm:mt-14 bg-white/95 rounded-[2rem] border border-slate-300/80 p-6 sm:p-8 shadow-[0_15px_35px_rgba(15,23,42,0.06)] flex flex-col md:flex-row items-center justify-between gap-6 transition hover:shadow-lg">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 max-w-2xl">
+                    <div class="w-14 h-14 rounded-2xl bg-deep-cobalt/10 border border-deep-cobalt/20 flex items-center justify-center text-deep-cobalt text-2xl shrink-0 shadow-sm">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <span class="inline-block text-[11px] uppercase font-bold tracking-widest text-deep-cobalt mb-1.5 bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-100">
+                            100% Personalizável & Sob Medida
+                        </span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-1.5">
+                            Nossos modelos são apenas pontos de partida. O seu projeto é único.
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm font-normal leading-relaxed">
+                            Não trabalhamos com modelos engessados. Seja para posicionar sua empresa com autoridade máxima ou criar uma experiência digital para o seu evento, desenhamos cada interação, paleta de cores, tipografia e botão sob medida para o seu objetivo.
+                        </p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Gostaria%20de%20solicitar%20um%20briefing%20para%20um%20projeto%20sob%20medida." 
+                   target="_blank" 
+                   class="touch-action w-full md:w-auto px-7 py-4 bg-gradient-to-r from-deep-cobalt to-blue-600 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-md flex items-center justify-center gap-2 shrink-0 active:scale-95">
+                    <i class="fa-brands fa-whatsapp text-base text-green-300"></i>
+                    <span>Solicitar Briefing Rápido</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. O MÉTODO DE TRABALHO (RETORNA PARA O ESTILO DEEP TECH NOTURNO) -->
+    <section id="metodo" class="relative z-10 py-24 px-4 bg-deep-base text-slate-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2 block">Processo Ágil & Direto</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Como Tiramos sua Página do Papel</h2>
+                <p class="text-slate-300 text-xs sm:text-sm mt-2 font-normal">Sem reuniões intermináveis ou meses de desenvolvimento.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Linha Tecnológica Conectando as Etapas (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-16 right-16 h-0.5 bg-gradient-to-r from-blue-500/20 via-cyan-400/40 to-indigo-500/20 -translate-y-6 z-0 pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 relative z-10">
+                    <div class="bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
+                        <span class="w-12 h-12 rounded-2xl bg-blue-500/10 text-cyan-400 border border-cyan-500/20 font-black flex items-center justify-center text-base mb-5 group-hover:scale-110 transition duration-300 shadow-sm">01</span>
+                        <h3 class="font-bold text-white text-lg mb-2">Alinhamento & Envio</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">Você nos envia suas fotos, informações do projeto (ou evento) e dados essenciais pelo nosso checklist rápido no WhatsApp.</p>
+                    </div>
+
+                    <div class="bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
+                        <span class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-black flex items-center justify-center text-base mb-5 group-hover:scale-110 transition duration-300 shadow-sm">02</span>
+                        <h3 class="font-bold text-white text-lg mb-2">Design & Construção</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">Construímos seu projeto sob medida em até 48 horas úteis*, com código ultraleve perfeitamente adaptado para celulares e computadores.</p>
+                    </div>
+
+                    <div class="bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
+                        <span class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-black flex items-center justify-center text-base mb-5 group-hover:scale-110 transition duration-300 shadow-sm">03</span>
+                        <h3 class="font-bold text-white text-lg mb-2">Publicação & Lançamento</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">Colocamos seu link oficial no ar em servidor seguro, pronto para divulgar nas redes, captar clientes ou enviar aos seus convidados pelo WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SOBRE O FUNDADOR -->
+    <section id="sobre" class="relative z-10 py-20 px-4 bg-slate-950/80 border-t border-deep-border text-slate-200">
+        <div class="max-w-3xl mx-auto text-center">
+            <span class="text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2 block">Fundador & Desenvolvedor</span>
+            <h2 class="text-3xl font-black text-white mb-6">Wallace Oppikofer</h2>
+            <p class="text-slate-200 text-sm sm:text-base leading-relaxed mb-8 font-normal">
+                À frente da <strong class="text-white font-semibold">Oppikofer • Studio Web</strong>, combino conceitos de design contemporâneo e engenharia de interface para criar soluções que resolvem problemas reais de negócios e celebrações especiais. Acredito que todo projeto merece uma presença digital rápida, bonita e que encante o público sem nenhuma complexidade desnecessária.
+            </p>
+            <div class="inline-flex flex-wrap justify-center items-center gap-4 text-xs sm:text-sm font-semibold text-slate-300">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-cyan-400"></i> Atendimento Direto</span>
+                <span>•</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-code text-cyan-400"></i> Código Otimizado</span>
+                <span>•</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-bolt text-cyan-400"></i> Entrega em até 48h*</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FAQ INTERATIVO (PERGUNTAS FREQUENTES EM VIDRO ESCURO) -->
+    <section id="faq" class="relative z-10 py-24 px-4 bg-deep-base text-slate-200 border-t border-deep-border">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2">
+                    <i class="fa-solid fa-circle-question text-cyan-400"></i>
+                    Transparência Total
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Perguntas Frequentes</h2>
+                <p class="text-slate-300 text-xs sm:text-sm mt-2 font-normal">Tudo o que você precisa saber sobre prazos, custos e funcionamento da sua página.</p>
+            </div>
+
+            <!-- ACORDEÃO INTERATIVO TOUCH-FRIENDLY -->
+            <div class="space-y-4">
+                
+                <!-- FAQ 1 -->
+                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                    <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
+                        <span class="font-bold text-sm sm:text-base text-white">Preciso pagar alguma mensalidade depois que o site estiver pronto?</span>
+                        <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            <strong class="text-white font-semibold">Não há mensalidades obrigatórias de plataforma.</strong> O seu site é seu, sem custos ocultos ou cobranças recorrentes para mantê-lo funcionando. Caso no futuro você queira fazer atualizações (como trocar fotos, atualizar preços ou adicionar produtos), realizamos alterações avulsas apenas quando você precisar. Se o seu negócio tiver alta rotatividade e você preferir atualizações constantes toda semana, também oferecemos opções de suporte mensal sob medida.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                    <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
+                        <span class="font-bold text-sm sm:text-base text-white">Em quanto tempo meu site fica pronto e publicado?</span>
+                        <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            Nosso compromisso é de entrega expressa em <strong class="text-cyan-300 font-semibold">até 48 horas úteis</strong>. Esse prazo começa a valer a partir do momento em que o briefing é aprovado e você nos envia os dados essenciais (fotos, informações do projeto e dados de contato pelo nosso checklist rápido). Projetos da Linha Premium ou páginas com catálogos extensos possuem cronograma dedicado, combinado previamente no briefing com total transparência.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                    <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
+                        <span class="font-bold text-sm sm:text-base text-white">Vocês ajudam a criar os textos ou preciso enviar tudo pronto?</span>
+                        <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            <strong class="text-white font-semibold">Ajudamos você do início ao fim!</strong> Se você já tiver os textos prontos, nós os organizamos e diagramamos na melhor hierarquia visual. Se você não souber o que escrever ou tiver dúvidas, nós fornecemos um roteiro guiado e refinamos os textos com técnicas de comunicação comercial (copywriting) para valorizar sua autoridade e estimular contatos no WhatsApp.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                    <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
+                        <span class="font-bold text-sm sm:text-base text-white">Como funcionam as condições e formas de pagamento?</span>
+                        <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            Para a segurança e tranquilidade de ambas as partes, trabalhamos com o formato padrão de <strong class="text-white font-semibold">50% de entrada</strong> para o início do desenvolvimento e os <strong class="text-white font-semibold">50% restantes somente após a sua aprovação final</strong>, antes da entrega dos acessos e publicação oficial. Aceitamos pagamento via Pix com condição facilitada e também parcelamos no cartão de crédito em até 3x.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5: PERSONALIZAÇÃO TOTAL -->
+                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                    <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
+                        <span class="font-bold text-sm sm:text-base text-white">Os modelos exibidos no portfólio são fixos ou podem ser 100% personalizados?</span>
+                        <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            <strong class="text-white font-semibold">São 100% personalizáveis!</strong> Os projetos do nosso portfólio funcionam como vitrines interativas para você sentir o nível de acabamento, velocidade e fluidez do nosso trabalho. Cada projeto real que entregamos é criado sob medida: adaptamos a paleta de cores, tipografia, fotos, botões, formulários e animações para refletir com fidelidade a identidade visual da sua marca ou a temática do seu evento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6: CONVITES INTERATIVOS & EVENTOS -->
+                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                    <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
+                        <span class="font-bold text-sm sm:text-base text-white">Como funcionam os convites interativos para casamentos e eventos?</span>
+                        <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            <strong class="text-white font-semibold">É uma experiência digital completa na palma da mão dos convidados!</strong> O convite é uma página web moderna e leve que abre instantaneamente pelo celular sem precisar baixar nenhum aplicativo. Pode incluir confirmação de presença (RSVP automático via WhatsApp ou integrado a planilhas de controle de convidados), mapa da cerimônia e festa com rota direta no Waze/Google Maps, contagem regressiva, lista de presentes, mural de recados e fotos. Muito mais sustentável, dinâmico e sofisticado do que o papel tradicional.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. BANNER FINAL DE CONVERSÃO -->
+    <section class="relative z-10 py-24 px-4 bg-gradient-to-b from-slate-950 via-deep-base to-slate-950 text-white text-center border-t border-deep-border overflow-hidden">
+        <div class="ambient-glow-bottom"></div>
+        <div class="relative z-10 max-w-2xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+                <span>Vamos iniciar o seu projeto?</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-black mb-5 tracking-tight">Pronto para dar vida ao seu próximo projeto?</h2>
+            <p class="text-slate-200 text-sm sm:text-base mb-8 font-normal leading-relaxed">
+                Solicite uma análise ou proposta sem compromisso. Respondemos rapidamente pelo WhatsApp com atendimento direto do desenvolvedor.
+            </p>
+            <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20site%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20um%20orçamento." 
+               target="_blank" 
+               class="touch-action inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 hover:from-blue-600 hover:to-cyan-500 text-white font-bold rounded-xl text-sm transition shadow-xl shadow-blue-900/60 border border-white/25 active:scale-95">
+                <i class="fa-brands fa-whatsapp text-lg text-green-300"></i> 
+                <span>Conversar pelo WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- 9. RODAPÉ OFICIAL -->
+    <footer class="relative z-10 py-10 bg-deep-base border-t border-deep-border text-xs text-slate-400">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <!-- Logo Marca -->
+            <div class="flex items-center gap-2">
+                <img src="Assets/imagens/logo-horiz-transp.png" alt="Oppikofer Studio Web" class="h-10 w-auto" onerror="this.style.display='none'">
+            </div>
+
+            <!-- Botão Clicável do Instagram Oficial -->
+            <div>
+                <a href="https://instagram.com/oppikofer_studioweb" target="_blank" rel="noopener noreferrer" 
+                   class="touch-action inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep-surface border border-deep-border text-slate-200 hover:text-white hover:border-cyan-400/50 hover:bg-slate-800 transition duration-300 shadow-sm"
+                   title="Siga no Instagram">
+                    <i class="fa-brands fa-instagram text-base text-cyan-400"></i>
+                    <span class="text-xs font-semibold">@oppikofer_studioweb</span>
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <p>© 2026 Oppikofer • Studio Web. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT DE INTERATIVIDADE, CONTADORES E FILTROS -->
+    <script>
+        // 1. CONTADORES ANIMADOS (Disparados no scroll)
+        function startCounters() {
+            const counters = document.querySelectorAll('.counter-number');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const isDecimal = counter.getAttribute('data-decimal') === 'true';
+                let current = 0;
+                const duration = 1400;
+                const stepTime = 25;
+                const totalSteps = duration / stepTime;
+                const increment = target / totalSteps;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
+                }, stepTime);
+            });
+        }
+
+        const statsSection = document.getElementById('stats-container');
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounters();
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.25 });
+            observer.observe(statsSection);
+        }
+
+        // 2. FILTRO EM PÍLULA & CARREGAR MAIS / RECOLHER (DESKTOP)
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const portfolioCarousel = document.getElementById('portfolio-carousel');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const loadMoreContainer = document.getElementById('load-more-container');
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        const loadMoreText = document.getElementById('load-more-text');
+        const loadMoreIcon = document.getElementById('load-more-icon');
+        const mobileModelCount = document.getElementById('mobile-model-count');
+
+        const DESKTOP_INITIAL_LIMIT = 6;
+        let desktopExpanded = false;
+        let currentFilter = 'all';
+
+        function updatePortfolioView() {
+            const isDesktop = window.innerWidth >= 640;
+            let visibleCount = 0;
+            let totalMatching = 0;
+
+            portfolioItems.forEach((item, index) => {
+                const category = item.getAttribute('data-category');
+                const matchesFilter = (currentFilter === 'all' || category === currentFilter || category === 'all');
+
+                if (matchesFilter) {
+                    totalMatching++;
+                    if (isDesktop && currentFilter === 'all' && !desktopExpanded) {
+                        if (index < DESKTOP_INITIAL_LIMIT) {
+                            item.style.display = 'flex';
+                            item.style.opacity = '1';
+                            visibleCount++;
+                        } else {
+                            item.style.display = 'none';
+                            item.style.opacity = '0';
+                        }
+                    } else {
+                        item.style.display = 'flex';
+                        item.style.opacity = '1';
+                        visibleCount++;
+                    }
+                } else {
+                    item.style.display = 'none';
+                    item.style.opacity = '0';
+                }
+            });
+
+            // Atualizar contador de modelos na dica mobile
+            if (mobileModelCount) {
+                mobileModelCount.textContent = totalMatching === 1 ? '1 Modelo' : `${totalMatching} Modelos`;
+            }
+
+            // Controle do botão "Carregar Mais / Recolher" no desktop
+            if (loadMoreContainer) {
+                if (isDesktop && currentFilter === 'all' && portfolioItems.length > DESKTOP_INITIAL_LIMIT) {
+                    loadMoreContainer.style.display = 'flex';
+                    if (desktopExpanded) {
+                        if (loadMoreText) loadMoreText.textContent = 'Recolher Modelos';
+                        if (loadMoreIcon) loadMoreIcon.className = 'fa-solid fa-chevron-up text-xs transition-transform duration-300 group-hover:-translate-y-0.5';
+                    } else {
+                        const extraCount = portfolioItems.length - DESKTOP_INITIAL_LIMIT;
+                        if (loadMoreText) loadMoreText.textContent = `Ver Mais Modelos (+${extraCount})`;
+                        if (loadMoreIcon) loadMoreIcon.className = 'fa-solid fa-chevron-down text-xs transition-transform duration-300 group-hover:translate-y-0.5';
+                    }
+                } else {
+                    loadMoreContainer.style.display = 'none';
+                }
+            }
+
+            // Sincronizar bolinhas no mobile
+            dots.forEach((dot, idx) => {
+                if (idx < visibleCount && visibleCount > 1) {
+                    dot.style.display = 'inline-block';
+                } else {
+                    dot.style.display = 'none';
+                }
+                if (idx === 0) {
+                    dot.classList.add('w-6', 'bg-deep-cobalt');
+                    dot.classList.remove('w-1.5', 'bg-slate-300');
+                } else {
+                    dot.classList.remove('w-6', 'bg-deep-cobalt');
+                    dot.classList.add('w-1.5', 'bg-slate-300');
+                }
+            });
+        }
+
+        // Evento de clique no botão "Carregar Mais / Recolher"
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                if (desktopExpanded) {
+                    desktopExpanded = false;
+                    updatePortfolioView();
+                    const portfolioSection = document.getElementById('portfolio');
+                    if (portfolioSection) {
+                        portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                } else {
+                    desktopExpanded = true;
+                    updatePortfolioView();
+                    // Rolagem suave inteligente: apresenta os novos modelos confortavelmente na tela
+                    setTimeout(() => {
+                        const newCard = portfolioItems[DESKTOP_INITIAL_LIMIT];
+                        if (newCard) {
+                            newCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 60);
+                }
+            });
+        }
+
+        // Cliques nos filtros
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                filterPills.forEach(p => {
+                    p.classList.remove('bg-slate-900', 'text-white', 'shadow-sm', 'active');
+                    p.classList.add('text-slate-600', 'hover:bg-slate-100');
+                });
+                pill.classList.add('bg-slate-900', 'text-white', 'shadow-sm', 'active');
+                pill.classList.remove('text-slate-600', 'hover:bg-slate-100');
+
+                currentFilter = pill.getAttribute('data-filter');
+                updatePortfolioView();
+
+                // No celular, ao trocar de categoria, reseta a rolagem suavemente para o 1º card
+                if (portfolioCarousel) {
+                    portfolioCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Inicializar a visualização na carga da página e no redimensionamento
+        updatePortfolioView();
+        window.addEventListener('resize', () => {
+            updatePortfolioView();
+        });
+
+        // 3. SINCRONIZAR BOLINHAS DE NAVEGAÇÃO DO CARROSSEL MOBILE NO SCROLL
+        const carousel = document.getElementById('portfolio-carousel');
+
+        if (carousel && dots.length > 0) {
+            carousel.addEventListener('scroll', () => {
+                const scrollLeft = carousel.scrollLeft;
+                const visibleItems = Array.from(portfolioItems).filter(item => item.style.display !== 'none');
+                if (visibleItems.length <= 1) return;
+                
+                const cardWidth = visibleItems[0].offsetWidth + 24; // largura do card + gap de 24px
+                const activeIndex = Math.min(Math.round(scrollLeft / cardWidth), visibleItems.length - 1);
+
+                const activeDots = Array.from(dots).filter(d => d.style.display !== 'none');
+                activeDots.forEach((dot, idx) => {
+                    if (idx === activeIndex) {
+                        dot.classList.add('w-6', 'bg-deep-cobalt');
+                        dot.classList.remove('w-1.5', 'bg-slate-300');
+                    } else {
+                        dot.classList.remove('w-6', 'bg-deep-cobalt');
+                        dot.classList.add('w-1.5', 'bg-slate-300');
+                    }
+                });
+            }, { passive: true });
+        }
+
+        // 4. FAQ ACORDEÃO INTERATIVO (Abertura e Fechamento Suave)
+        document.querySelectorAll('.faq-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const content = item.querySelector('.faq-content');
+                const icon = item.querySelector('.faq-icon');
+                const isOpen = item.classList.contains('is-open');
+
+                // Fechar outros itens abertos para manter a leitura limpa
+                document.querySelectorAll('.faq-item').forEach(other => {
+                    if (other !== item) {
+                        other.classList.remove('is-open');
+                        other.querySelector('.faq-content').style.maxHeight = null;
+                        other.querySelector('.faq-icon').classList.remove('rotate-45', 'text-cyan-400');
+                    }
+                });
+
+                if (isOpen) {
+                    item.classList.remove('is-open');
+                    content.style.maxHeight = null;
+                    icon.classList.remove('rotate-45', 'text-cyan-400');
+                } else {
+                    item.classList.add('is-open');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.classList.add('rotate-45', 'text-cyan-400');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
