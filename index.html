@@ -65,7 +65,9 @@
         .filter-pill.active {
             background-color: #0f172a !important; /* bg-slate-900 */
             color: #ffffff !important;
+            border-color: #0f172a !important;
             font-weight: 700 !important;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18) !important;
         }
         .filter-pill.active:hover {
             color: #ffffff !important;
@@ -107,6 +109,50 @@
             background-image: 
                 linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        }
+
+        /* Imagem Atmosférica Dark Studio no Topo do Hero (Dedicada para Mobile 9:16 e Desktop 16:9, Nitidez 100%) */
+        .hero-studio-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 68%;
+            background-image: 
+                radial-gradient(ellipse at 50% 42%, rgba(5, 12, 26, 0.62) 0%, rgba(5, 12, 26, 0.34) 60%, rgba(5, 12, 26, 0.76) 100%),
+                url('Assets/imagens/hero-studio-mobile.jpg');
+            background-size: cover;
+            background-position: center 42%;
+            background-repeat: no-repeat;
+            opacity: 0.48;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.92) 48%, rgba(0, 0, 0, 0.35) 76%, rgba(0, 0, 0, 0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.92) 48%, rgba(0, 0, 0, 0.35) 76%, rgba(0, 0, 0, 0) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        @media (min-width: 640px) {
+            .hero-studio-backdrop {
+                height: 75%;
+                background-image: 
+                    radial-gradient(ellipse at 50% 42%, rgba(5, 12, 26, 0.68) 0%, rgba(5, 12, 26, 0.36) 55%, rgba(5, 12, 26, 0.76) 100%),
+                    url('Assets/imagens/hero-studio-desktop.jpg');
+                background-position: center 40%;
+                opacity: 0.38;
+            }
+        }
+
+        /* Retorno Gradual da Grade Tecnológica após o Subtítulo */
+        .hero-grid-fade-in {
+            position: absolute;
+            inset: 0;
+            background-size: 36px 36px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 44%, rgba(0, 0, 0, 0.65) 66%, rgba(0, 0, 0, 1) 85%);
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 44%, rgba(0, 0, 0, 0.65) 66%, rgba(0, 0, 0, 1) 85%);
+            pointer-events: none;
+            z-index: 1;
         }
 
         /* Iluminação Azulada Suave no Palco Claro (Estilo Apple Glass Stage) */
@@ -172,14 +218,7 @@
 </head>
 <body class="bg-deep-base text-slate-200 font-sans antialiased selection:bg-deep-cobalt selection:text-white relative min-h-screen">
 
-    <!-- 1. BARRA SUPERIOR PROMOCIONAL (URGENCY BANNER) -->
-    <div class="bg-gradient-to-r from-blue-950 via-deep-cobalt to-cyan-950 text-white text-[11px] sm:text-xs py-2 px-4 text-center font-semibold tracking-wide relative z-50 border-b border-white/10">
-        <span class="inline-flex items-center gap-1.5 flex-wrap justify-center">
-            <span class="text-cyan-300">⚡</span> Presença digital sob medida entregue em <strong class="text-cyan-300 font-bold px-1.5 py-0.5 rounded bg-white/10">até 48 horas*</strong> • Atendimento direto via WhatsApp
-        </span>
-    </div>
-
-    <!-- 2. NAVBAR FIXA DE VIDRO NOTURNO -->
+    <!-- 1. NAVBAR FIXA DE VIDRO NOTURNO -->
     <header class="sticky top-0 left-0 w-full bg-deep-base/90 backdrop-blur-xl z-40 border-b border-deep-border/80 transition duration-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
             <!-- BLOCO ESQUERDO: LOGO OFICIAL COM LEITURA NÍTIDA -->
@@ -217,7 +256,11 @@
     </header>
 
     <!-- 3. HERO SECTION (DEEP TECH NOTURNO DE ALTO IMPACTO) -->
-    <section class="relative z-10 pt-16 sm:pt-24 pb-20 px-4 w-full tech-grid overflow-hidden border-b border-deep-border/50">
+    <section class="relative z-10 pt-16 sm:pt-24 pb-20 px-4 w-full overflow-hidden border-b border-deep-border/50">
+        <!-- Imagem Atmosférica Dark Studio (Fica atrás do Título e Subtítulo sem grade e some em degradê) -->
+        <div class="hero-studio-backdrop"></div>
+        <!-- Grade Tecnológica que retorna suavemente na altura dos botões e indicadores -->
+        <div class="hero-grid-fade-in"></div>
         <div class="ambient-glow-hero"></div>
 
         <div class="max-w-5xl mx-auto text-center relative z-10">
@@ -335,33 +378,33 @@
                 </div>
             </div>
 
-            <!-- CONTROLE EM PÍLULA ESTILO APPLE (SEGMENTED CONTROL TOUCH-FRIENDLY & CENTRALIZADO) -->
-            <div class="w-full flex items-center justify-start sm:justify-center mb-8 sm:mb-12 overflow-x-auto no-scrollbar py-2">
-                <div class="inline-flex p-1.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-300/80 shadow-sm gap-1 shrink-0 mx-auto sm:mx-0">
-                    <button class="filter-pill touch-action active px-4 py-2 rounded-xl text-xs font-bold transition duration-200 bg-slate-900 text-white shadow-sm" data-filter="all">
+            <!-- CONTROLE EM PÍLULA ESTILO APPLE (QUEBRA INTELIGENTE EM MEIA-TELA/MOBILE & BARRA ÚNICA NO DESKTOP) -->
+            <div class="w-full flex items-center justify-center mb-7 sm:mb-12">
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 lg:inline-flex lg:flex-nowrap lg:gap-1 lg:p-1.5 lg:rounded-2xl lg:bg-white/90 lg:backdrop-blur-md lg:border lg:border-slate-300/80 lg:shadow-sm max-w-2xl lg:max-w-none mx-auto">
+                    <button class="filter-pill touch-action active px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition duration-200 bg-slate-900 text-white border border-slate-300/80 lg:border-transparent shadow-sm" data-filter="all">
                         Todos (8)
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="saude">
+                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="saude">
                         🩺 Saúde & Estética
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="eventos">
+                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="eventos">
                         💍 Convites & Eventos
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="gastronomia">
+                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="gastronomia">
                         🍔 Gastronomia
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="servicos">
+                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="servicos">
                         ✂️ Barbearia & Serviços
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition duration-200" data-filter="moda">
+                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="moda">
                         ✨ Moda & Catálogo
                     </button>
                 </div>
             </div>
 
             <!-- DICA VISUAL PARA MOBILE: ARRASTE PARA O LADO -->
-            <div class="sm:hidden flex items-center justify-between text-[11px] text-slate-500 font-medium mb-3 px-1">
-                <span class="flex items-center gap-1"><i class="fa-solid fa-arrow-left-long text-slate-400"></i> Deslize ou use os filtros acima</span>
+            <div id="mobile-swipe-hint" class="sm:hidden flex items-center justify-between text-[11px] text-slate-500 font-medium mb-3 px-1">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-arrows-left-right text-deep-cobalt"></i> Deslize para o lado para ver os modelos</span>
                 <span id="mobile-model-count" class="text-[10px] bg-slate-200/80 px-2 py-0.5 rounded-full font-bold">8 Modelos</span>
             </div>
 
@@ -734,15 +777,15 @@
             </div>
 
             <!-- INDICADOR DE PAGINAÇÃO MOBILE SUAVE (DIRETAMENTE ABAIXO DOS CARDS) -->
-            <div id="carousel-dots" class="sm:hidden flex items-center justify-center gap-1.5 mt-5 mb-8">
-                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-6 bg-deep-cobalt" data-index="0"></span>
-                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="1"></span>
-                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="2"></span>
-                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="3"></span>
-                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="4"></span>
-                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="5"></span>
-                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="6"></span>
-                <span class="carousel-dot h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300" data-index="7"></span>
+            <div id="carousel-dots" class="sm:hidden flex items-center justify-center gap-2 mt-5 mb-8">
+                <button type="button" aria-label="Ir para modelo 1" class="carousel-dot h-2 rounded-full transition-all duration-300 w-6 bg-deep-cobalt cursor-pointer" data-index="0"></button>
+                <button type="button" aria-label="Ir para modelo 2" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="1"></button>
+                <button type="button" aria-label="Ir para modelo 3" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="2"></button>
+                <button type="button" aria-label="Ir para modelo 4" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="3"></button>
+                <button type="button" aria-label="Ir para modelo 5" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="4"></button>
+                <button type="button" aria-label="Ir para modelo 6" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="5"></button>
+                <button type="button" aria-label="Ir para modelo 7" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="6"></button>
+                <button type="button" aria-label="Ir para modelo 8" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="7"></button>
             </div>
 
             <!-- BOTÃO CARREGAR MAIS MODELOS (EXCLUSIVO PARA DESKTOP) -->
@@ -833,7 +876,7 @@
                 <span>•</span>
                 <span class="flex items-center gap-1.5"><i class="fa-solid fa-code text-cyan-400"></i> Código Otimizado</span>
                 <span>•</span>
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-bolt text-cyan-400"></i> Entrega em até 48h*</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-compass-drafting text-cyan-400"></i> Design Sob Medida</span>
             </div>
         </div>
     </section>
@@ -1029,25 +1072,47 @@
             observer.observe(statsSection);
         }
 
-        // 2. FILTRO EM PÍLULA & CARREGAR MAIS / RECOLHER (DESKTOP)
+        // 2. FILTRO EM PÍLULA & CARREGAR MAIS / RECOLHER (DESKTOP E JANELA REDUZIDA NO PC)
         const filterPills = document.querySelectorAll('.filter-pill');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
         const portfolioCarousel = document.getElementById('portfolio-carousel');
+        const carouselDotsContainer = document.getElementById('carousel-dots');
         const dots = document.querySelectorAll('.carousel-dot');
         const loadMoreContainer = document.getElementById('load-more-container');
         const loadMoreBtn = document.getElementById('load-more-btn');
         const loadMoreText = document.getElementById('load-more-text');
         const loadMoreIcon = document.getElementById('load-more-icon');
+        const mobileSwipeHint = document.getElementById('mobile-swipe-hint');
         const mobileModelCount = document.getElementById('mobile-model-count');
 
         const DESKTOP_INITIAL_LIMIT = 6;
         let desktopExpanded = false;
         let currentFilter = 'all';
 
+        function isDesktopEnvironment() {
+            const hasMousePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            return window.innerWidth >= 640 || hasMousePointer;
+        }
+
         function updatePortfolioView() {
-            const isDesktop = window.innerWidth >= 640;
+            const isDesktop = isDesktopEnvironment();
             let visibleCount = 0;
             let totalMatching = 0;
+
+            // Alternar estrutura entre Grade Vertical (PC em qualquer largura) e Carrossel Touch (Celular)
+            if (portfolioCarousel) {
+                if (isDesktop) {
+                    portfolioCarousel.classList.remove('flex', 'overflow-x-auto', 'snap-x', 'snap-mandatory', 'pb-4');
+                    portfolioCarousel.classList.add('grid', 'grid-cols-1');
+                } else {
+                    portfolioCarousel.classList.add('flex', 'overflow-x-auto', 'snap-x', 'snap-mandatory', 'pb-4');
+                    portfolioCarousel.classList.remove('grid', 'grid-cols-1');
+                }
+            }
+
+            if (mobileSwipeHint) {
+                mobileSwipeHint.style.display = isDesktop ? 'none' : 'flex';
+            }
 
             portfolioItems.forEach((item, index) => {
                 const category = item.getAttribute('data-category');
@@ -1080,7 +1145,7 @@
                 mobileModelCount.textContent = totalMatching === 1 ? '1 Modelo' : `${totalMatching} Modelos`;
             }
 
-            // Controle do botão "Carregar Mais / Recolher" no desktop
+            // Controle do botão "Carregar Mais / Recolher" no desktop (inclusive meia-tela/janela reduzida)
             if (loadMoreContainer) {
                 if (isDesktop && currentFilter === 'all' && portfolioItems.length > DESKTOP_INITIAL_LIMIT) {
                     loadMoreContainer.style.display = 'flex';
@@ -1098,6 +1163,9 @@
             }
 
             // Sincronizar bolinhas no mobile
+            if (carouselDotsContainer) {
+                carouselDotsContainer.style.display = (!isDesktop && visibleCount > 1) ? 'flex' : 'none';
+            }
             dots.forEach((dot, idx) => {
                 if (idx < visibleCount && visibleCount > 1) {
                     dot.style.display = 'inline-block';
@@ -1106,10 +1174,10 @@
                 }
                 if (idx === 0) {
                     dot.classList.add('w-6', 'bg-deep-cobalt');
-                    dot.classList.remove('w-1.5', 'bg-slate-300');
+                    dot.classList.remove('w-2', 'bg-slate-300');
                 } else {
                     dot.classList.remove('w-6', 'bg-deep-cobalt');
-                    dot.classList.add('w-1.5', 'bg-slate-300');
+                    dot.classList.add('w-2', 'bg-slate-300');
                 }
             });
         }
@@ -1142,11 +1210,11 @@
         filterPills.forEach(pill => {
             pill.addEventListener('click', () => {
                 filterPills.forEach(p => {
-                    p.classList.remove('bg-slate-900', 'text-white', 'shadow-sm', 'active');
-                    p.classList.add('text-slate-600', 'hover:bg-slate-100');
+                    p.classList.remove('bg-slate-900', 'text-white', 'active');
+                    p.classList.add('bg-white/95', 'lg:bg-transparent', 'text-slate-700', 'hover:bg-slate-100', 'hover:text-slate-900');
                 });
-                pill.classList.add('bg-slate-900', 'text-white', 'shadow-sm', 'active');
-                pill.classList.remove('text-slate-600', 'hover:bg-slate-100');
+                pill.classList.add('bg-slate-900', 'text-white', 'active');
+                pill.classList.remove('bg-white/95', 'lg:bg-transparent', 'text-slate-700', 'hover:bg-slate-100', 'hover:text-slate-900');
 
                 currentFilter = pill.getAttribute('data-filter');
                 updatePortfolioView();
@@ -1164,10 +1232,23 @@
             updatePortfolioView();
         });
 
-        // 3. SINCRONIZAR BOLINHAS DE NAVEGAÇÃO DO CARROSSEL MOBILE NO SCROLL
+        // 3. SINCRONIZAR E CLICAR NAS BOLINHAS DE NAVEGAÇÃO DO CARROSSEL MOBILE
         const carousel = document.getElementById('portfolio-carousel');
 
         if (carousel && dots.length > 0) {
+            // Tornar as bolinhas clicáveis para ir direto ao card correspondente
+            dots.forEach((dot) => {
+                dot.addEventListener('click', () => {
+                    const visibleItems = Array.from(portfolioItems).filter(item => item.style.display !== 'none');
+                    const activeDots = Array.from(dots).filter(d => d.style.display !== 'none');
+                    const dotIndex = activeDots.indexOf(dot);
+                    if (dotIndex !== -1 && visibleItems[dotIndex]) {
+                        const cardWidth = visibleItems[0].offsetWidth + 24;
+                        carousel.scrollTo({ left: cardWidth * dotIndex, behavior: 'smooth' });
+                    }
+                });
+            });
+
             carousel.addEventListener('scroll', () => {
                 const scrollLeft = carousel.scrollLeft;
                 const visibleItems = Array.from(portfolioItems).filter(item => item.style.display !== 'none');
@@ -1180,10 +1261,10 @@
                 activeDots.forEach((dot, idx) => {
                     if (idx === activeIndex) {
                         dot.classList.add('w-6', 'bg-deep-cobalt');
-                        dot.classList.remove('w-1.5', 'bg-slate-300');
+                        dot.classList.remove('w-2', 'bg-slate-300');
                     } else {
                         dot.classList.remove('w-6', 'bg-deep-cobalt');
-                        dot.classList.add('w-1.5', 'bg-slate-300');
+                        dot.classList.add('w-2', 'bg-slate-300');
                     }
                 });
             }, { passive: true });
