@@ -219,8 +219,8 @@
 </head>
 <body class="bg-deep-base text-slate-200 font-sans antialiased selection:bg-deep-cobalt selection:text-white relative min-h-screen">
 
-    <!-- 1. NAVBAR FIXA DE VIDRO NOTURNO -->
-    <header class="sticky top-0 left-0 w-full bg-deep-base/90 backdrop-blur-xl z-40 border-b border-deep-border/80 transition duration-200">
+    <!-- 1. NAVBAR FIXA DE VIDRO NOTURNO COM EXPANSÃO NATIVA -->
+    <header class="sticky top-0 left-0 w-full bg-deep-base/95 backdrop-blur-xl z-40 border-b border-deep-border/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
             <!-- BLOCO ESQUERDO: LOGO OFICIAL COM LEITURA NÍTIDA -->
             <div class="flex-1 flex items-center justify-start">
@@ -254,105 +254,68 @@
                     <span>Iniciar Projeto</span>
                 </a>
 
-                <!-- BOTÃO MENU HAMBÚRGUER TECH (VISÍVEL NO MOBILE E EM JANELAS REDUZIDAS DO DESKTOP) -->
+                <!-- BOTÃO MENU HAMBÚRGUER (TOGGLE ELEGANTE QUE VIRA X) -->
                 <button id="mobile-menu-btn" 
                         type="button" 
                         aria-label="Abrir Menu de Navegação" 
+                        aria-expanded="false"
                         class="lg:hidden w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-200 hover:text-cyan-400 flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0">
-                    <i class="fa-solid fa-bars-staggered text-base"></i>
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars-staggered text-base"></i>
                 </button>
+            </div>
+        </div>
+
+        <!-- PAINEL DE EXPANSÃO NATIVA DO CABEÇALHO (DESDOBRAMENTO FLUIDO DO PRÓPRIO HEADER) -->
+        <div id="mobile-menu-panel" 
+             class="lg:hidden overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-300 ease-in-out border-t border-transparent bg-deep-base/98">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 space-y-1">
+                <!-- LINKS COM A MESMA IDENTIDADE TIPOGRÁFICA DO DESKTOP -->
+                <nav class="flex flex-col">
+                    <a href="#portfolio" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
+                        <span>Portfólio</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    </a>
+
+                    <a href="#comparativo" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
+                        <span>Diferenciais</span>
+                    </a>
+
+                    <a href="#simulador" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-cyan-300 hover:text-white transition">
+                        <span>Simulador Sob Medida</span>
+                        <span class="text-[9px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">Novo</span>
+                    </a>
+
+                    <a href="#metodo" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
+                        <span>Como Funciona</span>
+                    </a>
+
+                    <a href="#sobre" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
+                        <span>Sobre</span>
+                    </a>
+
+                    <a href="#faq" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
+                        <span>Dúvidas</span>
+                    </a>
+                </nav>
+
+                <!-- RODAPÉ INTEGRADO DO CABEÇALHO COM WHATSAPP E IDENTIFICAÇÃO FORMAL -->
+                <div class="pt-4 mt-2 flex flex-col gap-2">
+                    <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20site%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20um%20orçamento." 
+                       target="_blank" 
+                       class="touch-action w-full py-3 px-4 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-cyan-400/40 text-slate-200 hover:text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition active:scale-[0.99]">
+                        <i class="fa-brands fa-whatsapp text-sm text-green-400"></i>
+                        <span class="uppercase tracking-wider">Conversar no WhatsApp</span>
+                    </a>
+                    <p class="text-[11px] text-center text-slate-400 font-medium">
+                        Atendimento direto com o desenvolvedor
+                    </p>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- GAVETA DE NAVEGAÇÃO LATERAL (TECH GLASS MORPHISM) -->
-    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0">
-        <!-- BACKDROP ESCURO COM BLUR (CLICAR NO FUNDO FECHA O MENU) -->
-        <div id="mobile-menu-backdrop" class="absolute inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300 opacity-0 cursor-pointer"></div>
-
-        <!-- PAINEL DESLIZANTE DA DIREITA -->
-        <aside id="mobile-menu-panel" class="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-slate-950/95 border-l border-cyan-500/20 backdrop-blur-2xl shadow-2xl p-6 flex flex-col justify-between translate-x-full transition-transform duration-300 ease-out overflow-y-auto">
-            <div>
-                <!-- CABEÇALHO DO PAINEL: STATUS E BOTÃO FECHAR -->
-                <div class="flex items-center justify-between pb-5 border-b border-white/10 mb-6">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                        <span class="text-xs uppercase font-extrabold tracking-widest text-white">Navegação Rápida</span>
-                    </div>
-                    <button id="mobile-menu-close" 
-                            type="button" 
-                            aria-label="Fechar Menu" 
-                            class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:border-cyan-400/50 flex items-center justify-center transition active:scale-95 cursor-pointer">
-                        <i class="fa-solid fa-xmark text-base"></i>
-                    </button>
-                </div>
-
-                <!-- LINKS DE NAVEGAÇÃO COM EFEITO TOUCH -->
-                <nav class="space-y-2">
-                    <a href="#portfolio" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-layer-group"></i></span>
-                            <span class="text-sm font-bold">Portfólio & Modelos</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
-                    </a>
-
-                    <a href="#comparativo" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-bolt"></i></span>
-                            <span class="text-sm font-bold">Diferenciais (vs. PDFs)</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
-                    </a>
-
-                    <a href="#simulador" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-cyan-300 hover:text-white bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 transition group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-calculator"></i></span>
-                            <span class="text-sm font-bold">Simulador de Projeto</span>
-                        </div>
-                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">Novo</span>
-                    </a>
-
-                    <a href="#metodo" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-                            <span class="text-sm font-bold">Como Funciona</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
-                    </a>
-
-                    <a href="#sobre" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-user-shield"></i></span>
-                            <span class="text-sm font-bold">Sobre o Wallace</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
-                    </a>
-
-                    <a href="#faq" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-circle-question"></i></span>
-                            <span class="text-sm font-bold">Dúvidas Frequentes</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
-                    </a>
-                </nav>
-            </div>
-
-            <!-- RODAPÉ DA GAVETA COM CTA DIRETO -->
-            <div class="pt-6 border-t border-white/10 space-y-3 mt-6">
-                <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20site%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20um%20orçamento." 
-                   target="_blank" 
-                   class="touch-action w-full py-3.5 px-4 bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-900/40 transition active:scale-95">
-                    <i class="fa-brands fa-whatsapp text-sm text-green-300"></i>
-                    <span>Conversar no WhatsApp</span>
-                </a>
-                <p class="text-[11px] text-center text-slate-400">
-                    Atendimento direto com o desenvolvedor
-                </p>
-            </div>
-        </aside>
-    </div>
+    <!-- BACKDROP SUAVE ABAIXO DO CABEÇALHO (CLICAR NO FUNDO RECOLHE O MENU) -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 z-30 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none cursor-pointer"></div>
 
     <!-- 3. HERO SECTION (DEEP TECH NOTURNO DE ALTO IMPACTO) -->
     <section class="relative z-10 pt-16 sm:pt-24 pb-20 px-4 w-full overflow-hidden border-b border-deep-border/50">
@@ -1845,41 +1808,65 @@
         // Inicializar Simulador na carga
         selecionarSolucao('convite');
 
-        // 6. CONTROLE DO MENU GAVETA (DRAWER MOBILE & JANELAS REDUZIDAS)
+        // 6. CONTROLE DO MENU EXPANSÍVEL DO CABEÇALHO (SEAMLESS HEADER EXPANSION)
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
-        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
         const mobileMenuPanel = document.getElementById('mobile-menu-panel');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        let menuAberto = false;
 
         function abrirMenuMobile() {
-            if (!mobileMenuDrawer || !mobileMenuPanel || !mobileMenuBackdrop) return;
-            mobileMenuDrawer.classList.remove('pointer-events-none', 'opacity-0', 'invisible');
-            mobileMenuDrawer.classList.add('pointer-events-auto', 'opacity-100');
-            mobileMenuBackdrop.classList.remove('opacity-0');
-            mobileMenuBackdrop.classList.add('opacity-100');
-            mobileMenuPanel.classList.remove('translate-x-full');
-            mobileMenuPanel.classList.add('translate-x-0');
-            document.body.style.overflow = 'hidden';
+            if (!mobileMenuPanel || !mobileMenuBackdrop) return;
+            menuAberto = true;
+            
+            // Expandir painel nativamente a partir do próprio cabeçalho
+            mobileMenuPanel.style.maxHeight = mobileMenuPanel.scrollHeight + 'px';
+            mobileMenuPanel.classList.remove('opacity-0', 'border-transparent');
+            mobileMenuPanel.classList.add('opacity-100', 'border-white/[0.08]');
+            
+            // Ativar backdrop suave
+            mobileMenuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            mobileMenuBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            }
+            if (mobileMenuIcon) {
+                mobileMenuIcon.className = 'fa-solid fa-xmark text-base text-cyan-400';
+            }
         }
 
         function fecharMenuMobile() {
-            if (!mobileMenuDrawer || !mobileMenuPanel || !mobileMenuBackdrop) return;
-            mobileMenuDrawer.classList.remove('pointer-events-auto');
-            mobileMenuDrawer.classList.add('pointer-events-none');
-            mobileMenuPanel.classList.remove('translate-x-0');
-            mobileMenuPanel.classList.add('translate-x-full');
-            mobileMenuBackdrop.classList.remove('opacity-100');
-            mobileMenuBackdrop.classList.add('opacity-0');
-            setTimeout(() => {
-                mobileMenuDrawer.classList.add('opacity-0', 'invisible');
-                document.body.style.overflow = '';
-            }, 300);
+            if (!mobileMenuPanel || !mobileMenuBackdrop) return;
+            menuAberto = false;
+            
+            // Recolher suavemente
+            mobileMenuPanel.style.maxHeight = '0px';
+            mobileMenuPanel.classList.remove('opacity-100', 'border-white/[0.08]');
+            mobileMenuPanel.classList.add('opacity-0', 'border-transparent');
+            
+            // Desativar backdrop
+            mobileMenuBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+            mobileMenuBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+            if (mobileMenuIcon) {
+                mobileMenuIcon.className = 'fa-solid fa-bars-staggered text-base';
+            }
         }
 
-        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', abrirMenuMobile);
-        if (mobileMenuClose) mobileMenuClose.addEventListener('click', fecharMenuMobile);
+        function toggleMenuMobile() {
+            if (menuAberto) {
+                fecharMenuMobile();
+            } else {
+                abrirMenuMobile();
+            }
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenuMobile);
         if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener('click', fecharMenuMobile);
 
         mobileNavLinks.forEach(link => {
@@ -1889,7 +1876,13 @@
         });
 
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') fecharMenuMobile();
+            if (e.key === 'Escape' && menuAberto) fecharMenuMobile();
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024 && menuAberto) {
+                fecharMenuMobile();
+            }
         });
     </script>
 
