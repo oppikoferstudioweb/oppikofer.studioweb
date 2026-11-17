@@ -232,29 +232,127 @@
                 </a>
             </div>
 
-            <!-- BLOCO CENTRAL: MENU MATEMATICAMENTE CENTRALIZADO ENTRE LOGO E CTA -->
-            <nav class="hidden md:flex items-center justify-center gap-8 text-xs uppercase tracking-wider font-bold text-slate-300">
+            <!-- BLOCO CENTRAL: MENU MATEMATICAMENTE CENTRALIZADO (DESKTOP COMPLETO) -->
+            <nav class="hidden lg:flex items-center justify-center gap-7 text-xs uppercase tracking-wider font-bold text-slate-300">
                 <a href="#portfolio" class="hover:text-deep-cyan transition flex items-center gap-1.5 py-1">
                     <span>Portfólio</span>
                     <span class="w-1.5 h-1.5 rounded-full bg-deep-cyan animate-pulse"></span>
                 </a>
+                <a href="#comparativo" class="hover:text-deep-cyan transition py-1">Diferenciais</a>
+                <a href="#simulador" class="hover:text-deep-cyan transition py-1 text-cyan-300">Simulador</a>
                 <a href="#metodo" class="hover:text-deep-cyan transition py-1">Como Funciona</a>
-                <a href="#sobre" class="hover:text-deep-cyan transition py-1">Sobre</a>
                 <a href="#faq" class="hover:text-deep-cyan transition py-1">Dúvidas</a>
             </nav>
 
-            <!-- BLOCO DIREITO: CTA PRINCIPAL -->
-            <div class="flex-1 flex items-center justify-end">
+            <!-- BLOCO DIREITO: CTA PRINCIPAL + BOTÃO MENU HAMBÚRGUER (MOBILE & JANELAS REDUZIDAS) -->
+            <div class="flex-1 flex items-center justify-end gap-2.5">
                 <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20site%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20um%20orçamento." 
                    target="_blank" 
-                   class="touch-action relative group overflow-hidden bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 text-white font-bold px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm transition duration-300 flex items-center gap-2 shadow-lg shadow-blue-900/40 shrink-0 border border-white/20 active:scale-95">
+                   class="touch-action relative group overflow-hidden bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 text-white font-bold px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm transition duration-300 flex items-center gap-2 shadow-lg shadow-blue-900/40 shrink-0 border border-white/20 active:scale-95">
                     <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer-run"></span>
                     <i class="fa-brands fa-whatsapp text-sm text-green-300"></i>
                     <span>Iniciar Projeto</span>
                 </a>
+
+                <!-- BOTÃO MENU HAMBÚRGUER TECH (VISÍVEL NO MOBILE E EM JANELAS REDUZIDAS DO DESKTOP) -->
+                <button id="mobile-menu-btn" 
+                        type="button" 
+                        aria-label="Abrir Menu de Navegação" 
+                        class="lg:hidden w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-200 hover:text-cyan-400 flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0">
+                    <i class="fa-solid fa-bars-staggered text-base"></i>
+                </button>
             </div>
         </div>
     </header>
+
+    <!-- GAVETA DE NAVEGAÇÃO LATERAL (TECH GLASS MORPHISM) -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0">
+        <!-- BACKDROP ESCURO COM BLUR (CLICAR NO FUNDO FECHA O MENU) -->
+        <div id="mobile-menu-backdrop" class="absolute inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300 opacity-0 cursor-pointer"></div>
+
+        <!-- PAINEL DESLIZANTE DA DIREITA -->
+        <aside id="mobile-menu-panel" class="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-slate-950/95 border-l border-cyan-500/20 backdrop-blur-2xl shadow-2xl p-6 flex flex-col justify-between translate-x-full transition-transform duration-300 ease-out overflow-y-auto">
+            <div>
+                <!-- CABEÇALHO DO PAINEL: STATUS E BOTÃO FECHAR -->
+                <div class="flex items-center justify-between pb-5 border-b border-white/10 mb-6">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        <span class="text-xs uppercase font-extrabold tracking-widest text-white">Navegação Rápida</span>
+                    </div>
+                    <button id="mobile-menu-close" 
+                            type="button" 
+                            aria-label="Fechar Menu" 
+                            class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:border-cyan-400/50 flex items-center justify-center transition active:scale-95 cursor-pointer">
+                        <i class="fa-solid fa-xmark text-base"></i>
+                    </button>
+                </div>
+
+                <!-- LINKS DE NAVEGAÇÃO COM EFEITO TOUCH -->
+                <nav class="space-y-2">
+                    <a href="#portfolio" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-layer-group"></i></span>
+                            <span class="text-sm font-bold">Portfólio & Modelos</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <a href="#comparativo" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-bolt"></i></span>
+                            <span class="text-sm font-bold">Diferenciais (vs. PDFs)</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <a href="#simulador" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-cyan-300 hover:text-white bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 transition group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-calculator"></i></span>
+                            <span class="text-sm font-bold">Simulador de Projeto</span>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">Novo</span>
+                    </a>
+
+                    <a href="#metodo" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                            <span class="text-sm font-bold">Como Funciona</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <a href="#sobre" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-user-shield"></i></span>
+                            <span class="text-sm font-bold">Sobre o Wallace</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+
+                    <a href="#faq" class="mobile-nav-link flex items-center justify-between p-3.5 rounded-xl text-slate-200 hover:text-white hover:bg-white/5 border border-transparent hover:border-cyan-500/20 transition group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-sm group-hover:scale-110 transition"><i class="fa-solid fa-circle-question"></i></span>
+                            <span class="text-sm font-bold">Dúvidas Frequentes</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- RODAPÉ DA GAVETA COM CTA DIRETO -->
+            <div class="pt-6 border-t border-white/10 space-y-3 mt-6">
+                <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20site%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20um%20orçamento." 
+                   target="_blank" 
+                   class="touch-action w-full py-3.5 px-4 bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-900/40 transition active:scale-95">
+                    <i class="fa-brands fa-whatsapp text-sm text-green-300"></i>
+                    <span>Conversar no WhatsApp</span>
+                </a>
+                <p class="text-[11px] text-center text-slate-400">
+                    Atendimento direto com o desenvolvedor
+                </p>
+            </div>
+        </aside>
+    </div>
 
     <!-- 3. HERO SECTION (DEEP TECH NOTURNO DE ALTO IMPACTO) -->
     <section class="relative z-10 pt-16 sm:pt-24 pb-20 px-4 w-full overflow-hidden border-b border-deep-border/50">
@@ -291,11 +389,10 @@
                     <span>Explorar Projetos Prontos</span>
                     <i class="fa-solid fa-arrow-down text-xs"></i>
                 </a>
-                <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20portfólio%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." 
-                   target="_blank" 
-                   class="touch-action w-full sm:w-auto px-8 py-3.5 bg-deep-surface/90 hover:bg-slate-800 text-slate-100 font-bold rounded-xl text-sm transition duration-300 border border-deep-borderLight shadow-md flex items-center justify-center gap-2 backdrop-blur-md active:scale-95">
-                    <i class="fa-brands fa-whatsapp text-cyan-400"></i>
-                    <span>Falar Diretamente Comigo</span>
+                <a href="#simulador" 
+                   class="touch-action w-full sm:w-auto px-8 py-3.5 bg-deep-surface/90 hover:bg-slate-800 text-slate-100 font-bold rounded-xl text-sm transition duration-300 border border-deep-borderLight shadow-md flex items-center justify-center gap-2 backdrop-blur-md active:scale-95 group">
+                    <i class="fa-solid fa-calculator text-cyan-400 group-hover:scale-110 transition-transform"></i>
+                    <span>Simular Projeto Sob Medida</span>
                 </a>
             </div>
 
@@ -347,7 +444,7 @@
     </section>
 
     <!-- 4. VITRINE DE PROJETOS (ESTÚDIO CLARO ESTILO APPLE COM ILUMINAÇÃO AZULADA E MOCKUPS SUSPENSOS) -->
-    <section id="portfolio" class="relative z-20 py-20 sm:py-28 px-4 bg-gradient-to-b from-slate-100 via-studio-bg to-slate-200 border-t border-b border-slate-300 text-studio-text studio-stage-lighting overflow-hidden">
+    <section id="portfolio" class="scroll-mt-20 relative z-20 py-20 sm:py-28 px-4 bg-gradient-to-b from-slate-100 via-studio-bg to-slate-200 border-t border-b border-slate-300 text-studio-text studio-stage-lighting overflow-hidden">
         
         <!-- Luzes difusas sutis nas bordas da base clara para conectar com a identidade azul -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-cyan-400/10 blur-[100px] pointer-events-none"></div>
@@ -828,8 +925,274 @@
         </div>
     </section>
 
+    <!-- COMPARATIVO: PDF ARCAICO VS PADRÃO OPPIKOFER -->
+    <section id="comparativo" class="scroll-mt-20 relative z-10 py-24 px-4 bg-slate-950 border-t border-b border-deep-border text-slate-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cyan font-bold mb-3">
+                    <i class="fa-solid fa-bolt text-cyan-400"></i>
+                    A Diferença Real na Conversão
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+                    Por que materiais interativos convertem até 3x mais que PDFs?
+                </h2>
+                <p class="text-slate-300 text-xs sm:text-base mt-4 font-normal leading-relaxed">
+                    A fricção tecnológica custa vendas todos os dias. Veja o confronto direto entre o formato estático e a nova era da web.
+                </p>
+            </div>
+
+            <!-- Grade Comparativa Lado a Lado -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <!-- Card 1: O Formato Arcaico (PDFs e Imagens) -->
+                <div class="bg-slate-900/90 rounded-3xl p-6 sm:p-8 border border-red-500/20 flex flex-col justify-between shadow-xl relative overflow-hidden">
+                    <div class="absolute -top-12 -right-12 w-40 h-40 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 pb-4 border-b border-slate-800">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold w-fit">
+                                <i class="fa-solid fa-ban text-[11px]"></i> O Formato Arcaico (PDFs)
+                            </span>
+                            <span class="text-xs sm:text-[11px] text-rose-400/90 font-mono font-medium flex items-center gap-1.5">
+                                <i class="fa-solid fa-arrow-trend-down text-rose-500 text-[10px]"></i>
+                                Taxa de evasão: ~65%
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-6">
+                            Arquivos pesados, navegação travada e zero dados de interesse.
+                        </h3>
+
+                        <ul class="space-y-5 text-xs sm:text-sm text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">✕</span>
+                                <div>
+                                    <strong class="text-white block font-semibold mb-0.5">Exige download pesado no celular:</strong>
+                                    Clientes no 4G hesitam em baixar arquivos de 20MB a 80MB. Muitos desistem da compra antes mesmo de abrir.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">✕</span>
+                                <div>
+                                    <strong class="text-white block font-semibold mb-0.5">Sem botões interativos nem WhatsApp direto:</strong>
+                                    O cliente precisa anotar o nome do item, abrir o WhatsApp manualmente e digitar o pedido. Grande perda de vendas no meio do caminho.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">✕</span>
+                                <div>
+                                    <strong class="text-white block font-semibold mb-0.5">Mudou um preço? Reenvie tudo de novo:</strong>
+                                    Se um item esgotar ou o valor mudar, você é obrigado a gerar um novo arquivo e reenviar para toda a sua lista de contatos.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">✕</span>
+                                <div>
+                                    <strong class="text-white block font-semibold mb-0.5">Zero métricas ou analytics de leitura:</strong>
+                                    Impossível saber quantas pessoas realmente abriram o arquivo, quanto tempo olharam e quais itens despertaram interesse.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 font-medium">
+                        ⚠️ Resultado comum: Atendimento lento, pedidos perdidos e retrabalho para reenviar arquivos.
+                    </div>
+                </div>
+
+                <!-- Card 2: Padrão Oppikofer • Studio Web -->
+                <div class="bg-gradient-to-b from-slate-900/95 via-deep-surface to-slate-950 rounded-3xl p-6 sm:p-8 border-2 border-cyan-500/40 flex flex-col justify-between shadow-2xl shadow-cyan-950/40 relative overflow-hidden">
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 pb-4 border-b border-cyan-500/20">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-bold shadow-sm w-fit">
+                                <i class="fa-solid fa-crown text-[11px] text-amber-400"></i> Padrão Oppikofer Studio
+                            </span>
+                            <span class="text-xs sm:text-[11px] text-cyan-400 font-bold font-mono flex items-center gap-1.5">
+                                <i class="fa-solid fa-arrow-trend-up text-cyan-400 text-[10px]"></i>
+                                Retenção ativa: 94%+
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-6">
+                            Carregamento instantâneo, toque fluido e pedidos prontos em 1 clique.
+                        </h3>
+
+                        <ul class="space-y-5 text-xs sm:text-sm text-slate-200">
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black shadow-sm">✓</span>
+                                <div>
+                                    <strong class="text-white block font-semibold mb-0.5">Abertura instantânea via link leve:</strong>
+                                    Abre em menos de 1 segundo direto no navegador do smartphone, sem consumir a memória nem os dados móveis do seu cliente.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black shadow-sm">✓</span>
+                                <div>
+                                    <strong class="text-white block font-semibold mb-0.5">Checkout e ações em 1 clique:</strong>
+                                    Botões inteligentes enviam o pedido formatado para o WhatsApp, abrem rota no GPS (Waze/Maps) ou registram presença em tempo real.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black shadow-sm">✓</span>
+                                <div>
+                                    <strong class="text-white block font-semibold mb-0.5">Link sempre atualizado com nosso suporte:</strong>
+                                    Qualquer alteração de foto, preço ou item entra no ar no mesmo link que seus clientes já têm salvo, sem necessidade de baixar nada novo.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black shadow-sm">✓</span>
+                                <div>
+                                    <strong class="text-white block font-semibold mb-0.5">Métricas e rastreamento de interesse:</strong>
+                                    Pronto para Pixel de anúncios (Meta e Google) para você acompanhar os acessos e saber exatamente quais produtos mais despertam interesse.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-cyan-500/20 flex items-center justify-between text-[11px] text-cyan-300 font-semibold">
+                        <span>✨ Mais fechamentos, autoridade e conversão imediata</span>
+                        <i class="fa-solid fa-arrow-trend-up text-cyan-400 text-sm"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4.5 SIMULADOR DE PROJETOS INTERATIVO -->
+    <section id="simulador" class="scroll-mt-20 relative z-10 py-24 px-4 bg-slate-950/90 text-slate-200 border-t border-deep-border">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cyan font-bold mb-3">
+                    <i class="fa-solid fa-calculator text-cyan-400"></i>
+                    Orçamento Dinâmico & Sem Compromisso
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+                    Simule seu Projeto Sob Medida
+                </h2>
+                <p class="text-slate-300 text-xs sm:text-base mt-4 font-normal leading-relaxed">
+                    Escolha a solução ideal para o seu negócio ou evento, selecione os recursos desejados e receba uma estimativa pronta direto no WhatsApp.
+                </p>
+            </div>
+
+            <div class="bg-deep-surface/90 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Coluna Esquerda: Controles (Passo 1 e Passo 2) - Col span 7 -->
+                <div class="lg:col-span-7 space-y-8">
+                    <!-- PASSO 1: ESCOLHA DA SOLUÇÃO -->
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs uppercase tracking-wider text-cyan-400 font-bold flex items-center gap-1.5">
+                                <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-[10px]">1</span>
+                                Selecione a Solução Desejada
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="simulador-solucoes">
+                            <!-- Botões de Solução -->
+                            <button type="button" onclick="selecionarSolucao('convite')" id="solucao-convite" class="solucao-btn text-left p-4 rounded-2xl border-2 border-cyan-400 bg-cyan-500/10 transition-all cursor-pointer">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-lg">💌</span>
+                                    <i class="fa-solid fa-circle-check text-cyan-400 solucao-icon text-sm"></i>
+                                </div>
+                                <h4 class="font-bold text-white text-sm">Convites Digitais</h4>
+                                <p class="text-[11px] text-slate-300 mt-0.5 leading-snug">Casamentos, 15 anos, aniversários e celebrações.</p>
+                            </button>
+
+                            <button type="button" onclick="selecionarSolucao('landing')" id="solucao-landing" class="solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-lg">🚀</span>
+                                    <i class="fa-regular fa-circle text-slate-500 solucao-icon text-sm"></i>
+                                </div>
+                                <h4 class="font-bold text-white text-sm">Landing Pages</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Alta conversão para clínicas, serviços e tráfego pago.</p>
+                            </button>
+
+                            <button type="button" onclick="selecionarSolucao('catalogo')" id="solucao-catalogo" class="solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-lg">📖</span>
+                                    <i class="fa-regular fa-circle text-slate-500 solucao-icon text-sm"></i>
+                                </div>
+                                <h4 class="font-bold text-white text-sm">Catálogos & Cardápios</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Cardápio digital com pedidos no WhatsApp sem PDF.</p>
+                            </button>
+
+                            <button type="button" onclick="selecionarSolucao('institucional')" id="solucao-institucional" class="solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-lg">🏢</span>
+                                    <i class="fa-regular fa-circle text-slate-500 solucao-icon text-sm"></i>
+                                </div>
+                                <h4 class="font-bold text-white text-sm">Sites Institucionais</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Presença corporativa oficial com autoridade e SEO.</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 2: RECURSOS DINÂMICOS DO NICHO -->
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs uppercase tracking-wider text-cyan-400 font-bold flex items-center gap-1.5">
+                                <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-[10px]">2</span>
+                                Recursos & Adicionais para este Nicho
+                            </span>
+                            <span id="label-nicho-ativo" class="text-[11px] text-slate-400 font-medium">Nicho: Convites</span>
+                        </div>
+                        <div id="container-adicionais-dinamicos" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            <!-- Injetado dinamicamente via script -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Direita: Resumo em Tempo Real - Col span 5 -->
+                <div class="lg:col-span-5 bg-slate-950/95 border-2 border-cyan-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                            <span class="text-xs uppercase font-extrabold tracking-wider text-white">Resumo da Simulação</span>
+                            <span class="inline-flex items-center gap-1.5 text-[11px] text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                Configuração Ativa
+                            </span>
+                        </div>
+
+                        <div class="py-5 space-y-4 text-xs">
+                            <div>
+                                <span class="text-slate-400 block text-[11px]">Solução Selecionada:</span>
+                                <h4 id="resumo-solucao-titulo" class="text-base sm:text-lg font-bold text-white mt-0.5">Convites Digitais Interativos</h4>
+                            </div>
+
+                            <div class="bg-cyan-500/10 border border-cyan-400/20 rounded-2xl p-3.5">
+                                <span class="text-cyan-300 block text-[10px] uppercase font-bold tracking-wider mb-1">Previsão de Entrega:</span>
+                                <div id="resumo-prazo" class="text-sm sm:text-base font-black text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-bolt text-amber-400 text-sm"></i>
+                                    <span>Em até 48 horas úteis*</span>
+                                </div>
+                                <span id="resumo-prazo-obs" class="text-[10px] text-slate-400 block mt-1 leading-snug">
+                                    *Inicia após a aprovação do briefing e envio das informações do evento.
+                                </span>
+                            </div>
+
+                            <div>
+                                <span class="text-slate-400 block text-[11px] mb-2">Recursos & Diferenciais Inclusos:</span>
+                                <div id="resumo-tags-adicionais" class="flex flex-wrap gap-1.5">
+                                    <!-- Tags dinâmicas -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Ação Direta para WhatsApp -->
+                    <div class="pt-4 border-t border-white/10 space-y-2">
+                        <a id="btn-enviar-simulacao-whatsapp" href="#" target="_blank" class="touch-action w-full py-4 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-slate-950 font-black rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2.5 transition shadow-lg shadow-emerald-500/20 cursor-pointer">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>ENVIAR PROPOSTA NO WHATSAPP</span>
+                        </a>
+                        <p class="text-[10px] text-center text-slate-400 flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-lock text-cyan-400"></i> Sem compromisso • Atendimento direto com Wallace Oppikofer
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 5. O MÉTODO DE TRABALHO (RETORNA PARA O ESTILO DEEP TECH NOTURNO) -->
-    <section id="metodo" class="relative z-10 py-24 px-4 bg-deep-base text-slate-200">
+    <section id="metodo" class="scroll-mt-20 relative z-10 py-24 px-4 bg-deep-base text-slate-200">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
                 <span class="text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2 block">Processo Ágil & Direto</span>
@@ -865,7 +1228,7 @@
     </section>
 
     <!-- 6. SOBRE O FUNDADOR -->
-    <section id="sobre" class="relative z-10 py-20 px-4 bg-slate-950/80 border-t border-deep-border text-slate-200">
+    <section id="sobre" class="scroll-mt-20 relative z-10 py-20 px-4 bg-slate-950/80 border-t border-deep-border text-slate-200">
         <div class="max-w-3xl mx-auto text-center">
             <span class="text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2 block">Fundador & Desenvolvedor</span>
             <h2 class="text-3xl font-black text-white mb-6">Wallace Oppikofer</h2>
@@ -883,7 +1246,7 @@
     </section>
 
     <!-- 7. FAQ INTERATIVO (PERGUNTAS FREQUENTES EM VIDRO ESCURO) -->
-    <section id="faq" class="relative z-10 py-24 px-4 bg-deep-base text-slate-200 border-t border-deep-border">
+    <section id="faq" class="scroll-mt-20 relative z-10 py-24 px-4 bg-deep-base text-slate-200 border-t border-deep-border">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-12">
                 <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2">
@@ -1037,6 +1400,16 @@
 
     <!-- JAVASCRIPT DE INTERATIVIDADE, CONTADORES E FILTROS -->
     <script>
+        // 0. CONTROLE DE SCROLL INICIAL (GARANTIR INÍCIO NO TOPO E EVITAR SALTO ACIDENTAL)
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!window.location.hash || window.location.hash === '#portfolio') {
+                window.scrollTo(0, 0);
+            }
+        });
+
         // 1. CONTADORES ANIMADOS (Disparados no scroll)
         function startCounters() {
             const counters = document.querySelectorAll('.counter-number');
@@ -1298,6 +1671,225 @@
                     icon.classList.add('rotate-45', 'text-cyan-400');
                 }
             });
+        });
+
+        // 5. SIMULADOR DE PROJETOS DINÂMICO POR NICHO
+        const SOLUCOES_CONFIG = {
+            'convite': {
+                titulo: 'Convites Digitais Interativos',
+                nichoLabel: 'Nicho: Convites & Eventos',
+                prazo: 'Em até 48 horas úteis*',
+                prazoObs: '*Inicia após aprovação do briefing e envio das fotos e dados do evento.',
+                adicionais: [
+                    { label: 'Confirmação de Presença (RSVP no WhatsApp)', checked: true },
+                    { label: 'Localização com 1 Clique (Waze & Google Maps)', checked: true },
+                    { label: 'Chave PIX & Lista de Presentes', checked: true },
+                    { label: 'Contagem Regressiva Interativa', checked: true },
+                    { label: 'Mural de Recados dos Convidados', checked: false },
+                    { label: 'Manual dos Padrinhos / Dicas de Traje', checked: false }
+                ]
+            },
+            'landing': {
+                titulo: 'Landing Pages de Alta Conversão',
+                nichoLabel: 'Nicho: Clínicas, Serviços & Tráfego',
+                prazo: 'Em até 48 horas úteis*',
+                prazoObs: '*Inicia após alinhamento de fotos, textos e público-alvo.',
+                adicionais: [
+                    { label: 'Triagem de Pré-Atendimento no WhatsApp', checked: true },
+                    { label: 'Integração de Pixel (Meta Ads & Google)', checked: true },
+                    { label: 'FAQ Sanfona (Quebra de Objeções)', checked: true },
+                    { label: 'Grade de Depoimentos & Prova Social', checked: true },
+                    { label: 'Copywriting Comercial Otimizado', checked: true },
+                    { label: 'Otimização Extrema de Velocidade (PageSpeed 95+)', checked: true }
+                ]
+            },
+            'catalogo': {
+                titulo: 'Catálogos & Cardápios Virtuais',
+                nichoLabel: 'Nicho: Gastronomia, Moda & Comércio',
+                prazo: 'Em até 48 horas úteis*',
+                prazoObs: '*Para cardápios padrão com até 15 itens cadastrados. Volumes maiores sob consulta.',
+                adicionais: [
+                    { label: 'Sacola de Pedidos com Checkout no WhatsApp', checked: true },
+                    { label: 'Opção de Entrega (Delivery) ou Retirada', checked: true },
+                    { label: 'Forma de Pagamento (PIX, Cartão, Dinheiro c/ Troco)', checked: true },
+                    { label: 'Filtros por Categorias do Cardápio/Loja', checked: true },
+                    { label: 'Galeria de Fotos em Alta Resolução', checked: true },
+                    { label: 'Botão Direto para Redes Sociais / Instagram', checked: false }
+                ]
+            },
+            'institucional': {
+                titulo: 'Sites Institucionais & Portais Modernos',
+                nichoLabel: 'Nicho: Empresas, Escritórios & Marcas',
+                prazo: 'A partir de 5 a 7 dias úteis*',
+                prazoObs: '*Projetos corporativos mais amplos com múltiplas seções institucionais.',
+                adicionais: [
+                    { label: 'Estrutura Multi-seções Ampliada', checked: true },
+                    { label: 'SEO Estruturado para o Google', checked: true },
+                    { label: 'Contato Multicanal (WhatsApp, E-mail, Formulário)', checked: true },
+                    { label: 'Localização e Mapa Integrado da Sede', checked: true },
+                    { label: 'Mostruário de Serviços / Cases de Sucesso', checked: true },
+                    { label: 'Design Adaptado para Celular e Desktop', checked: true }
+                ]
+            }
+        };
+
+        let solucaoAtual = 'convite';
+        let adicionaisSelecionados = new Set();
+
+        function selecionarSolucao(chave) {
+            solucaoAtual = chave;
+            const config = SOLUCOES_CONFIG[chave];
+            if (!config) return;
+
+            document.querySelectorAll('.solucao-btn').forEach(btn => {
+                btn.className = "solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer";
+                const icon = btn.querySelector('.solucao-icon');
+                if (icon) icon.className = "fa-regular fa-circle text-slate-500 solucao-icon text-sm";
+            });
+
+            const btnAtivo = document.getElementById(`solucao-${chave}`);
+            if (btnAtivo) {
+                btnAtivo.className = "solucao-btn text-left p-4 rounded-2xl border-2 border-cyan-400 bg-cyan-500/10 transition-all cursor-pointer shadow-lg shadow-cyan-950/40";
+                const icon = btnAtivo.querySelector('.solucao-icon');
+                if (icon) icon.className = "fa-solid fa-circle-check text-cyan-400 solucao-icon text-sm";
+            }
+
+            const labelNicho = document.getElementById('label-nicho-ativo');
+            if (labelNicho) labelNicho.textContent = config.nichoLabel;
+
+            adicionaisSelecionados.clear();
+            const container = document.getElementById('container-adicionais-dinamicos');
+            if (container) {
+                container.innerHTML = config.adicionais.map(add => {
+                    if (add.checked) adicionaisSelecionados.add(add.label);
+                    return `
+                        <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-900/90 border border-white/5 hover:border-cyan-500/30 transition cursor-pointer select-none">
+                            <input type="checkbox" 
+                                   value="${add.label}" 
+                                   ${add.checked ? 'checked' : ''} 
+                                   onchange="toggleAdicional(this)"
+                                   class="mt-0.5 rounded border-slate-700 text-cyan-500 focus:ring-0 bg-slate-800 shrink-0 cursor-pointer">
+                            <span class="text-xs text-slate-200 leading-snug font-medium">${add.label}</span>
+                        </label>
+                    `;
+                }).join('');
+            }
+
+            atualizarResumoSimulador();
+        }
+
+        function toggleAdicional(checkbox) {
+            if (checkbox.checked) {
+                adicionaisSelecionados.add(checkbox.value);
+            } else {
+                adicionaisSelecionados.delete(checkbox.value);
+            }
+            atualizarResumoSimulador();
+        }
+
+        function atualizarResumoSimulador() {
+            const config = SOLUCOES_CONFIG[solucaoAtual];
+            if (!config) return;
+
+            const tituloEl = document.getElementById('resumo-solucao-titulo');
+            const prazoEl = document.getElementById('resumo-prazo');
+            const prazoObsEl = document.getElementById('resumo-prazo-obs');
+            const tagsContainer = document.getElementById('resumo-tags-adicionais');
+
+            if (tituloEl) tituloEl.textContent = config.titulo;
+            if (prazoEl) prazoEl.innerHTML = `<i class="fa-solid fa-bolt text-amber-400 text-sm"></i> <span>${config.prazo}</span>`;
+            if (prazoObsEl) prazoObsEl.textContent = config.prazoObs;
+
+            const listaArray = Array.from(adicionaisSelecionados);
+
+            if (tagsContainer) {
+                if (listaArray.length === 0) {
+                    tagsContainer.innerHTML = `<span class="text-[11px] text-slate-500 italic">Nenhum adicional selecionado (apenas estrutura base).</span>`;
+                } else {
+                    tagsContainer.innerHTML = listaArray.map(item => `
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-cyan-500/10 border border-cyan-400/20 text-cyan-300 text-[10px] font-medium leading-none">
+                            <i class="fa-solid fa-check text-[9px] text-cyan-400"></i> ${item}
+                        </span>
+                    `).join('');
+                }
+            }
+
+            // Montagem da mensagem estruturada para o WhatsApp com codificação 100% segura
+            const linhasMensagem = [
+                '⚡ *SIMULAÇÃO DE PROJETO • OPPIKOFER STUDIO WEB*',
+                '━━━━━━━━━━━━━━━━━━━━━━',
+                `📌 *Solução Escolhida:* ${config.titulo}`,
+                `⏱️ *Previsão de Entrega:* ${config.prazo}`,
+                '━━━━━━━━━━━━━━━━━━━━━━',
+                '✨ *Recursos e Opcionais Selecionados:*'
+            ];
+
+            if (listaArray.length > 0) {
+                listaArray.forEach(item => {
+                    linhasMensagem.push(`• ${item}`);
+                });
+            } else {
+                linhasMensagem.push('• Estrutura base essencial padrão');
+            }
+
+            linhasMensagem.push('━━━━━━━━━━━━━━━━━━━━━━');
+            linhasMensagem.push('👉 _Olá Wallace! Configurei essa proposta no simulador do site e gostaria de saber valores e como podemos iniciar._');
+
+            const mensagemCompleta = linhasMensagem.join('\n');
+            const btnZap = document.getElementById('btn-enviar-simulacao-whatsapp');
+            if (btnZap) {
+                btnZap.href = `https://wa.me/5511926834439?text=${encodeURIComponent(mensagemCompleta)}`;
+            }
+        }
+
+        // Inicializar Simulador na carga
+        selecionarSolucao('convite');
+
+        // 6. CONTROLE DO MENU GAVETA (DRAWER MOBILE & JANELAS REDUZIDAS)
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+        const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function abrirMenuMobile() {
+            if (!mobileMenuDrawer || !mobileMenuPanel || !mobileMenuBackdrop) return;
+            mobileMenuDrawer.classList.remove('pointer-events-none', 'opacity-0', 'invisible');
+            mobileMenuDrawer.classList.add('pointer-events-auto', 'opacity-100');
+            mobileMenuBackdrop.classList.remove('opacity-0');
+            mobileMenuBackdrop.classList.add('opacity-100');
+            mobileMenuPanel.classList.remove('translate-x-full');
+            mobileMenuPanel.classList.add('translate-x-0');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharMenuMobile() {
+            if (!mobileMenuDrawer || !mobileMenuPanel || !mobileMenuBackdrop) return;
+            mobileMenuDrawer.classList.remove('pointer-events-auto');
+            mobileMenuDrawer.classList.add('pointer-events-none');
+            mobileMenuPanel.classList.remove('translate-x-0');
+            mobileMenuPanel.classList.add('translate-x-full');
+            mobileMenuBackdrop.classList.remove('opacity-100');
+            mobileMenuBackdrop.classList.add('opacity-0');
+            setTimeout(() => {
+                mobileMenuDrawer.classList.add('opacity-0', 'invisible');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', abrirMenuMobile);
+        if (mobileMenuClose) mobileMenuClose.addEventListener('click', fecharMenuMobile);
+        if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener('click', fecharMenuMobile);
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                fecharMenuMobile();
+            });
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') fecharMenuMobile();
         });
     </script>
 
