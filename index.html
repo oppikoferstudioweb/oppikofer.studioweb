@@ -215,6 +215,16 @@
         .animate-shimmer-run {
             animation: shimmer 3s infinite;
         }
+
+        /* Lenis Smooth Scroll Setup */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+        /* Word-Scrub (Palavras iluminadas no scroll) */
+        .word-token {
+            display: inline;
+        }
     </style>
 </head>
 <body class="bg-deep-base text-slate-200 font-sans antialiased selection:bg-deep-cobalt selection:text-white relative min-h-screen">
@@ -416,7 +426,7 @@
         <div class="max-w-6xl mx-auto relative z-10">
             
             <!-- Cabeçalho do Portfólio -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 reveal-up">
                 <div>
                     <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cobalt font-bold mb-2">
                         <span class="w-2 h-2 rounded-full bg-deep-cobalt"></span>
@@ -891,7 +901,7 @@
     <!-- COMPARATIVO: PDF ARCAICO VS PADRÃO OPPIKOFER -->
     <section id="comparativo" class="scroll-mt-20 relative z-10 py-24 px-4 bg-slate-950 border-t border-b border-deep-border text-slate-200">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
                 <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cyan font-bold mb-3">
                     <i class="fa-solid fa-bolt text-cyan-400"></i>
                     A Diferença Real na Conversão
@@ -905,9 +915,9 @@
             </div>
 
             <!-- Grade Comparativa Lado a Lado -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch" id="comparativo-grid">
                 <!-- Card 1: O Formato Arcaico (PDFs e Imagens) -->
-                <div class="bg-slate-900/90 rounded-3xl p-6 sm:p-8 border border-red-500/20 flex flex-col justify-between shadow-xl relative overflow-hidden">
+                <div class="comparativo-card bg-slate-900/90 rounded-3xl p-6 sm:p-8 border border-red-500/20 flex flex-col justify-between shadow-xl relative overflow-hidden">
                     <div class="absolute -top-12 -right-12 w-40 h-40 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
                     <div>
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 pb-4 border-b border-slate-800">
@@ -962,7 +972,7 @@
                 </div>
 
                 <!-- Card 2: Padrão Oppikofer • Studio Web -->
-                <div class="bg-gradient-to-b from-slate-900/95 via-deep-surface to-slate-950 rounded-3xl p-6 sm:p-8 border-2 border-cyan-500/40 flex flex-col justify-between shadow-2xl shadow-cyan-950/40 relative overflow-hidden">
+                <div class="comparativo-card bg-gradient-to-b from-slate-900/95 via-deep-surface to-slate-950 rounded-3xl p-6 sm:p-8 border-2 border-cyan-500/40 flex flex-col justify-between shadow-2xl shadow-cyan-950/40 relative overflow-hidden">
                     <div class="absolute -top-12 -right-12 w-48 h-48 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
                     <div>
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 pb-4 border-b border-cyan-500/20">
@@ -1023,7 +1033,7 @@
     <!-- 4.5 SIMULADOR DE PROJETOS INTERATIVO -->
     <section id="simulador" class="scroll-mt-20 relative z-10 py-24 px-4 bg-slate-950/90 text-slate-200 border-t border-deep-border">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
                 <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cyan font-bold mb-3">
                     <i class="fa-solid fa-calculator text-cyan-400"></i>
                     Orçamento Dinâmico & Sem Compromisso
@@ -1036,7 +1046,7 @@
                 </p>
             </div>
 
-            <div class="bg-deep-surface/90 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="bg-deep-surface/90 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start reveal-up">
                 <!-- Coluna Esquerda: Controles (Passo 1 e Passo 2) - Col span 7 -->
                 <div class="lg:col-span-7 space-y-8">
                     <!-- PASSO 1: ESCOLHA DA SOLUÇÃO -->
@@ -1157,7 +1167,7 @@
     <!-- 5. O MÉTODO DE TRABALHO (RETORNA PARA O ESTILO DEEP TECH NOTURNO) -->
     <section id="metodo" class="scroll-mt-20 relative z-10 py-24 px-4 bg-deep-base text-slate-200">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 reveal-up">
                 <span class="text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2 block">Processo Ágil & Direto</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-white">Como Tiramos sua Página do Papel</h2>
                 <p class="text-slate-300 text-xs sm:text-sm mt-2 font-normal">Sem reuniões intermináveis ou meses de desenvolvimento.</p>
@@ -1167,20 +1177,20 @@
                 <!-- Linha Tecnológica Conectando as Etapas (Desktop) -->
                 <div class="hidden md:block absolute top-1/2 left-16 right-16 h-0.5 bg-gradient-to-r from-blue-500/20 via-cyan-400/40 to-indigo-500/20 -translate-y-6 z-0 pointer-events-none"></div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 relative z-10">
-                    <div class="bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 relative z-10" id="metodo-grid">
+                    <div class="metodo-card bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
                         <span class="w-12 h-12 rounded-2xl bg-blue-500/10 text-cyan-400 border border-cyan-500/20 font-black flex items-center justify-center text-base mb-5 group-hover:scale-110 transition duration-300 shadow-sm">01</span>
                         <h3 class="font-bold text-white text-lg mb-2">Alinhamento & Envio</h3>
                         <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">Você nos envia suas fotos, informações do projeto (ou evento) e dados essenciais pelo nosso checklist rápido no WhatsApp.</p>
                     </div>
 
-                    <div class="bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
+                    <div class="metodo-card bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
                         <span class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-black flex items-center justify-center text-base mb-5 group-hover:scale-110 transition duration-300 shadow-sm">02</span>
                         <h3 class="font-bold text-white text-lg mb-2">Design & Construção</h3>
                         <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">Construímos seu projeto sob medida em até 48 horas úteis*, com código ultraleve perfeitamente adaptado para celulares e computadores.</p>
                     </div>
 
-                    <div class="bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
+                    <div class="metodo-card bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
                         <span class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-black flex items-center justify-center text-base mb-5 group-hover:scale-110 transition duration-300 shadow-sm">03</span>
                         <h3 class="font-bold text-white text-lg mb-2">Publicação & Lançamento</h3>
                         <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">Colocamos seu link oficial no ar em servidor seguro, pronto para divulgar nas redes, captar clientes ou enviar aos seus convidados pelo WhatsApp.</p>
@@ -1190,15 +1200,17 @@
         </div>
     </section>
 
-    <!-- 6. SOBRE O FUNDADOR -->
+    <!-- 6. SOBRE O FUNDADOR (COM WORD-SCRUB DE FILOSOFIA) -->
     <section id="sobre" class="scroll-mt-20 relative z-10 py-20 px-4 bg-slate-950/80 border-t border-deep-border text-slate-200">
-        <div class="max-w-3xl mx-auto text-center">
-            <span class="text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2 block">Fundador & Desenvolvedor</span>
-            <h2 class="text-3xl font-black text-white mb-6">Wallace Oppikofer</h2>
-            <p class="text-slate-200 text-sm sm:text-base leading-relaxed mb-8 font-normal">
-                À frente da <strong class="text-white font-semibold">Oppikofer • Studio Web</strong>, combino conceitos de design contemporâneo e engenharia de interface para criar soluções que resolvem problemas reais de negócios e celebrações especiais. Acredito que todo projeto merece uma presença digital rápida, bonita e que encante o público sem nenhuma complexidade desnecessária.
+        <div class="max-w-3xl mx-auto text-center" id="sobre-scrub-container">
+            <div class="reveal-up">
+                <span class="text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2 block">Fundador & Desenvolvedor</span>
+                <h2 class="text-3xl font-black text-white mb-6">Wallace Oppikofer</h2>
+            </div>
+            <p class="word-scrub-target text-slate-200 text-sm sm:text-lg leading-relaxed mb-8 font-normal">
+                À frente da <strong class="text-cyan-400 font-semibold">Oppikofer • Studio Web</strong>, combino conceitos de design contemporâneo e engenharia de interface para criar soluções que resolvem problemas reais de negócios e celebrações especiais. Acredito que todo projeto merece uma presença digital rápida, bonita e que encante o público sem nenhuma complexidade desnecessária.
             </p>
-            <div class="inline-flex flex-wrap justify-center items-center gap-4 text-xs sm:text-sm font-semibold text-slate-300">
+            <div class="inline-flex flex-wrap justify-center items-center gap-4 text-xs sm:text-sm font-semibold text-slate-300 reveal-up">
                 <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-cyan-400"></i> Atendimento Direto</span>
                 <span>•</span>
                 <span class="flex items-center gap-1.5"><i class="fa-solid fa-code text-cyan-400"></i> Código Otimizado</span>
@@ -1211,7 +1223,7 @@
     <!-- 7. FAQ INTERATIVO (PERGUNTAS FREQUENTES EM VIDRO ESCURO) -->
     <section id="faq" class="scroll-mt-20 relative z-10 py-24 px-4 bg-deep-base text-slate-200 border-t border-deep-border">
         <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 reveal-up">
                 <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2">
                     <i class="fa-solid fa-circle-question text-cyan-400"></i>
                     Transparência Total
@@ -1320,7 +1332,7 @@
     <!-- 8. BANNER FINAL DE CONVERSÃO -->
     <section class="relative z-10 py-24 px-4 bg-gradient-to-b from-slate-950 via-deep-base to-slate-950 text-white text-center border-t border-deep-border overflow-hidden">
         <div class="ambient-glow-bottom"></div>
-        <div class="relative z-10 max-w-2xl mx-auto">
+        <div class="relative z-10 max-w-2xl mx-auto reveal-up">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-6">
                 <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
                 <span>Vamos iniciar o seu projeto?</span>
@@ -1882,6 +1894,215 @@
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 1024 && menuAberto) {
                 fecharMenuMobile();
+            }
+        });
+    </script>
+
+    <!-- 7. COREOGRAFIA DE SCROLL PREMIUM (LENIS + GSAP SCROLLTRIGGER) -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function initScrollChoreography() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                return;
+            }
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            // A. Lenis Smooth Scroll (Sedoso no Desktop, Nativo no Mobile)
+            let lenis = null;
+            if (typeof Lenis !== 'undefined') {
+                lenis = new Lenis({
+                    duration: 0.95,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    touchMultiplier: 1.2,
+                    smoothWheel: true,
+                    smoothTouch: false,
+                });
+
+                lenis.on('scroll', ScrollTrigger.update);
+                gsap.ticker.add((time) => lenis.raf(time * 1000));
+                gsap.ticker.lagSmoothing(0);
+
+                // Sincronizar links de ancoragem com o Lenis e offset da navbar
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        const targetId = this.getAttribute('href');
+                        if (targetId && targetId !== '#') {
+                            const targetEl = document.querySelector(targetId);
+                            if (targetEl) {
+                                e.preventDefault();
+                                lenis.scrollTo(targetEl, { offset: -80 });
+                            }
+                        } else if (targetId === '#') {
+                            e.preventDefault();
+                            lenis.scrollTo(0);
+                        }
+                    });
+                });
+            }
+
+            // B. Reveals calibrados para presença visual clara no Desktop e Mobile
+            gsap.utils.toArray('.reveal-up').forEach((el) => {
+                gsap.from(el, {
+                    y: 36,
+                    opacity: 0,
+                    duration: 0.75,
+                    ease: 'power3.out',
+                    clearProps: 'transform,opacity',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 84%',
+                        once: true,
+                    }
+                });
+            });
+
+            // B2. Cards do Portfólio (Stagger em grade no Desktop, bloco único no Carrossel Mobile)
+            const mm = gsap.matchMedia();
+            mm.add('(min-width: 640px)', () => {
+                gsap.from('.portfolio-item', {
+                    y: 38,
+                    opacity: 0,
+                    duration: 0.7,
+                    stagger: 0.1,
+                    ease: 'power3.out',
+                    clearProps: 'transform,opacity',
+                    scrollTrigger: {
+                        trigger: '#portfolio-carousel',
+                        start: 'top 82%',
+                        once: true,
+                    }
+                });
+            });
+            mm.add('(max-width: 639px)', () => {
+                gsap.from('#portfolio-carousel', {
+                    y: 28,
+                    opacity: 0,
+                    duration: 0.65,
+                    ease: 'power3.out',
+                    clearProps: 'transform,opacity',
+                    scrollTrigger: {
+                        trigger: '#portfolio-carousel',
+                        start: 'top 85%',
+                        once: true,
+                    }
+                });
+            });
+
+            // C. Stagger no Comparativo (PDFs vs Oppikofer)
+            const compGrid = document.getElementById('comparativo-grid');
+            if (compGrid) {
+                gsap.from('.comparativo-card', {
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.75,
+                    stagger: 0.16,
+                    ease: 'power3.out',
+                    clearProps: 'transform,opacity',
+                    scrollTrigger: {
+                        trigger: compGrid,
+                        start: 'top 82%',
+                        once: true,
+                    }
+                });
+            }
+
+            // D. Stagger nas 3 Etapas do Método (01 -> 02 -> 03)
+            const metodoGrid = document.getElementById('metodo-grid');
+            if (metodoGrid) {
+                gsap.from('.metodo-card', {
+                    y: 36,
+                    opacity: 0,
+                    duration: 0.7,
+                    stagger: 0.14,
+                    ease: 'power3.out',
+                    clearProps: 'transform,opacity',
+                    scrollTrigger: {
+                        trigger: metodoGrid,
+                        start: 'top 82%',
+                        once: true,
+                    }
+                });
+            }
+
+            // D2. Stagger suave nas caixas do FAQ
+            const faqItems = gsap.utils.toArray('.faq-item');
+            if (faqItems.length > 0) {
+                gsap.from(faqItems, {
+                    y: 26,
+                    opacity: 0,
+                    duration: 0.6,
+                    stagger: 0.08,
+                    ease: 'power3.out',
+                    clearProps: 'transform,opacity',
+                    scrollTrigger: {
+                        trigger: '#faq',
+                        start: 'top 80%',
+                        once: true,
+                    }
+                });
+            }
+
+            // E. Word-Scrub na Filosofia ("Sobre"): palavras acendem no scroll preservando o destaque da marca
+            const scrubTarget = document.querySelector('.word-scrub-target');
+            if (scrubTarget) {
+                const tokenizeNode = (node, isBrandAccent = false) => {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        const parts = node.textContent.split(/(\s+)/);
+                        const frag = document.createDocumentFragment();
+                        parts.forEach(part => {
+                            if (part.trim().length > 0) {
+                                const span = document.createElement('span');
+                                span.textContent = part;
+                                span.className = isBrandAccent
+                                    ? 'word-token word-token-brand opacity-15 text-cyan-800 font-semibold'
+                                    : 'word-token word-token-base opacity-15 text-slate-500';
+                                frag.appendChild(span);
+                            } else if (part.length > 0) {
+                                frag.appendChild(document.createTextNode(part));
+                            }
+                        });
+                        return frag;
+                    }
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        const isStrong = node.tagName === 'STRONG';
+                        const clone = node.cloneNode(false);
+                        Array.from(node.childNodes).forEach(child => {
+                            clone.appendChild(tokenizeNode(child, isBrandAccent || isStrong));
+                        });
+                        return clone;
+                    }
+                    return node.cloneNode(true);
+                };
+
+                const newContent = document.createDocumentFragment();
+                Array.from(scrubTarget.childNodes).forEach(child => {
+                    newContent.appendChild(tokenizeNode(child, false));
+                });
+                scrubTarget.innerHTML = '';
+                scrubTarget.appendChild(newContent);
+
+                const allTokens = scrubTarget.querySelectorAll('.word-token');
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '#sobre-scrub-container',
+                        start: 'top 80%',
+                        end: 'bottom 55%',
+                        scrub: 0.45,
+                    }
+                });
+
+                allTokens.forEach((token, idx) => {
+                    const targetColor = token.classList.contains('word-token-brand') ? '#22d3ee' : '#f8fafc';
+                    tl.to(token, {
+                        opacity: 1,
+                        color: targetColor,
+                        duration: 0.25,
+                        ease: 'none'
+                    }, idx * 0.035);
+                });
             }
         });
     </script>
