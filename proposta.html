@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Proposta Comercial • Oppikofer Studio Web</title>
+
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href="Assets/icones/favicon.png">
+    <link rel="apple-touch-icon" href="Assets/icones/favicon.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        exec: {
+                            navy: '#070D19',
+                            slate: '#0F172A',
+                            cobalt: '#1D4ED8',
+                            cyan: '#0891B2',
+                            paper: '#F8FAFC',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .touch-action { -webkit-tap-highlight-color: transparent; }
+        .touch-action:active { transform: scale(0.98); }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: #ffffff !important; }
+        }
+    </style>
+</head>
+<body class="bg-exec-paper text-slate-800 font-sans antialiased selection:bg-exec-cobalt selection:text-white min-h-screen flex flex-col">
+
+    <!-- ESTADO 1: PROPOSTA NÃO ENCONTRADA / SEM PARÂMETRO -->
+    <main id="estado-invalido" class="hidden flex-1 flex items-center justify-center p-6">
+        <div class="max-w-md w-full bg-white rounded-3xl border border-slate-200 shadow-xl p-8 text-center">
+            <img src="Assets/imagens/logo-horiz-transp.png"
+                 alt="Oppikofer Studio Web"
+                 class="h-10 w-auto mx-auto mb-6 bg-exec-navy p-2 rounded-xl object-contain"
+                 onerror="this.style.display='none'">
+            <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center mx-auto mb-4 text-lg">
+                <i class="fa-regular fa-file-lines"></i>
+            </div>
+            <h1 class="text-xl font-bold text-slate-900 mb-2">Proposta não encontrada</h1>
+            <p class="text-sm text-slate-500 leading-relaxed mb-6">
+                Este link está incompleto ou a proposta comercial expirou. Para solicitar uma nova proposta personalizada, acesse nosso site oficial.
+            </p>
+            <a href="index.html" class="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 bg-exec-navy hover:bg-slate-800 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition">
+                <span>Ir para o Site Oficial</span>
+                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- ESTADO 2: PROPOSTA COMERCIAL EXECUTIVA COMPLETA -->
+    <div id="proposta-valida" class="hidden flex-1 flex flex-col">
+
+        <!-- TOPO DE AUTORIDADE ESCURO -->
+        <header class="bg-exec-navy text-white relative overflow-hidden border-b border-slate-800">
+            <div class="absolute top-0 right-0 w-[450px] h-[300px] bg-blue-600/15 rounded-full blur-[100px] pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-[350px] h-[250px] bg-cyan-500/10 rounded-full blur-[90px] pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto px-5 sm:px-8 pt-7 pb-12 sm:pt-10 sm:pb-14 relative z-10">
+                <!-- Barra Logo + Selo -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-white/10">
+                    <a href="https://oppikoferstudioweb.vercel.app" target="_blank" rel="noopener noreferrer" class="flex items-center">
+                        <img src="Assets/imagens/logo-horiz-transp.png"
+                             alt="Oppikofer Studio Web"
+                             class="h-9 sm:h-11 w-auto object-contain"
+                             onerror="this.onerror=null; this.src='Assets/imagens/logo-horizontal.png';">
+                    </a>
+                    <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-[10px] sm:text-[11px] uppercase tracking-widest font-bold text-cyan-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                        <span>Proposta Comercial Exclusiva</span>
+                    </div>
+                </div>
+
+                <!-- Identificação do Cliente -->
+                <div class="pt-8 sm:pt-10">
+                    <span class="text-xs uppercase tracking-widest text-slate-400 font-semibold block mb-2">
+                        Preparada especialmente para:
+                    </span>
+                    <h1 id="prop-cliente" class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+                        Cliente Exemplo
+                    </h1>
+
+                    <div class="flex flex-wrap items-center gap-3 text-xs text-slate-300">
+                        <span id="prop-solucao-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600/20 border border-blue-400/30 text-blue-200 font-semibold">
+                            <i class="fa-solid fa-layer-group text-cyan-400 text-[11px]"></i>
+                            <span id="prop-solucao-nome">Site Profissional</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">
+                            <i class="fa-regular fa-clock text-cyan-400 text-[11px]"></i>
+                            <span>Validade: <strong id="prop-validade" class="text-white">7 dias</strong></span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">
+                            <i class="fa-regular fa-calendar text-cyan-400 text-[11px]"></i>
+                            <span id="prop-data-emissao">Emitida hoje</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- CORPO DA PROPOSTA (TEMA CLARO EDITORIAL) -->
+        <main class="max-w-4xl w-full mx-auto px-5 sm:px-8 -mt-6 pb-16 relative z-20 space-y-6 flex-1">
+
+            <!-- CARD 1: ESCOPO & ENTREGÁVEIS INCLUSOS -->
+            <section class="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-9">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-slate-100">
+                    <div>
+                        <span class="text-[11px] uppercase tracking-widest font-bold text-exec-cobalt block mb-1">01 • Escopo Técnico</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900">O que está incluso no projeto</h2>
+                    </div>
+
+                    <!-- Botão opcional para ver modelo demo de referência -->
+                    <a id="prop-demo-link" href="#" target="_blank" rel="noopener noreferrer"
+                       class="hidden touch-action inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition border border-slate-200 shrink-0">
+                        <i class="fa-solid fa-mobile-screen text-exec-cobalt"></i>
+                        <span>Ver Modelo de Referência</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+
+                <ul id="prop-entregaveis" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-sm text-slate-700">
+                    <!-- Preenchido dinamicamente -->
+                </ul>
+
+                <!-- Observações Adicionais se houver -->
+                <div id="prop-obs-box" class="hidden mt-6 p-4 rounded-2xl bg-blue-50/70 border border-blue-200/70 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <strong class="text-slate-900 block mb-1"><i class="fa-solid fa-circle-info text-exec-cobalt mr-1.5"></i>Observações Combinadas:</strong>
+                    <span id="prop-obs-texto"></span>
+                </div>
+            </section>
+
+            <!-- CARD 2: CRONOGRAMA & ETAPAS -->
+            <section class="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-9">
+                <div class="mb-6">
+                    <span class="text-[11px] uppercase tracking-widest font-bold text-exec-cobalt block mb-1">02 • Fluxo de Trabalho</span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Como funciona após a aprovação</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+                        <span class="text-xs font-black text-exec-cobalt block mb-1.5">ETAPA 01</span>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Aceite & Sinal</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Você aprova a proposta e realiza o pagamento inicial combinado.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+                        <span class="text-xs font-black text-exec-cobalt block mb-1.5">ETAPA 02</span>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Briefing & Fotos</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Envio dos textos, logo, fotos e links pelo nosso checklist no WhatsApp.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+                        <span class="text-xs font-black text-exec-cobalt block mb-1.5">ETAPA 03</span>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Desenvolvimento</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Construção sob medida com foco mobile-first e entrega para validação.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+                        <span class="text-xs font-black text-exec-cobalt block mb-1.5">ETAPA 04</span>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Revisão & No Ar</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Ajustes finais aplicados e publicação oficial em servidor rápido e seguro.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CARD 3: TRANSPARÊNCIA & GARANTIAS -->
+            <section class="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-9">
+                <span class="text-[11px] uppercase tracking-widest font-bold text-exec-cobalt block mb-1">03 • Termos & Transparência</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-5">Limites claros para sua tranquilidade</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-600 leading-relaxed">
+                    <div class="p-4 rounded-2xl border border-slate-200/80 bg-slate-50/50">
+                        <strong class="text-slate-900 block mb-1 text-sm"><i class="fa-solid fa-sliders text-exec-cobalt mr-1.5"></i>Revisões Inclusas</strong>
+                        Inclui até <strong>2 rodadas completas de ajustes visuais e textuais</strong> durante a aprovação para deixar tudo do seu jeito.
+                    </div>
+                    <div class="p-4 rounded-2xl border border-slate-200/80 bg-slate-50/50">
+                        <strong class="text-slate-900 block mb-1 text-sm"><i class="fa-solid fa-server text-exec-cobalt mr-1.5"></i>Hospedagem & Domínio</strong>
+                        Hospedagem gratuita em servidor de alta velocidade (com SSL). Domínio próprio (<code>.com.br</code>) é opcional e adquirido à parte pelo cliente.
+                    </div>
+                    <div class="p-4 rounded-2xl border border-slate-200/80 bg-slate-50/50">
+                        <strong class="text-slate-900 block mb-1 text-sm"><i class="fa-solid fa-shield-halved text-exec-cobalt mr-1.5"></i>Garantia Técnica</strong>
+                        7 dias de garantia total pós-publicação contra qualquer falha técnica. Alterações futuras podem ser feitas de forma avulsa ou via plano mensal.
+                    </div>
+                </div>
+            </section>
+
+            <!-- CARD 4: INVESTIMENTO & APROVAÇÃO FINAL (DESTAQUE EXECUTIVO) -->
+            <section class="bg-exec-navy text-white rounded-3xl shadow-2xl p-6 sm:p-10 relative overflow-hidden border border-slate-800">
+                <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-7 space-y-4">
+                        <span class="text-[11px] uppercase tracking-widest font-bold text-cyan-400 block">04 • Investimento & Prazo</span>
+                        <div class="flex flex-wrap items-baseline gap-3">
+                            <span class="text-slate-400 text-sm font-medium">Valor do Projeto:</span>
+                            <span id="prop-valor" class="text-4xl sm:text-5xl font-black text-white tracking-tight">R$ 0,00</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs sm:text-sm text-slate-300 pt-2">
+                            <p class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-credit-card text-cyan-400 mt-1 shrink-0"></i>
+                                <span><strong class="text-white">Pagamento:</strong> <span id="prop-pagamento">50% na aprovação + 50% na entrega</span></span>
+                            </p>
+                            <p class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-bolt text-cyan-400 mt-1 shrink-0"></i>
+                                <span><strong class="text-white">Prazo de Entrega:</strong> <span id="prop-prazo">48 horas úteis</span> <span class="text-slate-400 text-xs">(após envio dos materiais)</span></span>
+                            </p>
+                        </div>
+
+                        <!-- Plano de Manutenção Mensal Opcional -->
+                        <div id="prop-manutencao-box" class="hidden mt-4 p-4 rounded-2xl bg-white/[0.06] border border-cyan-500/30 text-xs text-slate-200">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                                <strong class="text-cyan-300 uppercase tracking-wider text-[11px]"><i class="fa-solid fa-rotate mr-1.5"></i>Opcional: Plano de Manutenção Mensal</strong>
+                                <span id="prop-manutencao-valor" class="font-bold text-white bg-cyan-500/20 px-2.5 py-0.5 rounded-full border border-cyan-400/30 whitespace-nowrap shrink-0">R$ 99/mês</span>
+                            </div>
+                            <p class="text-slate-300 font-light leading-relaxed">
+                                Atualizações rápidas de preços, fotos, horários e suporte contínuo direto no WhatsApp sem custos avulsos. (Contratação opcional).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Botões de Fechamento -->
+                    <div class="md:col-span-5 flex flex-col gap-3">
+                        <a id="btn-aprovar-whatsapp" href="#" target="_blank" rel="noopener noreferrer"
+                           class="touch-action w-full py-4 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold rounded-2xl text-sm transition shadow-xl shadow-emerald-950/50 flex items-center justify-center gap-2.5 text-center border border-white/20">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Aprovar Proposta no WhatsApp</span>
+                        </a>
+
+                        <a id="btn-duvida-whatsapp" href="#" target="_blank" rel="noopener noreferrer"
+                           class="touch-action w-full py-3 px-5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white font-semibold rounded-2xl text-xs transition border border-white/10 flex items-center justify-center gap-2 text-center">
+                            <i class="fa-regular fa-comment-dots"></i>
+                            <span>Falar sobre algum ajuste antes</span>
+                        </a>
+
+                        <button type="button" onclick="window.print()" class="no-print text-[11px] text-slate-400 hover:text-cyan-300 transition mt-1 cursor-pointer">
+                            <i class="fa-solid fa-print mr-1"></i> Salvar / Imprimir em PDF
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- RODAPÉ DISCRETO -->
+        <footer class="py-6 border-t border-slate-200 bg-white text-center text-xs text-slate-500">
+            <div class="max-w-4xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+                <span><strong class="text-slate-800">Oppikofer • Studio Web</strong> — Design Contemporâneo & Engenharia Frontend</span>
+                <a href="https://oppikoferstudioweb.vercel.app" target="_blank" rel="noopener noreferrer" class="text-exec-cobalt font-semibold hover:underline">
+                    oppikoferstudioweb.vercel.app
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (function carregarProposta() {
+            const params = new URLSearchParams(window.location.search);
+            const encoded = params.get('d');
+
+            if (!encoded) {
+                document.getElementById('estado-invalido').classList.remove('hidden');
+                return;
+            }
+
+            try {
+                // Decodificação Base64 UTF-8 segura
+                const jsonStr = decodeURIComponent(escape(atob(encoded)));
+                const data = JSON.parse(jsonStr);
+
+                if (!data || !data.cliente) {
+                    throw new Error('Dados inválidos');
+                }
+
+                document.getElementById('proposta-valida').classList.remove('hidden');
+                document.title = `Proposta para ${data.cliente} • Oppikofer Studio Web`;
+
+                document.getElementById('prop-cliente').innerText = data.cliente;
+                document.getElementById('prop-solucao-nome').innerText = data.solucaoNome || 'Projeto Sob Medida';
+                document.getElementById('prop-validade').innerText = data.validade || '7 dias';
+                document.getElementById('prop-data-emissao').innerText = data.emissao ? `Emitida em ${data.emissao}` : 'Emitida hoje';
+                document.getElementById('prop-valor').innerText = data.valor ? `R$ ${data.valor}` : 'A combinar';
+                document.getElementById('prop-pagamento').innerText = data.pagamento || '50% na aprovação + 50% na entrega';
+                document.getElementById('prop-prazo').innerText = data.prazo || '48 horas úteis';
+
+                // Demo Link opcional
+                if (data.demoUrl) {
+                    const demoBtn = document.getElementById('prop-demo-link');
+                    demoBtn.href = data.demoUrl;
+                    demoBtn.classList.remove('hidden');
+                }
+
+                // Entregáveis
+                const listaEl = document.getElementById('prop-entregaveis');
+                const itens = Array.isArray(data.itens) ? data.itens : [];
+                listaEl.innerHTML = itens.map(item => `
+                    <li class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                        <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px]">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span class="leading-snug">${item}</span>
+                    </li>
+                `).join('');
+
+                // Observações
+                if (data.obs && data.obs.trim() !== '') {
+                    document.getElementById('prop-obs-texto').innerText = data.obs.trim();
+                    document.getElementById('prop-obs-box').classList.remove('hidden');
+                }
+
+                // Manutenção mensal opcional
+                if (data.manutencaoAtiva && data.manutencaoValor) {
+                    document.getElementById('prop-manutencao-valor').innerText = `R$ ${data.manutencaoValor}/mês`;
+                    document.getElementById('prop-manutencao-box').classList.remove('hidden');
+                }
+
+                // Links de WhatsApp com aceite estruturado
+                const msgAprovacao = [
+                    `✅ *PROPOSTA APROVADA • OPPIKOFER STUDIO WEB*`,
+                    `━━━━━━━━━━━━━━━━━━━━━━`,
+                    `👤 *Cliente:* ${data.cliente}`,
+                    `📌 *Projeto:* ${data.solucaoNome}`,
+                    `💰 *Investimento:* R$ ${data.valor}`,
+                    `💳 *Pagamento:* ${data.pagamento}`,
+                    `⏱️ *Prazo:* ${data.prazo}`,
+                    `━━━━━━━━━━━━━━━━━━━━━━`,
+                    `Olá Wallace! Analisei a proposta comercial e gostaria de aprovar para darmos início ao projeto.`
+                ].join('\n');
+
+                const msgDuvida = `Olá Wallace! Recebi a proposta comercial para *${data.cliente}* (${data.solucaoNome}) e gostaria de tirar uma dúvida rápida antes de aprovar.`;
+
+                document.getElementById('btn-aprovar-whatsapp').href = `https://wa.me/5511926834439?text=${encodeURIComponent(msgAprovacao)}`;
+                document.getElementById('btn-duvida-whatsapp').href = `https://wa.me/5511926834439?text=${encodeURIComponent(msgDuvida)}`;
+
+            } catch (err) {
+                console.error('Erro ao ler proposta:', err);
+                document.getElementById('estado-invalido').classList.remove('hidden');
+            }
+        })();
+    </script>
+</body>
+</html>
