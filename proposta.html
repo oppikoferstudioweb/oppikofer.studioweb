@@ -274,7 +274,7 @@
             const CATALOGO_MODELOS = {
                 s: {
                     nome: 'Site Profissional Sob Medida',
-                    demo: 'https://clinica-elysee.vercel.app',
+                    demo: 'https://demo-clinica-premium.vercel.app',
                     itens: [
                         'Design exclusivo alinhado à identidade visual da marca',
                         'Layout 100% responsivo (Mobile-First + Desktop)',
@@ -298,7 +298,7 @@
                 },
                 c: {
                     nome: 'Catálogo / Cardápio Digital Interativo',
-                    demo: 'https://demo-hamburgueria-bull.vercel.app',
+                    demo: 'https://demo-hamburgueria-eight.vercel.app',
                     itens: [
                         'Substituição definitiva de PDFs pesados por vitrine interativa',
                         'Filtros dinâmicos por categorias para navegação rápida',
@@ -332,6 +332,17 @@
                     ]
                 }
             };
+
+            const DEMOS_LIST = [
+                'https://demo-clinica-premium.vercel.app',
+                'https://demo-barbearia-seven.vercel.app',
+                'https://demo-cafeteria-origem.vercel.app',
+                'https://demo-hamburgueria-eight.vercel.app',
+                'https://demo-catalogo-joias.netlify.app',
+                'https://demo-bio-site-nutri.netlify.app',
+                'https://demo-convite-casamento.vercel.app',
+                'https://demo-festa-infantil.netlify.app'
+            ];
 
             const EXTRAS = [
                 'Integração de formulário conectado ao Google Sheets',
@@ -389,7 +400,8 @@
                     }
 
                     let demoUrl = '';
-                    if (raw.dm === 1) demoUrl = mod.demo;
+                    if (typeof raw.di === 'number' && DEMOS_LIST[raw.di]) demoUrl = DEMOS_LIST[raw.di];
+                    else if (raw.dm === 1) demoUrl = mod.demo;
                     else if (typeof raw.dm === 'string') demoUrl = raw.dm;
 
                     data = {
