@@ -271,18 +271,145 @@
 
     <script>
         (function carregarProposta() {
-            const params = new URLSearchParams(window.location.search);
-            const encoded = params.get('d');
+            const CATALOGO_MODELOS = {
+                s: {
+                    nome: 'Site Profissional Sob Medida',
+                    demo: 'https://clinica-elysee.vercel.app',
+                    itens: [
+                        'Design exclusivo alinhado à identidade visual da marca',
+                        'Layout 100% responsivo (Mobile-First + Desktop)',
+                        'Navegação fluida com rolagem suave e animações modernas',
+                        'Botões de conversão e agendamento direto no WhatsApp',
+                        'Integração de localização (Google Maps / Waze)',
+                        'Configuração de SEO básico e prévia de compartilhamento (WhatsApp)'
+                    ]
+                },
+                l: {
+                    nome: 'Landing Page de Alta Conversão',
+                    demo: 'https://demo-cafeteria-origem.vercel.app',
+                    itens: [
+                        'Estrutura persuasiva focada em captação de clientes e vendas',
+                        'Design otimizado para tráfego de Instagram e Google Ads',
+                        'Seção de prova social, diferenciais e quebra de objeções (FAQ)',
+                        'Botões estratégicos de ação direta para o WhatsApp',
+                        'Carregamento ultraleve em redes 4G/5G',
+                        'Hospedagem gratuita em servidor de alta performance com SSL'
+                    ]
+                },
+                c: {
+                    nome: 'Catálogo / Cardápio Digital Interativo',
+                    demo: 'https://demo-hamburgueria-bull.vercel.app',
+                    itens: [
+                        'Substituição definitiva de PDFs pesados por vitrine interativa',
+                        'Filtros dinâmicos por categorias para navegação rápida',
+                        'Sacola / seleção de itens com resumo automático para o WhatsApp',
+                        'Opções de entrega (Delivery/Retirada) e formas de pagamento',
+                        'Fotos otimizadas para abertura instantânea no celular',
+                        'Botão de localização e horários de funcionamento'
+                    ]
+                },
+                b: {
+                    nome: 'Bio-Site Estratégico de Autoridade',
+                    demo: 'https://demo-bio-site-nutri.netlify.app',
+                    itens: [
+                        'Página centralizadora de links com visual de estúdio premium',
+                        'Apresentação profissional, foto em destaque e especialidades',
+                        'Botão principal de agendamento ou atendimento no WhatsApp',
+                        'Cards interativos de serviços ou produtos recomendados',
+                        'Abertura instantânea dentro do navegador do Instagram/TikTok'
+                    ]
+                },
+                v: {
+                    nome: 'Convite Digital Interativo Sob Medida',
+                    demo: 'https://demo-convite-casamento.vercel.app',
+                    itens: [
+                        'Abertura imersiva exclusiva (com envelope/tema personalizado)',
+                        'Trilha sonora ambiente sincronizada com controle de áudio',
+                        'Confirmação de presença (RSVP) prática e organizada',
+                        'Rota direta em 1 clique para Waze, Google Maps e Agenda',
+                        'Lista de presentes interativa com chave Pix (cópia em 1 clique)',
+                        'Contagem regressiva em tempo real para o grande dia'
+                    ]
+                }
+            };
 
-            if (!encoded) {
+            const EXTRAS = [
+                'Integração de formulário conectado ao Google Sheets',
+                'Geração de artes/imagens exclusivas sob medida para a página',
+                'Instalação de Pixel Meta Ads & Google Analytics',
+                'Configuração de domínio personalizado (.com.br)'
+            ];
+
+            const PAGAMENTOS = [
+                '50% na aprovação (sinal) + 50% na entrega final via Pix',
+                'À vista no Pix com condição especial',
+                'Parcelado no Cartão de Crédito (até 3x)',
+                'Condição especial a combinar direto no WhatsApp'
+            ];
+
+            const PRAZOS = [
+                '48 horas úteis',
+                '3 a 5 dias úteis',
+                '5 a 7 dias úteis'
+            ];
+
+            function decodeB64Url(str) {
+                let b64 = str.replace(/-/g, '+').replace(/_/g, '/');
+                while (b64.length % 4) b64 += '=';
+                return decodeURIComponent(escape(atob(b64)));
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const compactParam = params.get('p');
+            const legacyParam = params.get('d');
+
+            if (!compactParam && !legacyParam) {
                 document.getElementById('estado-invalido').classList.remove('hidden');
                 return;
             }
 
             try {
-                // Decodificação Base64 UTF-8 segura
-                const jsonStr = decodeURIComponent(escape(atob(encoded)));
-                const data = JSON.parse(jsonStr);
+                let data;
+                if (compactParam) {
+                    const raw = JSON.parse(decodeB64Url(compactParam));
+                    const mod = CATALOGO_MODELOS[raw.m] || CATALOGO_MODELOS.s;
+                    let itens = [];
+                    if (Array.isArray(raw.i)) {
+                        itens = raw.i;
+                    } else {
+                        itens = [...mod.itens];
+                        if (Array.isArray(raw.x)) {
+                            raw.x.forEach(idx => {
+                                if (EXTRAS[idx] && !itens.includes(EXTRAS[idx])) itens.push(EXTRAS[idx]);
+                            });
+                        }
+                        if (Array.isArray(raw.a)) {
+                            raw.a.forEach(txt => { if (txt && !itens.includes(txt)) itens.push(txt); });
+                        }
+                    }
+
+                    let demoUrl = '';
+                    if (raw.dm === 1) demoUrl = mod.demo;
+                    else if (typeof raw.dm === 'string') demoUrl = raw.dm;
+
+                    data = {
+                        cliente: raw.c,
+                        solucaoNome: mod.nome,
+                        demoUrl: demoUrl,
+                        validade: raw.l || '7 dias corridos',
+                        emissao: raw.e || '',
+                        itens: itens,
+                        valor: raw.v,
+                        prazo: typeof raw.z === 'number' ? (PRAZOS[raw.z] || '48 horas úteis') : (raw.z || '48 horas úteis'),
+                        pagamento: typeof raw.p === 'number' ? (PAGAMENTOS[raw.p] || PAGAMENTOS[0]) : (raw.p || PAGAMENTOS[0]),
+                        manutencaoAtiva: Boolean(raw.mv),
+                        manutencaoValor: raw.mv || '',
+                        obs: raw.o || ''
+                    };
+                } else {
+                    const jsonStr = decodeURIComponent(escape(atob(legacyParam)));
+                    data = JSON.parse(jsonStr);
+                }
 
                 if (!data || !data.cliente) {
                     throw new Error('Dados inválidos');
