@@ -453,7 +453,10 @@
             <div class="w-full flex items-center justify-center mb-7 sm:mb-12">
                 <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 lg:inline-flex lg:flex-nowrap lg:gap-1 lg:p-1.5 lg:rounded-2xl lg:bg-white/90 lg:backdrop-blur-md lg:border lg:border-slate-300/80 lg:shadow-sm max-w-2xl lg:max-w-none mx-auto">
                     <button class="filter-pill touch-action active px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition duration-200 bg-slate-900 text-white border border-slate-300/80 lg:border-transparent shadow-sm" data-filter="all">
-                        Todos (8)
+                        Todos (9)
+                    </button>
+                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="institucional">
+                        ⚖️ Institucional &amp; Escritórios
                     </button>
                     <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="saude">
                         🩺 Saúde & Estética
@@ -473,10 +476,10 @@
                 </div>
             </div>
 
-            <!-- DICA VISUAL PARA MOBILE: ARRASTE PARA O LADO -->
+            <!-- DICA VISUAL PARA MOBILE: FILTRO + ARRASTE PARA O LADO -->
             <div id="mobile-swipe-hint" class="sm:hidden flex items-center justify-between text-[11px] text-slate-500 font-medium mb-3 px-1">
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-arrows-left-right text-deep-cobalt"></i> Deslize para o lado para ver os modelos</span>
-                <span id="mobile-model-count" class="text-[10px] bg-slate-200/80 px-2 py-0.5 rounded-full font-bold">8 Modelos</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-sliders text-deep-cobalt"></i> Filtre por segmento acima ou deslize para o lado</span>
+                <span id="mobile-model-count" class="text-[10px] bg-slate-200/80 px-2 py-0.5 rounded-full font-bold">9 Modelos</span>
             </div>
 
             <!-- CARROSSEL TOUCH MOBILE / GRADE DESKTOP (CARD 100% CENTRALIZADO SEM SOBRA DO PRÓXIMO) -->
@@ -845,6 +848,48 @@
                     </a>
                 </div>
 
+                <!-- CARD 9: VIANA & ALENCAR ADVOCACIA (INSTITUCIONAL MULTIPÁGINAS) -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="institucional">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
+                            
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-900 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/advocacia-institucional.jpg" 
+                                         alt="Projeto Viana & Alencar Advogados - Site Institucional Multipáginas" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 border border-slate-300">
+                                Institucional • 5 Páginas
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                            Viana &amp; Alencar • Advocacia
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Portal institucional multipáginas com triagem rápida no topo, atendimento multicanal (reunião online, presencial e recepção) e central de artigos.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-advocacia-institucional.vercel.app" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
             </div>
 
             <!-- INDICADOR DE PAGINAÇÃO MOBILE SUAVE (DIRETAMENTE ABAIXO DOS CARDS) -->
@@ -857,6 +902,7 @@
                 <button type="button" aria-label="Ir para modelo 6" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="5"></button>
                 <button type="button" aria-label="Ir para modelo 7" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="6"></button>
                 <button type="button" aria-label="Ir para modelo 8" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="7"></button>
+                <button type="button" aria-label="Ir para modelo 9" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="8"></button>
             </div>
 
             <!-- BOTÃO CARREGAR MAIS MODELOS (EXCLUSIVO PARA DESKTOP) -->
