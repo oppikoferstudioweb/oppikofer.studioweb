@@ -430,11 +430,16 @@
                 document.getElementById('proposta-valida').classList.remove('hidden');
                 document.title = `Proposta para ${data.cliente} • Oppikofer Studio Web`;
 
+                const valorBruto = (data.valor || '').trim();
+                const valorFormatado = valorBruto
+                    ? (/^\d/.test(valorBruto) ? `R$ ${valorBruto}` : valorBruto)
+                    : 'A combinar';
+
                 document.getElementById('prop-cliente').innerText = data.cliente;
                 document.getElementById('prop-solucao-nome').innerText = data.solucaoNome || 'Projeto Sob Medida';
                 document.getElementById('prop-validade').innerText = data.validade || '7 dias';
                 document.getElementById('prop-data-emissao').innerText = data.emissao ? `Emitida em ${data.emissao}` : 'Emitida hoje';
-                document.getElementById('prop-valor').innerText = data.valor ? `R$ ${data.valor}` : 'A combinar';
+                document.getElementById('prop-valor').innerText = valorFormatado;
                 document.getElementById('prop-pagamento').innerText = data.pagamento || '50% na aprovação + 50% na entrega';
                 document.getElementById('prop-prazo').innerText = data.prazo || '48 horas úteis';
 
@@ -475,7 +480,7 @@
                     `━━━━━━━━━━━━━━━━━━━━━━`,
                     `👤 *Cliente:* ${data.cliente}`,
                     `📌 *Projeto:* ${data.solucaoNome}`,
-                    `💰 *Investimento:* R$ ${data.valor}`,
+                    `💰 *Investimento:* ${valorFormatado}`,
                     `💳 *Pagamento:* ${data.pagamento}`,
                     `⏱️ *Prazo:* ${data.prazo}`,
                     `━━━━━━━━━━━━━━━━━━━━━━`,
