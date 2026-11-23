@@ -158,23 +158,23 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
                         <span class="text-xs font-black text-exec-cobalt block mb-1.5">ETAPA 01</span>
-                        <h3 class="font-bold text-slate-900 text-sm mb-1">Aceite & Sinal</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">Você aprova a proposta e realiza o pagamento inicial combinado.</p>
+                        <h3 id="etapa1-titulo" class="font-bold text-slate-900 text-sm mb-1">Aprovação & Início</h3>
+                        <p id="etapa1-desc" class="text-xs text-slate-500 leading-relaxed">Você aprova esta proposta no WhatsApp e confirmamos a condição de pagamento combinada para iniciar.</p>
                     </div>
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
                         <span class="text-xs font-black text-exec-cobalt block mb-1.5">ETAPA 02</span>
-                        <h3 class="font-bold text-slate-900 text-sm mb-1">Briefing & Fotos</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">Envio dos textos, logo, fotos e links pelo nosso checklist no WhatsApp.</p>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Ajustes Finais de Material</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Validamos os últimos detalhes, fotos, textos ou informações complementares do que já alinhamos.</p>
                     </div>
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
                         <span class="text-xs font-black text-exec-cobalt block mb-1.5">ETAPA 03</span>
                         <h3 class="font-bold text-slate-900 text-sm mb-1">Desenvolvimento</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">Construção sob medida com foco mobile-first e entrega para validação.</p>
+                        <p class="text-xs text-slate-500 leading-relaxed">Construção sob medida com foco mobile-first e entrega do link de validação para você testar no celular.</p>
                     </div>
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
                         <span class="text-xs font-black text-exec-cobalt block mb-1.5">ETAPA 04</span>
-                        <h3 class="font-bold text-slate-900 text-sm mb-1">Revisão & No Ar</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">Ajustes finais aplicados e publicação oficial em servidor rápido e seguro.</p>
+                        <h3 class="font-bold text-slate-900 text-sm mb-1">Revisão & Publicação</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Aplicamos seus ajustes finais (até 2 rodadas inclusas) e colocamos seu link oficial no ar em servidor rápido e seguro.</p>
                     </div>
                 </div>
             </section>
@@ -191,7 +191,7 @@
                     </div>
                     <div class="p-4 rounded-2xl border border-slate-200/80 bg-slate-50/50">
                         <strong class="text-slate-900 block mb-1 text-sm"><i class="fa-solid fa-server text-exec-cobalt mr-1.5"></i>Hospedagem & Domínio</strong>
-                        Hospedagem gratuita em servidor de alta velocidade (com SSL). Domínio próprio (<code>.com.br</code>) é opcional e adquirido à parte pelo cliente.
+                        Hospedagem gratuita em servidor de alta velocidade (com SSL). Domínio próprio (<code>.com.br</code>) é opcional e adquirido à parte pelo cliente — <strong>auxiliamos você em todo o processo de compra e configuração</strong>.
                     </div>
                     <div class="p-4 rounded-2xl border border-slate-200/80 bg-slate-50/50">
                         <strong class="text-slate-900 block mb-1 text-sm"><i class="fa-solid fa-shield-halved text-exec-cobalt mr-1.5"></i>Garantia Técnica</strong>
@@ -269,6 +269,7 @@
         </footer>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
     <script>
         (function carregarProposta() {
             const CATALOGO_MODELOS = {
@@ -371,18 +372,22 @@
             }
 
             const params = new URLSearchParams(window.location.search);
+            const lzParam = params.get('z');
             const compactParam = params.get('p');
             const legacyParam = params.get('d');
 
-            if (!compactParam && !legacyParam) {
+            if (!lzParam && !compactParam && !legacyParam) {
                 document.getElementById('estado-invalido').classList.remove('hidden');
                 return;
             }
 
             try {
                 let data;
-                if (compactParam) {
-                    const raw = JSON.parse(decodeB64Url(compactParam));
+                if (lzParam || compactParam) {
+                    const rawJson = lzParam
+                        ? LZString.decompressFromEncodedURIComponent(lzParam)
+                        : decodeB64Url(compactParam);
+                    const raw = JSON.parse(rawJson);
                     const mod = CATALOGO_MODELOS[raw.m] || CATALOGO_MODELOS.s;
                     let itens = [];
                     if (Array.isArray(raw.i)) {
@@ -434,6 +439,12 @@
                 const valorFormatado = valorBruto
                     ? (/^\d/.test(valorBruto) ? `R$ ${valorBruto}` : valorBruto)
                     : 'A combinar';
+
+                // Ajustar Etapa 01 automaticamente se for Cortesia / Case Especial
+                if (/cortesia|gratuit|sem custo|0,00/i.test(valorBruto)) {
+                    document.getElementById('etapa1-titulo').innerText = 'Aprovação & Alinhamento';
+                    document.getElementById('etapa1-desc').innerText = 'Você aprova esta proposta no WhatsApp para oficializarmos o início do projeto.';
+                }
 
                 document.getElementById('prop-cliente').innerText = data.cliente;
                 document.getElementById('prop-solucao-nome').innerText = data.solucaoNome || 'Projeto Sob Medida';
