@@ -453,7 +453,7 @@
             <div class="w-full flex items-center justify-center mb-7 sm:mb-12">
                 <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 lg:inline-flex lg:flex-nowrap lg:gap-1 lg:p-1.5 lg:rounded-2xl lg:bg-white/90 lg:backdrop-blur-md lg:border lg:border-slate-300/80 lg:shadow-sm max-w-2xl lg:max-w-none mx-auto">
                     <button class="filter-pill touch-action active px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition duration-200 bg-slate-900 text-white border border-slate-300/80 lg:border-transparent shadow-sm" data-filter="all">
-                        Todos (9)
+                        Todos (10)
                     </button>
                     <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="institucional">
                         ⚖️ Institucional &amp; Escritórios
@@ -468,7 +468,7 @@
                         🍔 Gastronomia
                     </button>
                     <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="servicos">
-                        ✂️ Barbearia & Serviços
+                        ✂️ Salões, Barbearia &amp; Serviços
                     </button>
                     <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="moda">
                         ✨ Moda & Catálogo
@@ -479,7 +479,7 @@
             <!-- DICA VISUAL PARA MOBILE: FILTRO + ARRASTE PARA O LADO -->
             <div id="mobile-swipe-hint" class="sm:hidden flex items-center justify-between text-[11px] text-slate-500 font-medium mb-3 px-1">
                 <span class="flex items-center gap-1.5"><i class="fa-solid fa-sliders text-deep-cobalt"></i> Filtre por segmento acima ou deslize para o lado</span>
-                <span id="mobile-model-count" class="text-[10px] bg-slate-200/80 px-2 py-0.5 rounded-full font-bold">9 Modelos</span>
+                <span id="mobile-model-count" class="text-[10px] bg-slate-200/80 px-2 py-0.5 rounded-full font-bold">10 Modelos</span>
             </div>
 
             <!-- CARROSSEL TOUCH MOBILE / GRADE DESKTOP (CARD 100% CENTRALIZADO SEM SOBRA DO PRÓXIMO) -->
@@ -523,6 +523,48 @@
                     </div>
 
                     <a href="https://demo-clinica-premium.vercel.app/" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- CARD 9: VIANA & ALENCAR ADVOCACIA (INSTITUCIONAL MULTIPÁGINAS) -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="institucional">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
+                            
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-900 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/advocacia-institucional.jpg" 
+                                         alt="Projeto Viana & Alencar Advogados - Site Institucional Multipáginas" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 border border-slate-300">
+                                Institucional • 5 Páginas
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                            Viana &amp; Alencar • Advocacia
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Portal institucional multipáginas com triagem rápida no topo, atendimento multicanal (reunião online, presencial e recepção) e central de artigos.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-advocacia-institucional.vercel.app" target="_blank" 
                        class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
@@ -667,6 +709,48 @@
                     </a>
                 </div>
 
+                <!-- CARD 10: ATELIER LUMIÈRE SALÃO DE BELEZA -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="servicos">
+                    <div>
+                        <!-- PALCO DO DISPOSITIVO -->
+                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
+                            
+                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
+                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                                </div>
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-stone-900 relative">
+                                    <div class="screen-glare"></div>
+                                    <img src="Assets/imagens/salao-beleza.jpg" 
+                                         alt="Projeto Atelier Lumière - Salão de Beleza" 
+                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                                </div>
+                            </div>
+
+                            <div class="device-drop-shadow"></div>
+                        </div>
+
+                        <!-- Tags e Conteúdo do Card -->
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                Salão de Beleza • Multi-Serviços
+                            </span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                            Atelier Lumière • Salão de Beleza
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
+                            Menu interativo onde a cliente combina múltiplos serviços (cabelo, unhas, sobrancelhas), vê o tempo estimado e agenda direto no WhatsApp.
+                        </p>
+                    </div>
+
+                    <a href="https://demo-salao-beleza.vercel.app" target="_blank" 
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                        <span>Abrir Demonstração</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
+                    </a>
+                </div>
+
                 <!-- CARD 5: HAMBURGUERIA BULL & BUN -->
                 <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="gastronomia">
                     <div>
@@ -751,48 +835,6 @@
                     </a>
                 </div>
 
-                <!-- CARD 7: DRA. MARIANA • NUTRIÇÃO & BIO SITE -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="saude">
-                    <div>
-                        <!-- PALCO DO DISPOSITIVO -->
-                        <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
-                            
-                            <div class="floating-device w-[215px] bg-slate-950 p-2.5 rounded-[2.4rem] border-4 border-slate-900 shadow-2xl relative z-10">
-                                <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
-                                </div>
-                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-950 relative">
-                                    <div class="screen-glare"></div>
-                                    <img src="Assets/imagens/Bio-site-nutri.jpeg" 
-                                         alt="Projeto Dra. Mariana Nutrição & Bio Site" 
-                                         class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
-                                </div>
-                            </div>
-
-                            <div class="device-drop-shadow"></div>
-                        </div>
-
-                        <!-- Tags e Conteúdo do Card -->
-                        <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-cyan-100 text-cyan-800 border border-cyan-200">
-                                Saúde & Profissionais
-                            </span>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
-                            Dra. Mariana • Nutrição & Bio Site
-                        </h3>
-                        <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
-                            Bio site em blocos modulares (Bento Grid) com autoridade imediata, prova social, agendamento de telemedicina e sticky CTA.
-                        </p>
-                    </div>
-
-                    <a href="https://demo-bio-site-nutri.netlify.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
-                        <span>Abrir Demonstração</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
-                    </a>
-                </div>
-
                 <!-- CARD 8: CATÁLOGO SEMIJOIAS -->
                 <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="moda">
                     <div>
@@ -835,8 +877,8 @@
                     </a>
                 </div>
 
-                <!-- CARD 9: VIANA & ALENCAR ADVOCACIA (INSTITUCIONAL MULTIPÁGINAS) -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="institucional">
+                <!-- CARD 7: DRA. MARIANA • NUTRIÇÃO & BIO SITE -->
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="saude">
                     <div>
                         <!-- PALCO DO DISPOSITIVO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
@@ -845,10 +887,10 @@
                                 <div class="w-18 h-4 bg-slate-900 rounded-full mx-auto mb-2 flex items-center justify-center">
                                     <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
                                 </div>
-                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-900 relative">
+                                <div class="aspect-[9/16] rounded-[1.7rem] overflow-hidden bg-slate-950 relative">
                                     <div class="screen-glare"></div>
-                                    <img src="Assets/imagens/advocacia-institucional.jpg" 
-                                         alt="Projeto Viana & Alencar Advogados - Site Institucional Multipáginas" 
+                                    <img src="Assets/imagens/Bio-site-nutri.jpeg" 
+                                         alt="Projeto Dra. Mariana Nutrição & Bio Site" 
                                          class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
                                 </div>
                             </div>
@@ -858,19 +900,19 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 border border-slate-300">
-                                Institucional • 5 Páginas
+                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-cyan-100 text-cyan-800 border border-cyan-200">
+                                Saúde & Profissionais
                             </span>
                         </div>
                         <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
-                            Viana &amp; Alencar • Advocacia
+                            Dra. Mariana • Nutrição & Bio Site
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
-                            Portal institucional multipáginas com triagem rápida no topo, atendimento multicanal (reunião online, presencial e recepção) e central de artigos.
+                            Bio site em blocos modulares (Bento Grid) com autoridade imediata, prova social, agendamento de telemedicina e sticky CTA.
                         </p>
                     </div>
 
-                    <a href="https://demo-advocacia-institucional.vercel.app" target="_blank" 
+                    <a href="https://demo-bio-site-nutri.netlify.app" target="_blank" 
                        class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
@@ -879,17 +921,17 @@
 
             </div>
 
-            <!-- INDICADOR DE PAGINAÇÃO MOBILE SUAVE (DIRETAMENTE ABAIXO DOS CARDS) -->
-            <div id="carousel-dots" class="sm:hidden flex items-center justify-center gap-2 mt-5 mb-8">
-                <button type="button" aria-label="Ir para modelo 1" class="carousel-dot h-2 rounded-full transition-all duration-300 w-6 bg-deep-cobalt cursor-pointer" data-index="0"></button>
-                <button type="button" aria-label="Ir para modelo 2" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="1"></button>
-                <button type="button" aria-label="Ir para modelo 3" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="2"></button>
-                <button type="button" aria-label="Ir para modelo 4" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="3"></button>
-                <button type="button" aria-label="Ir para modelo 5" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="4"></button>
-                <button type="button" aria-label="Ir para modelo 6" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="5"></button>
-                <button type="button" aria-label="Ir para modelo 7" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="6"></button>
-                <button type="button" aria-label="Ir para modelo 8" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="7"></button>
-                <button type="button" aria-label="Ir para modelo 9" class="carousel-dot h-2 rounded-full transition-all duration-300 w-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" data-index="8"></button>
+            <!-- NAVEGADOR COMPACTO MOBILE (< 1 / 10 >) -->
+            <div id="mobile-carousel-nav" class="sm:hidden flex items-center justify-center gap-4 mt-5 mb-8">
+                <button type="button" id="carousel-prev" aria-label="Modelo anterior" class="touch-action w-10 h-10 rounded-full bg-white border border-slate-300 text-slate-800 flex items-center justify-center shadow-sm active:scale-95 disabled:opacity-35 transition cursor-pointer">
+                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                <span id="carousel-counter" class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-extrabold text-slate-800 tracking-wide shadow-sm">
+                    1 / 10
+                </span>
+                <button type="button" id="carousel-next" aria-label="Próximo modelo" class="touch-action w-10 h-10 rounded-full bg-white border border-slate-300 text-slate-800 flex items-center justify-center shadow-sm active:scale-95 disabled:opacity-35 transition cursor-pointer">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
             </div>
 
             <!-- BOTÃO CARREGAR MAIS MODELOS (EXCLUSIVO PARA DESKTOP) -->
@@ -1458,8 +1500,10 @@
         const filterPills = document.querySelectorAll('.filter-pill');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
         const portfolioCarousel = document.getElementById('portfolio-carousel');
-        const carouselDotsContainer = document.getElementById('carousel-dots');
-        const dots = document.querySelectorAll('.carousel-dot');
+        const mobileCarouselNav = document.getElementById('mobile-carousel-nav');
+        const carouselCounter = document.getElementById('carousel-counter');
+        const carouselPrev = document.getElementById('carousel-prev');
+        const carouselNext = document.getElementById('carousel-next');
         const loadMoreContainer = document.getElementById('load-more-container');
         const loadMoreBtn = document.getElementById('load-more-btn');
         const loadMoreText = document.getElementById('load-more-text');
@@ -1544,24 +1588,21 @@
                 }
             }
 
-            // Sincronizar bolinhas no mobile
-            if (carouselDotsContainer) {
-                carouselDotsContainer.style.display = (!isDesktop && visibleCount > 1) ? 'flex' : 'none';
+            // Sincronizar navegador compacto < 1 / N > no mobile
+            if (mobileCarouselNav) {
+                mobileCarouselNav.style.display = (!isDesktop && visibleCount > 1) ? 'flex' : 'none';
             }
-            dots.forEach((dot, idx) => {
-                if (idx < visibleCount && visibleCount > 1) {
-                    dot.style.display = 'inline-block';
-                } else {
-                    dot.style.display = 'none';
-                }
-                if (idx === 0) {
-                    dot.classList.add('w-6', 'bg-deep-cobalt');
-                    dot.classList.remove('w-2', 'bg-slate-300');
-                } else {
-                    dot.classList.remove('w-6', 'bg-deep-cobalt');
-                    dot.classList.add('w-2', 'bg-slate-300');
-                }
-            });
+            syncMobileCounter(0, visibleCount);
+        }
+
+        function syncMobileCounter(activeIdx, totalVisible) {
+            const visibleItems = Array.from(portfolioItems).filter(item => item.style.display !== 'none');
+            const total = typeof totalVisible === 'number' ? totalVisible : visibleItems.length;
+            if (carouselCounter && total > 0) {
+                carouselCounter.textContent = `${activeIdx + 1} / ${total}`;
+            }
+            if (carouselPrev) carouselPrev.disabled = activeIdx <= 0;
+            if (carouselNext) carouselNext.disabled = activeIdx >= total - 1;
         }
 
         // Evento de clique no botão "Carregar Mais / Recolher"
@@ -1614,41 +1655,47 @@
             updatePortfolioView();
         });
 
-        // 3. SINCRONIZAR E CLICAR NAS BOLINHAS DE NAVEGAÇÃO DO CARROSSEL MOBILE
+        // 3. SINCRONIZAR NAVEGAÇÃO POR SETAS E ROLAGEM DO CARROSSEL MOBILE (< 1 / 10 >)
         const carousel = document.getElementById('portfolio-carousel');
 
-        if (carousel && dots.length > 0) {
-            // Tornar as bolinhas clicáveis para ir direto ao card correspondente
-            dots.forEach((dot) => {
-                dot.addEventListener('click', () => {
+        function scrollMobileCarouselTo(targetIdx) {
+            if (!carousel) return;
+            const visibleItems = Array.from(portfolioItems).filter(item => item.style.display !== 'none');
+            if (visibleItems.length <= 1) return;
+            const clamped = Math.max(0, Math.min(targetIdx, visibleItems.length - 1));
+            const cardWidth = visibleItems[0].offsetWidth + 24;
+            carousel.scrollTo({ left: cardWidth * clamped, behavior: 'smooth' });
+            syncMobileCounter(clamped, visibleItems.length);
+        }
+
+        if (carousel) {
+            if (carouselPrev) {
+                carouselPrev.addEventListener('click', () => {
                     const visibleItems = Array.from(portfolioItems).filter(item => item.style.display !== 'none');
-                    const activeDots = Array.from(dots).filter(d => d.style.display !== 'none');
-                    const dotIndex = activeDots.indexOf(dot);
-                    if (dotIndex !== -1 && visibleItems[dotIndex]) {
-                        const cardWidth = visibleItems[0].offsetWidth + 24;
-                        carousel.scrollTo({ left: cardWidth * dotIndex, behavior: 'smooth' });
-                    }
+                    if (visibleItems.length <= 1) return;
+                    const cardWidth = visibleItems[0].offsetWidth + 24;
+                    const currentIdx = Math.round(carousel.scrollLeft / cardWidth);
+                    scrollMobileCarouselTo(currentIdx - 1);
                 });
-            });
+            }
+            if (carouselNext) {
+                carouselNext.addEventListener('click', () => {
+                    const visibleItems = Array.from(portfolioItems).filter(item => item.style.display !== 'none');
+                    if (visibleItems.length <= 1) return;
+                    const cardWidth = visibleItems[0].offsetWidth + 24;
+                    const currentIdx = Math.round(carousel.scrollLeft / cardWidth);
+                    scrollMobileCarouselTo(currentIdx + 1);
+                });
+            }
 
             carousel.addEventListener('scroll', () => {
                 const scrollLeft = carousel.scrollLeft;
                 const visibleItems = Array.from(portfolioItems).filter(item => item.style.display !== 'none');
                 if (visibleItems.length <= 1) return;
-                
-                const cardWidth = visibleItems[0].offsetWidth + 24; // largura do card + gap de 24px
-                const activeIndex = Math.min(Math.round(scrollLeft / cardWidth), visibleItems.length - 1);
 
-                const activeDots = Array.from(dots).filter(d => d.style.display !== 'none');
-                activeDots.forEach((dot, idx) => {
-                    if (idx === activeIndex) {
-                        dot.classList.add('w-6', 'bg-deep-cobalt');
-                        dot.classList.remove('w-2', 'bg-slate-300');
-                    } else {
-                        dot.classList.remove('w-6', 'bg-deep-cobalt');
-                        dot.classList.add('w-2', 'bg-slate-300');
-                    }
-                });
+                const cardWidth = visibleItems[0].offsetWidth + 24;
+                const activeIndex = Math.max(0, Math.min(Math.round(scrollLeft / cardWidth), visibleItems.length - 1));
+                syncMobileCounter(activeIndex, visibleItems.length);
             }, { passive: true });
         }
 
