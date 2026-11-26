@@ -1133,32 +1133,23 @@
                             </span>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="simulador-solucoes">
-                            <!-- Botões de Solução -->
-                            <button type="button" onclick="selecionarSolucao('convite')" id="solucao-convite" class="solucao-btn text-left p-4 rounded-2xl border-2 border-cyan-400 bg-cyan-500/10 transition-all cursor-pointer">
-                                <div class="flex items-center justify-between mb-1.5">
-                                    <span class="text-lg">💌</span>
-                                    <i class="fa-solid fa-circle-check text-cyan-400 solucao-icon text-sm"></i>
-                                </div>
-                                <h4 class="font-bold text-white text-sm">Convites Digitais</h4>
-                                <p class="text-[11px] text-slate-300 mt-0.5 leading-snug">Casamentos, 15 anos, aniversários e celebrações.</p>
-                            </button>
-
-                            <button type="button" onclick="selecionarSolucao('landing')" id="solucao-landing" class="solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer">
+                            <!-- Botões de Solução (Negócios primeiro, Convites em 4º) -->
+                            <button type="button" onclick="selecionarSolucao('landing')" id="solucao-landing" class="solucao-btn text-left p-4 rounded-2xl border-2 border-cyan-400 bg-cyan-500/10 transition-all cursor-pointer">
                                 <div class="flex items-center justify-between mb-1.5">
                                     <span class="text-lg">🚀</span>
-                                    <i class="fa-regular fa-circle text-slate-500 solucao-icon text-sm"></i>
+                                    <i class="fa-solid fa-circle-check text-cyan-400 solucao-icon text-sm"></i>
                                 </div>
-                                <h4 class="font-bold text-white text-sm">Landing Pages</h4>
-                                <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Alta conversão para clínicas, serviços e tráfego pago.</p>
+                                <h4 class="font-bold text-white text-sm">Landing Pages &amp; Agendamentos</h4>
+                                <p class="text-[11px] text-slate-300 mt-0.5 leading-snug">Clínicas, salões de beleza, barbearias, cafeterias e serviços.</p>
                             </button>
 
                             <button type="button" onclick="selecionarSolucao('catalogo')" id="solucao-catalogo" class="solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer">
                                 <div class="flex items-center justify-between mb-1.5">
-                                    <span class="text-lg">📖</span>
+                                    <span class="text-lg">🛍️</span>
                                     <i class="fa-regular fa-circle text-slate-500 solucao-icon text-sm"></i>
                                 </div>
-                                <h4 class="font-bold text-white text-sm">Catálogos & Cardápios</h4>
-                                <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Cardápio digital com pedidos no WhatsApp sem PDF.</p>
+                                <h4 class="font-bold text-white text-sm">Catálogos &amp; Cardápios</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Lojas, semijoias, delivery e pedidos direto no WhatsApp.</p>
                             </button>
 
                             <button type="button" onclick="selecionarSolucao('institucional')" id="solucao-institucional" class="solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer">
@@ -1167,22 +1158,46 @@
                                     <i class="fa-regular fa-circle text-slate-500 solucao-icon text-sm"></i>
                                 </div>
                                 <h4 class="font-bold text-white text-sm">Sites Institucionais</h4>
-                                <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Presença corporativa oficial com autoridade e SEO.</p>
+                                <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Portais multipáginas para escritórios, empresas e SEO.</p>
+                            </button>
+
+                            <button type="button" onclick="selecionarSolucao('convite')" id="solucao-convite" class="solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-lg">💌</span>
+                                    <i class="fa-regular fa-circle text-slate-500 solucao-icon text-sm"></i>
+                                </div>
+                                <h4 class="font-bold text-white text-sm">Convites Digitais</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">Casamentos, 15 anos, aniversários e celebrações.</p>
                             </button>
                         </div>
+
+                        <!-- Opção compacta de largura total: Outro formato / Personalizado -->
+                        <button type="button" onclick="selecionarSolucao('outro')" id="solucao-outro" class="solucao-btn mt-3 w-full text-left px-4 py-3 rounded-2xl border border-white/10 bg-slate-900/60 hover:border-cyan-500/30 transition-all cursor-pointer flex items-center justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-base">✨</span>
+                                <div>
+                                    <h4 class="font-bold text-white text-xs sm:text-sm">Outro formato / Projeto Personalizado</h4>
+                                    <p class="text-[11px] text-slate-400 leading-snug">Ferramenta web, calculadora, sistema simples ou ideia específica.</p>
+                                </div>
+                            </div>
+                            <i class="fa-regular fa-circle text-slate-500 solucao-icon text-sm shrink-0"></i>
+                        </button>
                     </div>
 
-                    <!-- PASSO 2: RECURSOS DINÂMICOS DO NICHO -->
+                    <!-- PASSO 2: RECURSOS DINÂMICOS DO NICHO (OU CAMPO LIVRE PARA "OUTRO") -->
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-xs uppercase tracking-wider text-cyan-400 font-bold flex items-center gap-1.5">
                                 <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-[10px]">2</span>
-                                Recursos & Adicionais para este Nicho
+                                <span id="passo2-titulo">Recursos &amp; Adicionais para este Nicho</span>
                             </span>
-                            <span id="label-nicho-ativo" class="text-[11px] text-slate-400 font-medium">Nicho: Convites</span>
+                            <span id="label-nicho-ativo" class="text-[11px] text-slate-400 font-medium">Nicho: Negócios &amp; Serviços</span>
                         </div>
                         <div id="container-adicionais-dinamicos" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             <!-- Injetado dinamicamente via script -->
+                        </div>
+                        <div id="container-outro-projeto" class="hidden">
+                            <textarea id="simulador-outro-texto" rows="4" oninput="atualizarResumoSimulador()" placeholder="Descreva em poucas palavras o que você precisa (ex: calculadora de orçamento, área restrita, integração com planilha, site com função específica)..." class="w-full px-4 py-3 rounded-2xl bg-slate-900/90 border border-white/15 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400"></textarea>
                         </div>
                     </div>
                 </div>
@@ -1225,7 +1240,11 @@
                     </div>
 
                     <!-- Botão de Ação Direta para WhatsApp -->
-                    <div class="pt-4 border-t border-white/10 space-y-2">
+                    <div class="pt-4 border-t border-white/10 space-y-3">
+                        <div>
+                            <label for="simulador-nome-cliente" class="block text-[11px] text-slate-400 mb-1">Seu nome ou empresa (opcional)</label>
+                            <input id="simulador-nome-cliente" type="text" oninput="atualizarResumoSimulador()" placeholder="Ex: Maria • Studio Bela" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+                        </div>
                         <a id="btn-enviar-simulacao-whatsapp" href="#" target="_blank" class="touch-action w-full py-4 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-slate-950 font-black rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2.5 transition shadow-lg shadow-emerald-500/20 cursor-pointer">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
                             <span>ENVIAR PROPOSTA NO WHATSAPP</span>
@@ -1745,50 +1764,57 @@
                 ]
             },
             'landing': {
-                titulo: 'Landing Pages de Alta Conversão',
-                nichoLabel: 'Nicho: Clínicas, Serviços & Tráfego',
+                titulo: 'Landing Pages & Agendamentos',
+                nichoLabel: 'Nicho: Clínicas, Salões, Barbearias & Serviços',
                 prazo: 'Em até 48 horas úteis*',
                 prazoObs: '*Inicia após alinhamento de fotos, textos e público-alvo.',
                 adicionais: [
+                    { label: 'Agendamento Multi-Serviços (Salões / Barbearias)', checked: true },
                     { label: 'Triagem de Pré-Atendimento no WhatsApp', checked: true },
+                    { label: 'Mapa Integrado & Horário de Funcionamento', checked: true },
                     { label: 'Integração de Pixel (Meta Ads & Google)', checked: true },
-                    { label: 'FAQ Sanfona (Quebra de Objeções)', checked: true },
-                    { label: 'Grade de Depoimentos & Prova Social', checked: true },
-                    { label: 'Copywriting Comercial Otimizado', checked: true },
+                    { label: 'FAQ Sanfona & Grade de Depoimentos', checked: true },
                     { label: 'Otimização Extrema de Velocidade (PageSpeed 95+)', checked: true }
                 ]
             },
             'catalogo': {
                 titulo: 'Catálogos & Cardápios Virtuais',
-                nichoLabel: 'Nicho: Gastronomia, Moda & Comércio',
+                nichoLabel: 'Nicho: Lojas, Semijoias, Gastronomia & Varejo',
                 prazo: 'Em até 48 horas úteis*',
-                prazoObs: '*Para cardápios padrão com até 15 itens cadastrados. Volumes maiores sob consulta.',
+                prazoObs: '*Para catálogos ou cardápios padrão com até 15 itens. Volumes maiores sob consulta.',
                 adicionais: [
                     { label: 'Sacola de Pedidos com Checkout no WhatsApp', checked: true },
-                    { label: 'Opção de Entrega (Delivery) ou Retirada', checked: true },
-                    { label: 'Forma de Pagamento (PIX, Cartão, Dinheiro c/ Troco)', checked: true },
-                    { label: 'Filtros por Categorias do Cardápio/Loja', checked: true },
-                    { label: 'Galeria de Fotos em Alta Resolução', checked: true },
-                    { label: 'Botão Direto para Redes Sociais / Instagram', checked: false }
+                    { label: 'Seleção de Variações, Acabamentos ou Tamanhos', checked: true },
+                    { label: 'Seção História da Marca + Busca Rápida', checked: true },
+                    { label: 'Opção de Entrega (Delivery/Correios) ou Retirada', checked: true },
+                    { label: 'Forma de Pagamento (PIX, Cartão, Combinar)', checked: true },
+                    { label: 'Filtros por Categorias da Loja/Cardápio', checked: true }
                 ]
             },
             'institucional': {
-                titulo: 'Sites Institucionais & Portais Modernos',
-                nichoLabel: 'Nicho: Empresas, Escritórios & Marcas',
+                titulo: 'Sites Institucionais Multipáginas',
+                nichoLabel: 'Nicho: Escritórios, Advocacia & Empresas',
                 prazo: 'A partir de 5 a 7 dias úteis*',
-                prazoObs: '*Projetos corporativos mais amplos com múltiplas seções institucionais.',
+                prazoObs: '*Projetos corporativos completos com múltiplas páginas interligadas.',
                 adicionais: [
-                    { label: 'Estrutura Multi-seções Ampliada', checked: true },
+                    { label: 'Estrutura Multipáginas (Início, Sobre, Áreas, Contato)', checked: true },
+                    { label: 'Triagem de Reunião (Online, Presencial ou E-mail)', checked: true },
+                    { label: 'Central de Artigos / Conteúdo com Busca', checked: true },
                     { label: 'SEO Estruturado para o Google', checked: true },
-                    { label: 'Contato Multicanal (WhatsApp, E-mail, Formulário)', checked: true },
                     { label: 'Localização e Mapa Integrado da Sede', checked: true },
-                    { label: 'Mostruário de Serviços / Cases de Sucesso', checked: true },
                     { label: 'Design Adaptado para Celular e Desktop', checked: true }
                 ]
+            },
+            'outro': {
+                titulo: 'Projeto Sob Medida / Outro Formato',
+                nichoLabel: 'Nicho: Demanda Personalizada',
+                prazo: 'A definir após alinhamento*',
+                prazoObs: '*Analisamos sua ideia juntos e passamos o prazo e investimento exatos no WhatsApp.',
+                adicionais: []
             }
         };
 
-        let solucaoAtual = 'convite';
+        let solucaoAtual = 'landing';
         let adicionaisSelecionados = new Set();
 
         function selecionarSolucao(chave) {
@@ -1797,37 +1823,55 @@
             if (!config) return;
 
             document.querySelectorAll('.solucao-btn').forEach(btn => {
-                btn.className = "solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer";
+                const isOutro = btn.id === 'solucao-outro';
+                btn.className = isOutro
+                    ? "solucao-btn mt-3 w-full text-left px-4 py-3 rounded-2xl border border-white/10 bg-slate-900/60 hover:border-cyan-500/30 transition-all cursor-pointer flex items-center justify-between gap-3"
+                    : "solucao-btn text-left p-4 rounded-2xl border border-white/10 bg-slate-900/80 hover:border-cyan-500/30 transition-all cursor-pointer";
                 const icon = btn.querySelector('.solucao-icon');
-                if (icon) icon.className = "fa-regular fa-circle text-slate-500 solucao-icon text-sm";
+                if (icon) icon.className = "fa-regular fa-circle text-slate-500 solucao-icon text-sm shrink-0";
             });
 
             const btnAtivo = document.getElementById(`solucao-${chave}`);
             if (btnAtivo) {
-                btnAtivo.className = "solucao-btn text-left p-4 rounded-2xl border-2 border-cyan-400 bg-cyan-500/10 transition-all cursor-pointer shadow-lg shadow-cyan-950/40";
+                const isOutro = chave === 'outro';
+                btnAtivo.className = isOutro
+                    ? "solucao-btn mt-3 w-full text-left px-4 py-3 rounded-2xl border-2 border-cyan-400 bg-cyan-500/10 transition-all cursor-pointer flex items-center justify-between gap-3 shadow-lg shadow-cyan-950/40"
+                    : "solucao-btn text-left p-4 rounded-2xl border-2 border-cyan-400 bg-cyan-500/10 transition-all cursor-pointer shadow-lg shadow-cyan-950/40";
                 const icon = btnAtivo.querySelector('.solucao-icon');
-                if (icon) icon.className = "fa-solid fa-circle-check text-cyan-400 solucao-icon text-sm";
+                if (icon) icon.className = "fa-solid fa-circle-check text-cyan-400 solucao-icon text-sm shrink-0";
             }
 
             const labelNicho = document.getElementById('label-nicho-ativo');
             if (labelNicho) labelNicho.textContent = config.nichoLabel;
 
-            adicionaisSelecionados.clear();
+            const passo2Titulo = document.getElementById('passo2-titulo');
             const container = document.getElementById('container-adicionais-dinamicos');
-            if (container) {
-                container.innerHTML = config.adicionais.map(add => {
-                    if (add.checked) adicionaisSelecionados.add(add.label);
-                    return `
-                        <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-900/90 border border-white/5 hover:border-cyan-500/30 transition cursor-pointer select-none">
-                            <input type="checkbox" 
-                                   value="${add.label}" 
-                                   ${add.checked ? 'checked' : ''} 
-                                   onchange="toggleAdicional(this)"
-                                   class="mt-0.5 rounded border-slate-700 text-cyan-500 focus:ring-0 bg-slate-800 shrink-0 cursor-pointer">
-                            <span class="text-xs text-slate-200 leading-snug font-medium">${add.label}</span>
-                        </label>
-                    `;
-                }).join('');
+            const containerOutro = document.getElementById('container-outro-projeto');
+
+            adicionaisSelecionados.clear();
+            if (chave === 'outro') {
+                if (passo2Titulo) passo2Titulo.textContent = 'Conte o que você precisa desenvolver';
+                if (container) container.classList.add('hidden');
+                if (containerOutro) containerOutro.classList.remove('hidden');
+            } else {
+                if (passo2Titulo) passo2Titulo.textContent = 'Recursos & Adicionais para este Nicho';
+                if (containerOutro) containerOutro.classList.add('hidden');
+                if (container) {
+                    container.classList.remove('hidden');
+                    container.innerHTML = config.adicionais.map(add => {
+                        if (add.checked) adicionaisSelecionados.add(add.label);
+                        return `
+                            <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-900/90 border border-white/5 hover:border-cyan-500/30 transition cursor-pointer select-none">
+                                <input type="checkbox" 
+                                       value="${add.label}" 
+                                       ${add.checked ? 'checked' : ''} 
+                                       onchange="toggleAdicional(this)"
+                                       class="mt-0.5 rounded border-slate-700 text-cyan-500 focus:ring-0 bg-slate-800 shrink-0 cursor-pointer">
+                                <span class="text-xs text-slate-200 leading-snug font-medium">${add.label}</span>
+                            </label>
+                        `;
+                    }).join('');
+                }
             }
 
             atualizarResumoSimulador();
@@ -1856,9 +1900,15 @@
             if (prazoObsEl) prazoObsEl.textContent = config.prazoObs;
 
             const listaArray = Array.from(adicionaisSelecionados);
+            const nomeCliente = (document.getElementById('simulador-nome-cliente')?.value || '').trim();
+            const outroTexto = (document.getElementById('simulador-outro-texto')?.value || '').trim();
 
             if (tagsContainer) {
-                if (listaArray.length === 0) {
+                if (solucaoAtual === 'outro') {
+                    tagsContainer.innerHTML = outroTexto
+                        ? `<span class="text-xs text-cyan-200 bg-cyan-500/10 border border-cyan-400/20 rounded-xl p-2.5 w-full leading-relaxed">"${outroTexto}"</span>`
+                        : `<span class="text-[11px] text-slate-400 italic">Descreva sua ideia ao lado ou envie direto para conversarmos no WhatsApp.</span>`;
+                } else if (listaArray.length === 0) {
                     tagsContainer.innerHTML = `<span class="text-[11px] text-slate-500 italic">Nenhum adicional selecionado (apenas estrutura base).</span>`;
                 } else {
                     tagsContainer.innerHTML = listaArray.map(item => `
@@ -1872,19 +1922,27 @@
             // Montagem da mensagem estruturada para o WhatsApp com codificação 100% segura
             const linhasMensagem = [
                 '⚡ *SIMULAÇÃO DE PROJETO • OPPIKOFER STUDIO WEB*',
-                '━━━━━━━━━━━━━━━━━━━━━━',
-                `📌 *Solução Escolhida:* ${config.titulo}`,
-                `⏱️ *Previsão de Entrega:* ${config.prazo}`,
-                '━━━━━━━━━━━━━━━━━━━━━━',
-                '✨ *Recursos e Opcionais Selecionados:*'
+                '━━━━━━━━━━━━━━━━━━━━━━'
             ];
+            if (nomeCliente) {
+                linhasMensagem.push(`👤 *Nome / Empresa:* ${nomeCliente}`);
+            }
+            linhasMensagem.push(`📌 *Solução Escolhida:* ${config.titulo}`);
+            linhasMensagem.push(`⏱️ *Previsão de Entrega:* ${config.prazo}`);
+            linhasMensagem.push('━━━━━━━━━━━━━━━━━━━━━━');
 
-            if (listaArray.length > 0) {
-                listaArray.forEach(item => {
-                    linhasMensagem.push(`• ${item}`);
-                });
+            if (solucaoAtual === 'outro') {
+                linhasMensagem.push('💡 *Descrição da Necessidade:*');
+                linhasMensagem.push(outroTexto || '• Gostaria de conversar sobre um projeto personalizado');
             } else {
-                linhasMensagem.push('• Estrutura base essencial padrão');
+                linhasMensagem.push('✨ *Recursos e Opcionais Selecionados:*');
+                if (listaArray.length > 0) {
+                    listaArray.forEach(item => {
+                        linhasMensagem.push(`• ${item}`);
+                    });
+                } else {
+                    linhasMensagem.push('• Estrutura base essencial padrão');
+                }
             }
 
             linhasMensagem.push('━━━━━━━━━━━━━━━━━━━━━━');
@@ -1898,7 +1956,7 @@
         }
 
         // Inicializar Simulador na carga
-        selecionarSolucao('convite');
+        selecionarSolucao('landing');
 
         // 6. CONTROLE DO MENU EXPANSÍVEL DO CABEÇALHO (SEAMLESS HEADER EXPANSION)
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
