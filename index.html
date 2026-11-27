@@ -41,12 +41,18 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                        editorial: ['"Instrument Serif"', 'Georgia', 'serif'],
                     }
                 }
             }
         }
     </script>
+
+    <!-- Google Fonts: Plus Jakarta Sans + Instrument Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -62,17 +68,41 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Estilos dos botões de filtro (evita que o texto suma no toque mobile) */
+        /* Abas de filtro minimalistas (sem pílulas pesadas) */
+        .filter-pill {
+            position: relative;
+            background: transparent !important;
+            border: none !important;
+            border-bottom: 2px solid transparent !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            color: #64748b;
+            padding: 0.6rem 0.25rem !important;
+            white-space: nowrap;
+        }
+        .filter-pill:hover {
+            color: #0f172a !important;
+            background: transparent !important;
+        }
         .filter-pill.active {
-            background-color: #0f172a !important; /* bg-slate-900 */
-            color: #ffffff !important;
-            border-color: #0f172a !important;
-            font-weight: 700 !important;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18) !important;
+            background-color: transparent !important;
+            color: #0f172a !important;
+            border-bottom: 2px solid #1d4ed8 !important;
+            font-weight: 600 !important;
+            box-shadow: none !important;
         }
         .filter-pill.active:hover {
-            color: #ffffff !important;
-            background-color: #0f172a !important;
+            color: #0f172a !important;
+            background-color: transparent !important;
+        }
+
+        /* Navbar limpa no topo, hairline sutil apenas ao rolar */
+        #main-header {
+            border-bottom: 1px solid transparent;
+        }
+        #main-header.is-scrolled {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+            background-color: rgba(5, 12, 26, 0.92);
         }
 
         /* Luzes Noturnas do Fundo (Hero & Rodapé) */
@@ -229,47 +259,46 @@
 </head>
 <body class="bg-deep-base text-slate-200 font-sans antialiased selection:bg-deep-cobalt selection:text-white relative min-h-screen">
 
-    <!-- 1. NAVBAR FIXA DE VIDRO NOTURNO COM EXPANSÃO NATIVA -->
-    <header class="sticky top-0 left-0 w-full bg-deep-base/95 backdrop-blur-xl z-40 border-b border-deep-border/80 transition-all duration-300">
+    <!-- 1. NAVBAR FIXA MINIMALISTA (SEM LINHA NO TOPO) -->
+    <header id="main-header" class="sticky top-0 left-0 w-full bg-deep-base/80 backdrop-blur-xl z-40 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
             <!-- BLOCO ESQUERDO: LOGO OFICIAL COM LEITURA NÍTIDA -->
             <div class="flex-1 flex items-center justify-start">
                 <a href="#" class="flex items-center touch-action">
                     <img src="Assets/imagens/logo-horiz-transp.png" 
                          alt="Oppikofer Studio Web" 
-                         class="h-10 sm:h-12 w-auto object-contain transition duration-200 hover:opacity-90"
+                         class="h-7 sm:h-10 w-auto object-contain transition duration-200 hover:opacity-90"
                          onerror="this.onerror=null; this.src='Assets/imagens/logo-horizontal.png';">
                 </a>
             </div>
 
             <!-- BLOCO CENTRAL: MENU MATEMATICAMENTE CENTRALIZADO (DESKTOP COMPLETO) -->
-            <nav class="hidden lg:flex items-center justify-center gap-7 text-xs uppercase tracking-wider font-bold text-slate-300">
-                <a href="#portfolio" class="hover:text-deep-cyan transition flex items-center gap-1.5 py-1">
+            <nav class="hidden lg:flex items-center justify-center gap-7 text-[11px] uppercase tracking-[0.14em] font-medium text-slate-300">
+                <a href="#portfolio" class="hover:text-white transition flex items-center gap-1.5 py-1">
                     <span>Portfólio</span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-deep-cyan animate-pulse"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-deep-cyan"></span>
                 </a>
-                <a href="#comparativo" class="hover:text-deep-cyan transition py-1">Diferenciais</a>
-                <a href="#simulador" class="hover:text-deep-cyan transition py-1 text-cyan-300">Simulador</a>
-                <a href="#metodo" class="hover:text-deep-cyan transition py-1">Como Funciona</a>
-                <a href="#faq" class="hover:text-deep-cyan transition py-1">Dúvidas</a>
+                <a href="#comparativo" class="hover:text-white transition py-1">Diferenciais</a>
+                <a href="#simulador" class="hover:text-cyan-300 transition py-1 text-cyan-300">Simulador</a>
+                <a href="#metodo" class="hover:text-white transition py-1">Processo</a>
+                <a href="#faq" class="hover:text-white transition py-1">Dúvidas</a>
             </nav>
 
-            <!-- BLOCO DIREITO: CTA PRINCIPAL + BOTÃO MENU HAMBÚRGUER (MOBILE & JANELAS REDUZIDAS) -->
-            <div class="flex-1 flex items-center justify-end gap-2.5">
+            <!-- BLOCO DIREITO: CTA DISCRETO + BOTÃO MENU HAMBÚRGUER LIMPO -->
+            <div class="flex-1 flex items-center justify-end gap-2">
                 <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20site%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20um%20orçamento." 
                    target="_blank" 
-                   class="touch-action relative group overflow-hidden bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 text-white font-bold px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm transition duration-300 flex items-center gap-2 shadow-lg shadow-blue-900/40 shrink-0 border border-white/20 active:scale-95">
-                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer-run"></span>
-                    <i class="fa-brands fa-whatsapp text-sm text-green-300"></i>
+                   class="touch-action bg-deep-cobalt hover:bg-blue-600 text-white font-medium px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs transition duration-300 flex items-center gap-2 shrink-0 active:scale-95">
                     <span>Iniciar Projeto</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </a>
 
-                <!-- BOTÃO MENU HAMBÚRGUER (TOGGLE ELEGANTE QUE VIRA X) -->
+                <!-- BOTÃO MENU HAMBÚRGUER MINIMALISTA (SEM CAIXA/BORDA GROSSA) -->
                 <button id="mobile-menu-btn" 
                         type="button" 
                         aria-label="Abrir Menu de Navegação" 
                         aria-expanded="false"
-                        class="lg:hidden w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-slate-200 hover:text-cyan-400 flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0">
+                        class="lg:hidden w-10 h-10 rounded-full hover:bg-white/5 text-slate-200 hover:text-cyan-300 flex items-center justify-center transition active:scale-95 cursor-pointer shrink-0">
                     <i id="mobile-menu-icon" class="fa-solid fa-bars-staggered text-base"></i>
                 </button>
             </div>
@@ -327,92 +356,81 @@
     <!-- BACKDROP SUAVE ABAIXO DO CABEÇALHO (CLICAR NO FUNDO RECOLHE O MENU) -->
     <div id="mobile-menu-backdrop" class="fixed inset-0 z-30 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none cursor-pointer"></div>
 
-    <!-- 3. HERO SECTION (DEEP TECH NOTURNO DE ALTO IMPACTO) -->
-    <section class="relative z-10 pt-16 sm:pt-24 pb-20 px-4 w-full overflow-hidden border-b border-deep-border/50">
-        <!-- Imagem Atmosférica Dark Studio (Fica atrás do Título e Subtítulo sem grade e some em degradê) -->
-        <div class="hero-studio-backdrop"></div>
-        <!-- Grade Tecnológica que retorna suavemente na altura dos botões e indicadores -->
+    <!-- 3. HERO SECTION (EDITORIAL ASSIMÉTRICO DEEP TECH) -->
+    <section class="relative z-10 pt-10 sm:pt-20 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-10 w-full overflow-hidden">
         <div class="hero-grid-fade-in"></div>
         <div class="ambient-glow-hero"></div>
 
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <!-- Badge de Especialidade com Efeito Glow -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-deep-surface/90 border border-deep-cyan/40 shadow-lg shadow-cyan-950/60 text-xs font-semibold text-cyan-300 mb-6 backdrop-blur-md">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-deep-cyan opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-deep-cyan"></span>
-                </span>
-                <span>Design Contemporâneo & Engenharia Frontend</span>
+        <div class="max-w-7xl mx-auto relative z-10 text-left">
+            <!-- Eyebrow Editorial (sem pílula nem ponto brilhante) -->
+            <div class="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-cyan-300/90 font-medium mb-6 sm:mb-8">
+                <span class="w-6 h-px bg-cyan-400/70"></span>
+                <span>Design Contemporâneo &amp; Engenharia Frontend</span>
             </div>
 
-            <!-- Título Principal com Gradiente Luminoso -->
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-[1.12] max-w-4xl mx-auto mb-6">
-                Soluções digitais de alto impacto que transformam ideias em <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-deep-cyan to-cyan-200">experiências memoráveis.</span>
-            </h1>
+            <!-- Grid Assimétrico 8 + 4 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+                <div class="lg:col-span-8">
+                    <h1 class="text-[2.15rem] sm:text-5xl lg:text-[3.85rem] font-light text-white tracking-[-0.035em] leading-[1.08]">
+                        Soluções digitais sob medida que transformam ideias em <span class="font-editorial italic font-normal text-[1.12em] text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-300 to-cyan-200">experiências memoráveis.</span>
+                    </h1>
+                </div>
 
-            <!-- Subtítulo Equilibrado -->
-            <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-                Desenvolvemos sites profissionais de carregamento ultrarrápido, landing pages de alta conversão, catálogos interativos e convites digitais exclusivos com confirmação de presença (RSVP). Projetos leves, sem burocracia e 100% personalizados para o seu objetivo.
-            </p>
+                <div class="lg:col-span-4 space-y-6">
+                    <p class="text-slate-300 text-sm sm:text-[15px] leading-relaxed font-normal">
+                        Sites institucionais, landing pages de alta conversão, catálogos interativos e convites digitais leves, rápidos e 100% personalizados para o seu objetivo.
+                    </p>
 
-            <!-- Botões de Ação do Hero -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-                <a href="#portfolio" 
-                   class="touch-action w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 text-white font-bold rounded-xl text-sm transition duration-300 shadow-xl shadow-blue-900/60 flex items-center justify-center gap-2 border border-white/25 active:scale-95">
-                    <span>Explorar Projetos Prontos</span>
-                    <i class="fa-solid fa-arrow-down text-xs"></i>
-                </a>
-                <a href="#simulador" 
-                   class="touch-action w-full sm:w-auto px-8 py-3.5 bg-deep-surface/90 hover:bg-slate-800 text-slate-100 font-bold rounded-xl text-sm transition duration-300 border border-deep-borderLight shadow-md flex items-center justify-center gap-2 backdrop-blur-md active:scale-95 group">
-                    <i class="fa-solid fa-calculator text-cyan-400 group-hover:scale-110 transition-transform"></i>
-                    <span>Simular Projeto Sob Medida</span>
-                </a>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#portfolio" 
+                           class="touch-action px-6 py-3 bg-deep-cobalt hover:bg-blue-600 text-white font-medium rounded-full text-xs sm:text-sm transition duration-300 flex items-center gap-2 active:scale-95">
+                            <span>Explorar Projetos</span>
+                            <i class="fa-solid fa-arrow-down text-[11px]"></i>
+                        </a>
+                        <a href="#simulador" 
+                           class="touch-action text-xs sm:text-sm font-medium text-slate-300 hover:text-cyan-300 underline underline-offset-4 decoration-white/25 hover:decoration-cyan-300 transition py-2">
+                            Simular projeto sob medida →
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Selos de Performance com CONTADORES DINÂMICOS (Mobile-Friendly) -->
-            <div id="stats-container" class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto text-left">
-                <!-- Card 1 -->
-                <div class="p-4 sm:p-5 bg-deep-surface/85 rounded-2xl border border-white/10 backdrop-blur-md shadow-lg">
+            <!-- Faixa Minimalista de Indicadores (sem caixas pesadas) -->
+            <div id="stats-container" class="mt-14 sm:mt-16 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-left">
+                <div>
                     <div class="flex items-baseline gap-0.5">
-                        <span class="counter-number text-2xl sm:text-4xl font-black text-cyan-400" data-target="100">0</span>
-                        <span class="text-lg sm:text-xl font-bold text-cyan-400">%</span>
+                        <span class="counter-number text-2xl sm:text-3xl font-light tracking-tight text-white" data-target="100">0</span>
+                        <span class="text-base sm:text-lg font-light text-cyan-400">%</span>
                     </div>
-                    <span class="block text-xs sm:text-sm text-white font-semibold mt-1">Multi-Telas</span>
-                    <span class="block text-[11px] sm:text-xs text-slate-300 font-normal leading-tight">Mobile-First & Desktop</span>
+                    <span class="block text-[11px] uppercase tracking-[0.12em] text-slate-400 font-medium mt-1">Mobile-First &amp; Desktop</span>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="p-4 sm:p-5 bg-deep-surface/85 rounded-2xl border border-white/10 backdrop-blur-md shadow-lg">
+                <div>
                     <div class="flex items-baseline gap-0.5">
-                        <span class="text-base sm:text-xl font-bold text-cyan-400">&lt;</span>
-                        <span class="counter-number text-2xl sm:text-4xl font-black text-cyan-400" data-target="1.0" data-decimal="true">0</span>
-                        <span class="text-base sm:text-xl font-bold text-cyan-400">s</span>
+                        <span class="text-base sm:text-lg font-light text-cyan-400">&lt;</span>
+                        <span class="counter-number text-2xl sm:text-3xl font-light tracking-tight text-white" data-target="1.0" data-decimal="true">0</span>
+                        <span class="text-base sm:text-lg font-light text-cyan-400">s</span>
                     </div>
-                    <span class="block text-xs sm:text-sm text-white font-semibold mt-1">Carregamento</span>
-                    <span class="block text-[11px] sm:text-xs text-slate-300 font-normal leading-tight">Abertura instantânea</span>
+                    <span class="block text-[11px] uppercase tracking-[0.12em] text-slate-400 font-medium mt-1">Carregamento Instantâneo</span>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="p-4 sm:p-5 bg-deep-surface/85 rounded-2xl border border-white/10 backdrop-blur-md shadow-lg">
+                <div>
                     <div class="flex items-baseline gap-0.5">
-                        <span class="counter-number text-2xl sm:text-4xl font-black text-cyan-400" data-target="48">0</span>
-                        <span class="text-lg sm:text-xl font-bold text-cyan-400">h*</span>
+                        <span class="counter-number text-2xl sm:text-3xl font-light tracking-tight text-white" data-target="48">0</span>
+                        <span class="text-base sm:text-lg font-light text-cyan-400">h*</span>
                     </div>
-                    <span class="block text-xs sm:text-sm text-white font-semibold mt-1">Prazo de Entrega</span>
-                    <span class="block text-[11px] sm:text-xs text-slate-300 font-normal leading-tight">Lançamento ágil</span>
+                    <span class="block text-[11px] uppercase tracking-[0.12em] text-slate-400 font-medium mt-1">Lançamento Ágil</span>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="p-4 sm:p-5 bg-deep-surface/85 rounded-2xl border border-white/10 backdrop-blur-md shadow-lg">
+                <div>
                     <div class="flex items-baseline gap-0.5">
-                        <span class="text-2xl sm:text-4xl font-black text-cyan-400">Zero</span>
+                        <span class="text-2xl sm:text-3xl font-light tracking-tight text-white">Zero</span>
                     </div>
-                    <span class="block text-xs sm:text-sm text-white font-semibold mt-1">Mensalidades</span>
-                    <span class="block text-[11px] sm:text-xs text-slate-300 font-normal leading-tight">Sem taxas de plataforma</span>
+                    <span class="block text-[11px] uppercase tracking-[0.12em] text-slate-400 font-medium mt-1">Mensalidades de Plataforma</span>
                 </div>
             </div>
             
-            <p class="text-[11px] sm:text-xs text-slate-400 mt-4 text-center italic">*Prazo contado a partir da entrega de 100% dos materiais e briefing aprovado.</p>
+            <p class="text-[11px] text-slate-500 mt-5 text-left">*Prazo inicial estimado para landing pages após entrega do material e briefing aprovado.</p>
         </div>
     </section>
 
@@ -426,52 +444,44 @@
         <div class="max-w-6xl mx-auto relative z-10">
             
             <!-- Cabeçalho do Portfólio -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 reveal-up">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 reveal-up">
                 <div>
-                    <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cobalt font-bold mb-2">
-                        <span class="w-2 h-2 rounded-full bg-deep-cobalt"></span>
-                        Casos de Aplicação Real
-                    </span>
-                    <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
-                        Portfólio de Soluções
+                    <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.18em] text-deep-cobalt font-semibold mb-2">
+                        <span class="w-5 h-px bg-deep-cobalt/70"></span>
+                        <span>01 · Casos de Aplicação Real</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl lg:text-[2.75rem] font-light text-slate-900 tracking-[-0.03em] leading-[1.15]">
+                        Portfólio de <span class="font-editorial italic font-normal text-blue-700">Soluções</span>
                     </h2>
                 </div>
                 <p class="text-slate-600 text-xs sm:text-sm mt-3 md:mt-0 max-w-sm font-normal leading-relaxed">
-                    <strong class="text-slate-900 font-bold">Conceito Mobile-First com resposta impecável no desktop:</strong> otimizado para o celular (de onde vem 90% do tráfego) e com expansão fluida para monitores e notebooks.
+                    Projetos mobile-first sob medida: cada cor, tipografia, seção e interação é adaptável à sua marca.
                 </p>
             </div>
 
-            <!-- BADGE DE PERSONALIZAÇÃO 100% SOB MEDIDA -->
-            <div class="w-full flex justify-center mb-6 sm:mb-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-slate-300 shadow-sm text-xs text-slate-700 font-medium text-center">
-                    <span class="text-deep-cobalt font-bold"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Modelos Interativos de Referência:</span>
-                    <span>Cada cor, tipografia, botão, formulário e interação é 100% adaptável à sua marca ou ao seu evento.</span>
-                </div>
-            </div>
-
-            <!-- CONTROLE EM PÍLULA ESTILO APPLE (QUEBRA INTELIGENTE EM MEIA-TELA/MOBILE & BARRA ÚNICA NO DESKTOP) -->
-            <div class="w-full flex items-center justify-center mb-7 sm:mb-12">
-                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 lg:inline-flex lg:flex-nowrap lg:gap-1 lg:p-1.5 lg:rounded-2xl lg:bg-white/90 lg:backdrop-blur-md lg:border lg:border-slate-300/80 lg:shadow-sm max-w-2xl lg:max-w-none mx-auto">
-                    <button class="filter-pill touch-action active px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition duration-200 bg-slate-900 text-white border border-slate-300/80 lg:border-transparent shadow-sm" data-filter="all">
+            <!-- ABAS DE FILTRO MINIMALISTAS -->
+            <div class="w-full mb-7 sm:mb-10 border-b border-slate-300/70">
+                <div class="flex items-center gap-5 sm:gap-7 overflow-x-auto no-scrollbar">
+                    <button class="filter-pill touch-action active text-xs font-medium transition duration-200" data-filter="all">
                         Todos (10)
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="institucional">
-                        ⚖️ Institucional &amp; Escritórios
+                    <button class="filter-pill touch-action text-xs font-medium transition duration-200" data-filter="institucional">
+                        Institucional &amp; Escritórios
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="saude">
-                        🩺 Saúde & Estética
+                    <button class="filter-pill touch-action text-xs font-medium transition duration-200" data-filter="saude">
+                        Saúde &amp; Estética
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="eventos">
-                        💍 Convites & Eventos
+                    <button class="filter-pill touch-action text-xs font-medium transition duration-200" data-filter="eventos">
+                        Convites &amp; Eventos
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="gastronomia">
-                        🍔 Gastronomia
+                    <button class="filter-pill touch-action text-xs font-medium transition duration-200" data-filter="gastronomia">
+                        Gastronomia
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="servicos">
-                        ✂️ Salões, Barbearia &amp; Serviços
+                    <button class="filter-pill touch-action text-xs font-medium transition duration-200" data-filter="servicos">
+                        Salões, Barbearia &amp; Serviços
                     </button>
-                    <button class="filter-pill touch-action px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/95 lg:bg-transparent border border-slate-300/80 lg:border-transparent shadow-sm lg:shadow-none hover:bg-slate-100 hover:text-slate-900 transition duration-200" data-filter="moda">
-                        ✨ Moda & Catálogo
+                    <button class="filter-pill touch-action text-xs font-medium transition duration-200" data-filter="moda">
+                        Moda &amp; Catálogo
                     </button>
                 </div>
             </div>
@@ -486,7 +496,7 @@
             <div id="portfolio-carousel" class="flex overflow-x-auto sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-4 sm:pb-0 snap-x snap-mandatory no-scrollbar w-full justify-items-stretch">
 
                 <!-- CARD 1: CLÍNICA DE ESTÉTICA ÉLYSÉE -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="saude">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-deep-cobalt/30 transition-all duration-300" data-category="saude">
                     <div>
                         <!-- PALCO DO DISPOSITIVO COM EFEITO SUSPENSO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
@@ -510,11 +520,11 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Saúde &amp; Estética • Editorial
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
                             Élysée • Dermatologia &amp; Longevidade
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -523,14 +533,14 @@
                     </div>
 
                     <a href="https://demo-clinica-premium.vercel.app/" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
                 </div>
 
                 <!-- CARD 9: VIANA & ALENCAR ADVOCACIA (INSTITUCIONAL MULTIPÁGINAS) -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="institucional">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-deep-cobalt/30 transition-all duration-300" data-category="institucional">
                     <div>
                         <!-- PALCO DO DISPOSITIVO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
@@ -552,11 +562,11 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 border border-slate-300">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Institucional • 5 Páginas
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
                             Viana &amp; Alencar • Advocacia
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -565,14 +575,14 @@
                     </div>
 
                     <a href="https://demo-advocacia-institucional.vercel.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
                 </div>
 
                 <!-- CARD 2: CONVITE DE CASAMENTO (LUCAS & ISABELLA) -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-rose-400/40 transition-all duration-300" data-category="eventos">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-rose-400/40 transition-all duration-300" data-category="eventos">
                     <div>
                         <!-- PALCO DO DISPOSITIVO COM EFEITO SUSPENSO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-rose-50/50 to-slate-100/90 border border-rose-200/50 mb-6 flex flex-col items-center justify-center">
@@ -596,14 +606,14 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-rose-100 text-rose-800 border border-rose-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Convites & Eventos
                             </span>
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Casamento
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-rose-700 transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-rose-700 transition duration-200">
                             Lucas & Isabella • Casamento
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -612,14 +622,14 @@
                     </div>
 
                     <a href="https://demo-convite-casamento.vercel.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-rose-700 text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
                 </div>
 
                 <!-- CARD 3: CONVITE FESTA INFANTIL (LUCAS 5 ANOS) -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-blue-400/40 transition-all duration-300" data-category="eventos">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-blue-400/40 transition-all duration-300" data-category="eventos">
                     <div>
                         <!-- PALCO DO DISPOSITIVO COM EFEITO SUSPENSO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-blue-50/50 to-slate-100/90 border border-blue-200/50 mb-6 flex flex-col items-center justify-center">
@@ -643,14 +653,14 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 border border-blue-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Convites & Eventos
                             </span>
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-amber-100 text-amber-800 border border-amber-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Festa Infantil
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-blue-700 transition duration-200">
                             Lucas 5 Anos • Alerta do Aranha
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -659,14 +669,14 @@
                     </div>
 
                     <a href="https://demo-festa-infantil.vercel.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-blue-700 text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
                 </div>
 
                 <!-- CARD 4: BARBEARIA VIKING -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="servicos">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-deep-cobalt/30 transition-all duration-300" data-category="servicos">
                     <div>
                         <!-- PALCO DO DISPOSITIVO COM EFEITO SUSPENSO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
@@ -690,11 +700,11 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-amber-100 text-amber-800 border border-amber-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Barbearia & Serviços
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
                             Viking Blade Barber Club
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -703,14 +713,14 @@
                     </div>
 
                     <a href="https://demo-barbearia-seven.vercel.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
                 </div>
 
                 <!-- CARD 10: ATELIER LUMIÈRE SALÃO DE BELEZA -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="servicos">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-deep-cobalt/30 transition-all duration-300" data-category="servicos">
                     <div>
                         <!-- PALCO DO DISPOSITIVO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
@@ -732,11 +742,11 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Salão de Beleza • Multi-Serviços
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
                             Atelier Lumière • Salão de Beleza
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -745,14 +755,14 @@
                     </div>
 
                     <a href="https://demo-salao-beleza-lemon.vercel.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
                 </div>
 
                 <!-- CARD 5: HAMBURGUERIA BULL & BUN -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="gastronomia">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-deep-cobalt/30 transition-all duration-300" data-category="gastronomia">
                     <div>
                         <!-- PALCO DO DISPOSITIVO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
@@ -774,11 +784,11 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-orange-100 text-orange-800 border border-orange-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Gastronomia & Delivery
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
                             Bull & Bun • Craft Burgers
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -787,14 +797,14 @@
                     </div>
 
                     <a href="https://demo-hamburgueria-eight.vercel.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
                 </div>
 
                 <!-- CARD 6: ORIGEM CAFÉ -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="gastronomia">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-deep-cobalt/30 transition-all duration-300" data-category="gastronomia">
                     <div>
                         <!-- PALCO DO DISPOSITIVO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
@@ -816,11 +826,11 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Cafeteria & Coworking
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
                             Origem • Café & Botânica
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -829,14 +839,14 @@
                     </div>
 
                     <a href="https://demo-cafeteria-origem.vercel.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
                 </div>
 
                 <!-- CARD 8: CATÁLOGO SEMIJOIAS -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="moda">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-deep-cobalt/30 transition-all duration-300" data-category="moda">
                     <div>
                         <!-- PALCO DO DISPOSITIVO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
@@ -858,11 +868,11 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-stone-200 text-stone-800 border border-stone-300">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Moda & Acessórios
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
                             Aura • Semijoias & Acessórios
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -871,14 +881,14 @@
                     </div>
 
                     <a href="https://demo-catalogo-digital.vercel.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
                 </div>
 
                 <!-- CARD 7: DRA. MARIANA • NUTRIÇÃO & BIO SITE -->
-                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-[2rem] border border-slate-200/80 p-6 sm:p-7 flex flex-col justify-between shadow-[0_15px_35px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_50px_rgba(15,23,42,0.14)] hover:border-deep-cobalt/30 transition-all duration-300" data-category="saude">
+                <div class="portfolio-item group w-full shrink-0 snap-center sm:max-w-none bg-white rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-deep-cobalt/30 transition-all duration-300" data-category="saude">
                     <div>
                         <!-- PALCO DO DISPOSITIVO -->
                         <div class="relative py-6 px-2 rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/90 border border-slate-200/60 mb-6 flex flex-col items-center justify-center">
@@ -900,11 +910,11 @@
 
                         <!-- Tags e Conteúdo do Card -->
                         <div class="flex items-center gap-2 mb-2.5">
-                            <span class="text-[11px] sm:text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-cyan-100 text-cyan-800 border border-cyan-200">
+                            <span class="text-[11px] uppercase font-medium tracking-[0.14em] text-slate-500">
                                 Saúde & Profissionais
                             </span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
+                        <h3 class="text-lg sm:text-xl font-medium tracking-tight text-slate-900 mb-2 group-hover:text-deep-cobalt transition duration-200">
                             Dra. Mariana • Nutrição & Bio Site
                         </h3>
                         <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed font-normal">
@@ -913,7 +923,7 @@
                     </div>
 
                     <a href="https://demo-bio-site-nutri.netlify.app" target="_blank" 
-                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-deep-cobalt text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
+                       class="touch-action inline-flex items-center justify-center gap-2 w-full py-3 sm:py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 shadow-sm active:scale-95">
                         <span>Abrir Demonstração</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px] sm:text-xs"></i>
                     </a>
@@ -943,162 +953,151 @@
                 </button>
             </div>
 
-            <!-- BANNER DEDICADO: PROJETO SOB MEDIDA (DEPOIS DOS CARDS E DAS BOLINHAS) -->
-            <div class="mt-6 sm:mt-14 bg-white/95 rounded-[2rem] border border-slate-300/80 p-6 sm:p-8 shadow-[0_15px_35px_rgba(15,23,42,0.06)] flex flex-col md:flex-row items-center justify-between gap-6 transition hover:shadow-lg">
-                <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 max-w-2xl">
-                    <div class="w-14 h-14 rounded-2xl bg-deep-cobalt/10 border border-deep-cobalt/20 flex items-center justify-center text-deep-cobalt text-2xl shrink-0 shadow-sm">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <!-- BANNER DEDICADO: PROJETO SOB MEDIDA (FAIXA EDITORIAL LIMPA) -->
+            <div class="mt-10 sm:mt-14 pt-8 border-t border-slate-300/80 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left">
+                <div class="max-w-2xl">
+                    <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.16em] text-deep-cobalt font-semibold mb-2">
+                        <span class="w-4 h-px bg-deep-cobalt/70"></span>
+                        <span>100% Personalizável &amp; Sob Medida</span>
                     </div>
-                    <div>
-                        <span class="inline-block text-[11px] uppercase font-bold tracking-widest text-deep-cobalt mb-1.5 bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-100">
-                            100% Personalizável & Sob Medida
-                        </span>
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-1.5">
-                            Nossos modelos são apenas pontos de partida. O seu projeto é único.
-                        </h3>
-                        <p class="text-slate-600 text-xs sm:text-sm font-normal leading-relaxed">
-                            Não trabalhamos com modelos engessados. Seja para posicionar sua empresa com autoridade máxima ou criar uma experiência digital para o seu evento, desenhamos cada interação, paleta de cores, tipografia e botão sob medida para o seu objetivo.
-                        </p>
-                    </div>
+                    <h3 class="text-xl sm:text-2xl font-light text-slate-900 tracking-tight mb-2">
+                        Nossos modelos são apenas pontos de partida. <span class="font-editorial italic font-normal text-blue-700">O seu projeto é único.</span>
+                    </h3>
+                    <p class="text-slate-600 text-xs sm:text-sm font-normal leading-relaxed">
+                        Não trabalhamos com modelos engessados. Seja para posicionar sua empresa com autoridade ou criar uma experiência para o seu evento, desenhamos cada interação, paleta e tipografia sob medida.
+                    </p>
                 </div>
 
                 <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Gostaria%20de%20solicitar%20um%20briefing%20para%20um%20projeto%20sob%20medida." 
                    target="_blank" 
-                   class="touch-action w-full md:w-auto px-7 py-4 bg-gradient-to-r from-deep-cobalt to-blue-600 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl text-xs sm:text-sm transition duration-200 shadow-md flex items-center justify-center gap-2 shrink-0 active:scale-95">
-                    <i class="fa-brands fa-whatsapp text-base text-green-300"></i>
+                   class="touch-action w-full md:w-auto px-7 py-3.5 bg-slate-900 hover:bg-deep-cobalt text-white font-medium rounded-full text-xs sm:text-sm transition duration-200 flex items-center justify-center gap-2.5 shrink-0 active:scale-95">
                     <span>Solicitar Briefing Rápido</span>
+                    <i class="fa-solid fa-arrow-right text-[11px]"></i>
                 </a>
             </div>
 
         </div>
     </section>
 
-    <!-- COMPARATIVO: PDF ARCAICO VS PADRÃO OPPIKOFER -->
-    <section id="comparativo" class="scroll-mt-20 relative z-10 py-24 px-4 bg-slate-950 border-t border-b border-deep-border text-slate-200">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
-                <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cyan font-bold mb-3">
-                    <i class="fa-solid fa-bolt text-cyan-400"></i>
-                    A Diferença Real na Conversão
-                </span>
-                <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                    Por que materiais interativos convertem até 3x mais que PDFs?
-                </h2>
-                <p class="text-slate-300 text-xs sm:text-base mt-4 font-normal leading-relaxed">
-                    A fricção tecnológica custa vendas todos os dias. Veja o confronto direto entre o formato estático e a nova era da web.
+    <!-- COMPARATIVO: PRESENÇA GENÉRICA VS ESTRUTURA OPPIKOFER -->
+    <section id="comparativo" class="scroll-mt-20 relative z-10 py-24 px-4 sm:px-6 lg:px-10 bg-slate-950 border-t border-b border-deep-border text-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mb-14 reveal-up text-left">
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.18em] text-cyan-300/90 font-medium mb-3">
+                        <span class="w-5 h-px bg-cyan-400/70"></span>
+                        <span>02 · Posicionamento Digital</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl lg:text-[2.75rem] font-light text-white tracking-[-0.03em] leading-[1.15]">
+                        Por que uma estrutura sob medida <span class="font-editorial italic font-normal text-cyan-300">converte mais</span> que soluções genéricas?
+                    </h2>
+                </div>
+                <p class="lg:col-span-5 text-slate-400 text-xs sm:text-sm font-normal leading-relaxed">
+                    De sites institucionais a catálogos e convites: veja o que muda na prática entre improvisar com links soltos e ter um ambiente digital próprio.
                 </p>
             </div>
 
-            <!-- Grade Comparativa Lado a Lado -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch" id="comparativo-grid">
-                <!-- Card 1: O Formato Arcaico (PDFs e Imagens) -->
-                <div class="comparativo-card bg-slate-900/90 rounded-3xl p-6 sm:p-8 border border-red-500/20 flex flex-col justify-between shadow-xl relative overflow-hidden">
-                    <div class="absolute -top-12 -right-12 w-40 h-40 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <!-- Grade Comparativa Minimalista -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-stretch" id="comparativo-grid">
+                <!-- Coluna 1: Presença Genérica -->
+                <div class="comparativo-card border-t border-white/15 pt-8 flex flex-col justify-between">
                     <div>
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 pb-4 border-b border-slate-800">
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold w-fit">
-                                <i class="fa-solid fa-ban text-[11px]"></i> O Formato Arcaico (PDFs)
-                            </span>
-                            <span class="text-xs sm:text-[11px] text-rose-400/90 font-mono font-medium flex items-center gap-1.5">
-                                <i class="fa-solid fa-arrow-trend-down text-rose-500 text-[10px]"></i>
-                                Taxa de evasão: ~65%
+                        <div class="flex items-center justify-between gap-4 mb-6">
+                            <span class="text-[11px] uppercase tracking-[0.16em] text-rose-400/90 font-semibold">
+                                Presença Genérica (Templates, Linktree ou PDFs)
                             </span>
                         </div>
 
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-6">
-                            Arquivos pesados, navegação travada e zero dados de interesse.
+                        <h3 class="text-xl sm:text-2xl font-light text-white mb-6 tracking-tight">
+                            Padrão engessado, abertura lenta e perda silenciosa de contatos.
                         </h3>
 
-                        <ul class="space-y-5 text-xs sm:text-sm text-slate-300">
+                        <ul class="space-y-4 text-xs sm:text-sm text-slate-400">
                             <li class="flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">✕</span>
+                                <span class="text-rose-400/80 mt-0.5 text-xs">—</span>
                                 <div>
-                                    <strong class="text-white block font-semibold mb-0.5">Exige download pesado no celular:</strong>
-                                    Clientes no 4G hesitam em baixar arquivos de 20MB a 80MB. Muitos desistem da compra antes mesmo de abrir.
+                                    <strong class="text-slate-200 font-medium block mb-0.5">Visual igual ao de todo concorrente:</strong>
+                                    Agregadores de link ou templates prontos não transmitem autoridade nem refletem a identidade real da sua marca.
                                 </div>
                             </li>
                             <li class="flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">✕</span>
+                                <span class="text-rose-400/80 mt-0.5 text-xs">—</span>
                                 <div>
-                                    <strong class="text-white block font-semibold mb-0.5">Sem botões interativos nem WhatsApp direto:</strong>
-                                    O cliente precisa anotar o nome do item, abrir o WhatsApp manualmente e digitar o pedido. Grande perda de vendas no meio do caminho.
+                                    <strong class="text-slate-200 font-medium block mb-0.5">Fricção no celular e no 4G:</strong>
+                                    Arquivos PDF pesados ou páginas cheias de plugins demoram para abrir e fazem o cliente desistir antes de ler.
                                 </div>
                             </li>
                             <li class="flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">✕</span>
+                                <span class="text-rose-400/80 mt-0.5 text-xs">—</span>
                                 <div>
-                                    <strong class="text-white block font-semibold mb-0.5">Mudou um preço? Reenvie tudo de novo:</strong>
-                                    Se um item esgotar ou o valor mudar, você é obrigado a gerar um novo arquivo e reenviar para toda a sua lista de contatos.
+                                    <strong class="text-slate-200 font-medium block mb-0.5">Atendimento manual sem filtro:</strong>
+                                    Sem botões estratégicos nem fluxo guiado, o cliente chega no WhatsApp sem contexto e você perde tempo explicando o básico.
                                 </div>
                             </li>
                             <li class="flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black">✕</span>
+                                <span class="text-rose-400/80 mt-0.5 text-xs">—</span>
                                 <div>
-                                    <strong class="text-white block font-semibold mb-0.5">Zero métricas ou analytics de leitura:</strong>
-                                    Impossível saber quantas pessoas realmente abriram o arquivo, quanto tempo olharam e quais itens despertaram interesse.
+                                    <strong class="text-slate-200 font-medium block mb-0.5">Invisível para Google e anúncios:</strong>
+                                    Sem estrutura semântica e Pixel/Analytics configurados, fica difícil ranquear ou medir o retorno das campanhas.
                                 </div>
                             </li>
                         </ul>
                     </div>
 
-                    <div class="mt-8 pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 font-medium">
-                        ⚠️ Resultado comum: Atendimento lento, pedidos perdidos e retrabalho para reenviar arquivos.
+                    <div class="mt-8 pt-4 border-t border-white/10 text-[11px] text-slate-500">
+                        Resultado comum: menos confiança percebida e menor taxa de fechamento.
                     </div>
                 </div>
 
-                <!-- Card 2: Padrão Oppikofer • Studio Web -->
-                <div class="comparativo-card bg-gradient-to-b from-slate-900/95 via-deep-surface to-slate-950 rounded-3xl p-6 sm:p-8 border-2 border-cyan-500/40 flex flex-col justify-between shadow-2xl shadow-cyan-950/40 relative overflow-hidden">
-                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+                <!-- Coluna 2: Estrutura Oppikofer -->
+                <div class="comparativo-card border-t-2 border-cyan-400/70 pt-8 flex flex-col justify-between">
                     <div>
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 pb-4 border-b border-cyan-500/20">
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-bold shadow-sm w-fit">
-                                <i class="fa-solid fa-crown text-[11px] text-amber-400"></i> Padrão Oppikofer Studio
+                        <div class="flex items-center justify-between gap-4 mb-6">
+                            <span class="text-[11px] uppercase tracking-[0.16em] text-cyan-300 font-semibold">
+                                Estrutura Oppikofer • Studio Web
                             </span>
-                            <span class="text-xs sm:text-[11px] text-cyan-400 font-bold font-mono flex items-center gap-1.5">
-                                <i class="fa-solid fa-arrow-trend-up text-cyan-400 text-[10px]"></i>
-                                Retenção ativa: 94%+
-                            </span>
+                            <span class="text-[11px] text-cyan-400/80 font-mono">Sob Medida</span>
                         </div>
 
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-6">
-                            Carregamento instantâneo, toque fluido e pedidos prontos em 1 clique.
+                        <h3 class="text-xl sm:text-2xl font-light text-white mb-6 tracking-tight">
+                            Autoridade visual, carregamento instantâneo e conversão em 1 clique.
                         </h3>
 
-                        <ul class="space-y-5 text-xs sm:text-sm text-slate-200">
+                        <ul class="space-y-4 text-xs sm:text-sm text-slate-300">
                             <li class="flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black shadow-sm">✓</span>
+                                <span class="text-cyan-400 mt-0.5 text-xs">●</span>
                                 <div>
-                                    <strong class="text-white block font-semibold mb-0.5">Abertura instantânea via link leve:</strong>
-                                    Abre em menos de 1 segundo direto no navegador do smartphone, sem consumir a memória nem os dados móveis do seu cliente.
+                                    <strong class="text-white font-medium block mb-0.5">Design exclusivo para o seu posicionamento:</strong>
+                                    Tipografia, paleta e hierarquia pensadas sob medida para escritórios, clínicas, marcas ou eventos especiais.
                                 </div>
                             </li>
                             <li class="flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black shadow-sm">✓</span>
+                                <span class="text-cyan-400 mt-0.5 text-xs">●</span>
                                 <div>
-                                    <strong class="text-white block font-semibold mb-0.5">Checkout e ações em 1 clique:</strong>
-                                    Botões inteligentes enviam o pedido formatado para o WhatsApp, abrem rota no GPS (Waze/Maps) ou registram presença em tempo real.
+                                    <strong class="text-white font-medium block mb-0.5">Abertura em menos de 1 segundo:</strong>
+                                    Código limpo sem peso desnecessário, com resposta impecável no celular e no desktop sem consumir dados do visitante.
                                 </div>
                             </li>
                             <li class="flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black shadow-sm">✓</span>
+                                <span class="text-cyan-400 mt-0.5 text-xs">●</span>
                                 <div>
-                                    <strong class="text-white block font-semibold mb-0.5">Link sempre atualizado com nosso suporte:</strong>
-                                    Qualquer alteração de foto, preço ou item entra no ar no mesmo link que seus clientes já têm salvo, sem necessidade de baixar nada novo.
+                                    <strong class="text-white font-medium block mb-0.5">Ações inteligentes direto ao ponto:</strong>
+                                    Triagem por serviço, sacola de pedidos, rotas no GPS (Waze/Maps) e RSVP com mensagem pronta direto no WhatsApp.
                                 </div>
                             </li>
                             <li class="flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center shrink-0 mt-0.5 text-xs font-black shadow-sm">✓</span>
+                                <span class="text-cyan-400 mt-0.5 text-xs">●</span>
                                 <div>
-                                    <strong class="text-white block font-semibold mb-0.5">Métricas e rastreamento de interesse:</strong>
-                                    Pronto para Pixel de anúncios (Meta e Google) para você acompanhar os acessos e saber exatamente quais produtos mais despertam interesse.
+                                    <strong class="text-white font-medium block mb-0.5">Pronto para Google, Meta Ads e atualizações:</strong>
+                                    Estrutura preparada para tráfego pago, Analytics e atualizações rápidas no mesmo link oficial, sem mensalidade de plataforma.
                                 </div>
                             </li>
                         </ul>
                     </div>
 
-                    <div class="mt-8 pt-4 border-t border-cyan-500/20 flex items-center justify-between text-[11px] text-cyan-300 font-semibold">
-                        <span>✨ Mais fechamentos, autoridade e conversão imediata</span>
-                        <i class="fa-solid fa-arrow-trend-up text-cyan-400 text-sm"></i>
+                    <div class="mt-8 pt-4 border-t border-cyan-500/20 flex items-center justify-between text-[11px] text-cyan-300 font-medium">
+                        <span>Mais autoridade, agilidade e conversão real</span>
+                        <i class="fa-solid fa-arrow-trend-up text-cyan-400 text-xs"></i>
                     </div>
                 </div>
             </div>
@@ -1113,8 +1112,8 @@
                     <i class="fa-solid fa-calculator text-cyan-400"></i>
                     Orçamento Dinâmico & Sem Compromisso
                 </span>
-                <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                    Simule seu Projeto Sob Medida
+                <h2 class="text-2xl sm:text-4xl lg:text-[2.75rem] font-light text-white tracking-[-0.03em] leading-[1.15]">
+                    Simule seu Projeto <span class="font-editorial italic font-normal text-cyan-300">Sob Medida</span>
                 </h2>
                 <p class="text-slate-300 text-xs sm:text-base mt-4 font-normal leading-relaxed">
                     Escolha a solução ideal para o seu negócio ou evento, selecione os recursos desejados e receba uma estimativa pronta direto no WhatsApp.
@@ -1245,7 +1244,7 @@
                             <label for="simulador-nome-cliente" class="block text-[11px] text-slate-400 mb-1">Seu nome ou empresa (opcional)</label>
                             <input id="simulador-nome-cliente" type="text" oninput="atualizarResumoSimulador()" placeholder="Ex: Maria • Studio Bela" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
                         </div>
-                        <a id="btn-enviar-simulacao-whatsapp" href="#" target="_blank" class="touch-action w-full py-4 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-slate-950 font-black rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2.5 transition shadow-lg shadow-emerald-500/20 cursor-pointer">
+                        <a id="btn-enviar-simulacao-whatsapp" href="#" target="_blank" class="touch-action w-full py-4 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-slate-950 font-semibold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2.5 transition shadow-lg shadow-emerald-500/20 cursor-pointer">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
                             <span>ENVIAR PROPOSTA NO WHATSAPP</span>
                         </a>
@@ -1258,163 +1257,181 @@
         </div>
     </section>
 
-    <!-- 5. O MÉTODO DE TRABALHO (RETORNA PARA O ESTILO DEEP TECH NOTURNO) -->
-    <section id="metodo" class="scroll-mt-20 relative z-10 py-24 px-4 bg-deep-base text-slate-200">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16 reveal-up">
-                <span class="text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2 block">Processo Ágil & Direto</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white">Como Tiramos sua Página do Papel</h2>
-                <p class="text-slate-300 text-xs sm:text-sm mt-2 font-normal">Sem reuniões intermináveis ou meses de desenvolvimento.</p>
+    <!-- 5. O MÉTODO DE TRABALHO (COLUNAS ABERTAS MINIMALISTAS) -->
+    <section id="metodo" class="scroll-mt-20 relative z-10 py-24 px-4 sm:px-6 lg:px-10 bg-deep-base text-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mb-14 reveal-up text-left">
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.18em] text-cyan-300/90 font-medium mb-3">
+                        <span class="w-5 h-px bg-cyan-400/70"></span>
+                        <span>03 · Processo Ágil &amp; Direto</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-light text-white tracking-[-0.03em]">Como Tiramos sua Página do <span class="font-editorial italic font-normal text-cyan-300">Papel</span></h2>
+                </div>
+                <p class="lg:col-span-5 text-slate-400 text-xs sm:text-sm font-normal">Sem reuniões intermináveis ou meses de desenvolvimento.</p>
             </div>
 
-            <div class="relative">
-                <!-- Linha Tecnológica Conectando as Etapas (Desktop) -->
-                <div class="hidden md:block absolute top-1/2 left-16 right-16 h-0.5 bg-gradient-to-r from-blue-500/20 via-cyan-400/40 to-indigo-500/20 -translate-y-6 z-0 pointer-events-none"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 relative z-10" id="metodo-grid">
+                <div class="metodo-card border-t border-white/15 pt-6 text-left">
+                    <span class="text-xs font-mono text-cyan-400 block mb-4">01</span>
+                    <h3 class="font-medium text-white text-lg mb-2.5">Alinhamento &amp; Envio</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">Você nos envia suas fotos, informações do projeto (ou evento) e dados essenciais pelo nosso checklist rápido no WhatsApp.</p>
+                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 relative z-10" id="metodo-grid">
-                    <div class="metodo-card bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
-                        <span class="w-12 h-12 rounded-2xl bg-blue-500/10 text-cyan-400 border border-cyan-500/20 font-black flex items-center justify-center text-base mb-5 group-hover:scale-110 transition duration-300 shadow-sm">01</span>
-                        <h3 class="font-bold text-white text-lg mb-2">Alinhamento & Envio</h3>
-                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">Você nos envia suas fotos, informações do projeto (ou evento) e dados essenciais pelo nosso checklist rápido no WhatsApp.</p>
-                    </div>
+                <div class="metodo-card border-t border-white/15 pt-6 text-left">
+                    <span class="text-xs font-mono text-cyan-400 block mb-4">02</span>
+                    <h3 class="font-medium text-white text-lg mb-2.5">Design &amp; Construção</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">Construímos seu projeto sob medida em até 48 horas úteis*, com código ultraleve perfeitamente adaptado para celulares e computadores.</p>
+                </div>
 
-                    <div class="metodo-card bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
-                        <span class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-black flex items-center justify-center text-base mb-5 group-hover:scale-110 transition duration-300 shadow-sm">02</span>
-                        <h3 class="font-bold text-white text-lg mb-2">Design & Construção</h3>
-                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">Construímos seu projeto sob medida em até 48 horas úteis*, com código ultraleve perfeitamente adaptado para celulares e computadores.</p>
-                    </div>
-
-                    <div class="metodo-card bg-deep-surface/85 hover:bg-deep-surface p-7 rounded-2xl border border-white/10 backdrop-blur-sm group hover:border-cyan-500/40 transition duration-300 shadow-lg">
-                        <span class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-black flex items-center justify-center text-base mb-5 group-hover:scale-110 transition duration-300 shadow-sm">03</span>
-                        <h3 class="font-bold text-white text-lg mb-2">Publicação & Lançamento</h3>
-                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">Colocamos seu link oficial no ar em servidor seguro, pronto para divulgar nas redes, captar clientes ou enviar aos seus convidados pelo WhatsApp.</p>
-                    </div>
+                <div class="metodo-card border-t border-white/15 pt-6 text-left">
+                    <span class="text-xs font-mono text-cyan-400 block mb-4">03</span>
+                    <h3 class="font-medium text-white text-lg mb-2.5">Publicação &amp; Lançamento</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">Colocamos seu link oficial no ar em servidor seguro, pronto para divulgar nas redes, captar clientes ou enviar aos seus convidados pelo WhatsApp.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. SOBRE O FUNDADOR (COM WORD-SCRUB DE FILOSOFIA) -->
-    <section id="sobre" class="scroll-mt-20 relative z-10 py-20 px-4 bg-slate-950/80 border-t border-deep-border text-slate-200">
-        <div class="max-w-3xl mx-auto text-center" id="sobre-scrub-container">
-            <div class="reveal-up">
-                <span class="text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2 block">Fundador & Desenvolvedor</span>
-                <h2 class="text-3xl font-black text-white mb-6">Wallace Oppikofer</h2>
+    <!-- 6. SOBRE O FUNDADOR (MANIFESTO ASSIMÉTRICO 4:8) -->
+    <section id="sobre" class="scroll-mt-20 relative z-10 py-20 px-4 sm:px-6 lg:px-10 bg-slate-950/80 border-t border-deep-border text-slate-200">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start text-left" id="sobre-scrub-container">
+            <div class="lg:col-span-4 reveal-up">
+                <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.18em] text-cyan-300/90 font-medium mb-3">
+                    <span class="w-5 h-px bg-cyan-400/70"></span>
+                    <span>Fundador &amp; Desenvolvedor</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-light text-white tracking-[-0.02em]">Wallace <span class="font-editorial italic font-normal text-cyan-300">Oppikofer</span></h2>
             </div>
-            <p class="word-scrub-target text-slate-200 text-sm sm:text-lg leading-relaxed mb-8 font-normal">
-                À frente da <strong class="text-cyan-400 font-semibold">Oppikofer • Studio Web</strong>, combino conceitos de design contemporâneo e engenharia de interface para criar soluções que resolvem problemas reais de negócios e celebrações especiais. Acredito que todo projeto merece uma presença digital rápida, bonita e que encante o público sem nenhuma complexidade desnecessária.
-            </p>
-            <div class="inline-flex flex-wrap justify-center items-center gap-4 text-xs sm:text-sm font-semibold text-slate-300 reveal-up">
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-cyan-400"></i> Atendimento Direto</span>
-                <span>•</span>
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-code text-cyan-400"></i> Código Otimizado</span>
-                <span>•</span>
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-compass-drafting text-cyan-400"></i> Design Sob Medida</span>
+            <div class="lg:col-span-8">
+                <p class="word-scrub-target text-slate-200 text-base sm:text-xl leading-relaxed mb-8 font-light">
+                    À frente da <strong class="text-cyan-400 font-medium">Oppikofer • Studio Web</strong>, combino conceitos de design contemporâneo e engenharia de interface para criar soluções que resolvem problemas reais de negócios e celebrações especiais. Acredito que todo projeto merece uma presença digital rápida, bonita e que encante o público sem nenhuma complexidade desnecessária.
+                </p>
+                <div class="flex flex-wrap items-center gap-6 text-xs sm:text-sm font-medium text-slate-400 reveal-up border-t border-white/10 pt-6">
+                    <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Atendimento Direto</span>
+                    <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Código Otimizado</span>
+                    <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Design Sob Medida</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. FAQ INTERATIVO (PERGUNTAS FREQUENTES EM VIDRO ESCURO) -->
-    <section id="faq" class="scroll-mt-20 relative z-10 py-24 px-4 bg-deep-base text-slate-200 border-t border-deep-border">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-12 reveal-up">
-                <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-deep-cyan font-bold mb-2">
-                    <i class="fa-solid fa-circle-question text-cyan-400"></i>
-                    Transparência Total
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Perguntas Frequentes</h2>
-                <p class="text-slate-300 text-xs sm:text-sm mt-2 font-normal">Tudo o que você precisa saber sobre prazos, custos e funcionamento da sua página.</p>
+    <!-- 7. FAQ INTERATIVO (MINIMALISTA E ALINHADO À ESQUERDA) -->
+    <section id="faq" class="scroll-mt-20 relative z-10 py-24 px-4 sm:px-6 lg:px-10 bg-deep-base text-slate-200 border-t border-deep-border">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-12 reveal-up text-left">
+                <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.18em] text-cyan-300/90 font-medium mb-3">
+                    <span class="w-5 h-px bg-cyan-400/70"></span>
+                    <span>05 · Transparência Total</span>
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-light text-white tracking-[-0.03em]">Perguntas <span class="font-editorial italic font-normal text-cyan-300">Frequentes</span></h2>
+                <p class="text-slate-400 text-xs sm:text-sm mt-2 font-normal">Tudo o que você precisa saber sobre prazos, domínio, custos e funcionamento da sua página.</p>
             </div>
 
             <!-- ACORDEÃO INTERATIVO TOUCH-FRIENDLY -->
-            <div class="space-y-4">
+            <div class="space-y-3">
                 
                 <!-- FAQ 1 -->
-                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                <div class="faq-item rounded-2xl bg-deep-surface/60 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/35">
                     <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
-                        <span class="font-bold text-sm sm:text-base text-white">Preciso pagar alguma mensalidade depois que o site estiver pronto?</span>
+                        <span class="font-medium text-sm sm:text-base text-white">Preciso pagar alguma mensalidade depois que o site estiver pronto?</span>
                         <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
                             <i class="fa-solid fa-plus"></i>
                         </span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
-                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
-                            <strong class="text-white font-semibold">Não há mensalidades obrigatórias de plataforma.</strong> O seu site é seu, sem custos ocultos ou cobranças recorrentes para mantê-lo funcionando. Caso no futuro você queira fazer atualizações (como trocar fotos, atualizar preços ou adicionar produtos), realizamos alterações avulsas apenas quando você precisar. Se o seu negócio tiver alta rotatividade e você preferir atualizações constantes toda semana, também oferecemos opções de suporte mensal sob medida.
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-300 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            <strong class="text-white font-medium">Não há mensalidades obrigatórias de plataforma.</strong> O seu site é seu, sem custos ocultos ou cobranças recorrentes para mantê-lo funcionando. Caso no futuro você queira fazer atualizações (como trocar fotos, atualizar preços ou adicionar produtos), realizamos alterações avulsas apenas quando você precisar — ou, se preferir acompanhamento contínuo, temos planos opcionais de suporte.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ 2 -->
-                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                <div class="faq-item rounded-2xl bg-deep-surface/60 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/35">
                     <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
-                        <span class="font-bold text-sm sm:text-base text-white">Em quanto tempo meu site fica pronto e publicado?</span>
+                        <span class="font-medium text-sm sm:text-base text-white">Em quanto tempo meu site fica pronto e publicado?</span>
                         <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
                             <i class="fa-solid fa-plus"></i>
                         </span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
-                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
-                            Nosso compromisso é de entrega expressa em <strong class="text-cyan-300 font-semibold">até 48 horas úteis</strong>. Esse prazo começa a valer a partir do momento em que o briefing é aprovado e você nos envia os dados essenciais (fotos, informações do projeto e dados de contato pelo nosso checklist rápido). Projetos da Linha Premium ou páginas com catálogos extensos possuem cronograma dedicado, combinado previamente no briefing com total transparência.
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-300 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            Nosso compromisso é de entrega expressa em <strong class="text-cyan-300 font-medium">até 48 horas úteis</strong> para landing pages, convites digitais e páginas diretas (contado após a aprovação do briefing e envio dos materiais essenciais). Já para <strong class="text-white font-medium">sites institucionais multipáginas</strong> ou catálogos mais extensos, o prazo dedicado é de <strong class="text-cyan-300 font-medium">5 a 7 dias úteis</strong>, sempre combinado com transparência antes de iniciar.
                         </p>
                     </div>
                 </div>
 
-                <!-- FAQ 3 -->
-                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                <!-- FAQ 3: DOMÍNIO, HOSPEDAGEM & GOOGLE -->
+                <div class="faq-item rounded-2xl bg-deep-surface/60 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/35">
                     <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
-                        <span class="font-bold text-sm sm:text-base text-white">Vocês ajudam a criar os textos ou preciso enviar tudo pronto?</span>
+                        <span class="font-medium text-sm sm:text-base text-white">Como funciona a hospedagem, o domínio (.com.br) e a presença no Google?</span>
                         <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
                             <i class="fa-solid fa-plus"></i>
                         </span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
-                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
-                            <strong class="text-white font-semibold">Ajudamos você do início ao fim!</strong> Se você já tiver os textos prontos, nós os organizamos e diagramamos na melhor hierarquia visual. Se você não souber o que escrever ou tiver dúvidas, nós fornecemos um roteiro guiado e refinamos os textos com técnicas de comunicação comercial (copywriting) para valorizar sua autoridade e estimular contatos no WhatsApp.
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-300 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            Entregamos o seu projeto publicado em <strong class="text-white font-medium">infraestrutura segura, ultrarrápida e gratuita</strong>, já com certificado de segurança (HTTPS). Se você já possui ou deseja registrar um endereço próprio (como <span class="text-cyan-300">suaempresa.com.br</span>) ou utilizar sua própria hospedagem, <strong class="text-white font-medium">nós orientamos e cuidamos de toda a configuração técnica para você</strong> — sem complicação. Além disso, o código é estruturado para boa leitura no Google e pronto para receber campanhas de anúncios.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ 4 -->
-                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                <div class="faq-item rounded-2xl bg-deep-surface/60 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/35">
                     <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
-                        <span class="font-bold text-sm sm:text-base text-white">Como funcionam as condições e formas de pagamento?</span>
+                        <span class="font-medium text-sm sm:text-base text-white">Vocês ajudam a criar os textos ou preciso enviar tudo pronto?</span>
                         <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
                             <i class="fa-solid fa-plus"></i>
                         </span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
-                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
-                            Para a segurança e tranquilidade de ambas as partes, trabalhamos com o formato padrão de <strong class="text-white font-semibold">50% de entrada</strong> para o início do desenvolvimento e os <strong class="text-white font-semibold">50% restantes somente após a sua aprovação final</strong>, antes da entrega dos acessos e publicação oficial. Aceitamos pagamento via Pix com condição facilitada e também parcelamos no cartão de crédito em até 3x.
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-300 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            <strong class="text-white font-medium">Ajudamos você do início ao fim!</strong> Se você já tiver os textos prontos, nós os organizamos na melhor hierarquia visual. Se não souber o que escrever, fornecemos um roteiro guiado simples e refinamos a comunicação para valorizar sua autoridade e estimular contatos no WhatsApp.
                         </p>
                     </div>
                 </div>
 
-                <!-- FAQ 5: PERSONALIZAÇÃO TOTAL -->
-                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                <!-- FAQ 5 -->
+                <div class="faq-item rounded-2xl bg-deep-surface/60 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/35">
                     <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
-                        <span class="font-bold text-sm sm:text-base text-white">Os modelos exibidos no portfólio são fixos ou podem ser 100% personalizados?</span>
+                        <span class="font-medium text-sm sm:text-base text-white">Como funcionam as condições e formas de pagamento?</span>
                         <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
                             <i class="fa-solid fa-plus"></i>
                         </span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
-                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
-                            <strong class="text-white font-semibold">São 100% personalizáveis!</strong> Os projetos do nosso portfólio funcionam como vitrines interativas para você sentir o nível de acabamento, velocidade e fluidez do nosso trabalho. Cada projeto real que entregamos é criado sob medida: adaptamos a paleta de cores, tipografia, fotos, botões, formulários e animações para refletir com fidelidade a identidade visual da sua marca ou a temática do seu evento.
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-300 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            Para a segurança e tranquilidade de ambas as partes, trabalhamos com <strong class="text-white font-medium">50% de entrada</strong> para iniciar o desenvolvimento e os <strong class="text-white font-medium">50% restantes na aprovação final</strong>, antes da publicação oficial. Aceitamos <strong class="text-white font-medium">Pix</strong> e <strong class="text-white font-medium">cartão de crédito</strong> (com opções de parcelamento consultadas no fechamento da proposta).
                         </p>
                     </div>
                 </div>
 
-                <!-- FAQ 6: CONVITES INTERATIVOS & EVENTOS -->
-                <div class="faq-item rounded-2xl bg-deep-surface/85 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/40 shadow-lg">
+                <!-- FAQ 6: PERSONALIZAÇÃO TOTAL -->
+                <div class="faq-item rounded-2xl bg-deep-surface/60 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/35">
                     <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
-                        <span class="font-bold text-sm sm:text-base text-white">Como funcionam os convites interativos para casamentos e eventos?</span>
+                        <span class="font-medium text-sm sm:text-base text-white">Os modelos exibidos no portfólio são fixos ou podem ser 100% personalizados?</span>
                         <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
                             <i class="fa-solid fa-plus"></i>
                         </span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
-                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-200 font-normal leading-relaxed border-t border-white/5 pt-4">
-                            <strong class="text-white font-semibold">É uma experiência digital completa na palma da mão dos convidados!</strong> O convite é uma página web moderna e leve que abre instantaneamente pelo celular sem precisar baixar nenhum aplicativo. Pode incluir confirmação de presença (RSVP automático via WhatsApp ou integrado a planilhas de controle de convidados), mapa da cerimônia e festa com rota direta no Waze/Google Maps, contagem regressiva, lista de presentes, mural de recados e fotos. Muito mais sustentável, dinâmico e sofisticado do que o papel tradicional.
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-300 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            <strong class="text-white font-medium">São 100% personalizáveis!</strong> Os projetos do nosso portfólio funcionam como vitrines interativas para você sentir o nível de acabamento, velocidade e fluidez do nosso trabalho. Cada entrega é feita sob medida: adaptamos paleta de cores, tipografia, fotos, botões, formulários e animações para refletir com fidelidade a sua marca ou evento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 7: CONVITES INTERATIVOS & EVENTOS -->
+                <div class="faq-item rounded-2xl bg-deep-surface/60 border border-white/10 overflow-hidden transition-all duration-300 hover:border-cyan-500/35">
+                    <button class="faq-toggle touch-action w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer">
+                        <span class="font-medium text-sm sm:text-base text-white">Como funcionam os convites interativos para casamentos e eventos?</span>
+                        <span class="faq-icon w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 transition-transform duration-300 shrink-0 text-xs">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                        <p class="pb-5 sm:pb-6 text-xs sm:text-sm text-slate-300 font-normal leading-relaxed border-t border-white/5 pt-4">
+                            <strong class="text-white font-medium">É uma experiência digital completa na palma da mão dos convidados!</strong> O convite abre instantaneamente pelo celular sem precisar baixar aplicativo. Pode incluir confirmação de presença (RSVP), mapa do local com rota direta no Waze/Google Maps, contagem regressiva, lista de presentes, mural de recados e álbum de fotos.
                         </p>
                     </div>
                 </div>
@@ -1423,47 +1440,48 @@
         </div>
     </section>
 
-    <!-- 8. BANNER FINAL DE CONVERSÃO -->
-    <section class="relative z-10 py-24 px-4 bg-gradient-to-b from-slate-950 via-deep-base to-slate-950 text-white text-center border-t border-deep-border overflow-hidden">
+    <!-- 8. BANNER FINAL DE CONVERSÃO (EDITORIAL LIMPO) -->
+    <section class="relative z-10 py-24 px-4 sm:px-6 lg:px-10 bg-gradient-to-b from-slate-950 via-deep-base to-slate-950 text-white border-t border-deep-border overflow-hidden">
         <div class="ambient-glow-bottom"></div>
-        <div class="relative z-10 max-w-2xl mx-auto reveal-up">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-6">
-                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
-                <span>Vamos iniciar o seu projeto?</span>
+        <div class="relative z-10 max-w-4xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8 text-left reveal-up">
+            <div class="max-w-xl">
+                <div class="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.18em] text-cyan-300/90 font-medium mb-3">
+                    <span class="w-5 h-px bg-cyan-400/70"></span>
+                    <span>Próximo Passo</span>
+                </div>
+                <h2 class="text-2xl sm:text-4xl lg:text-[2.75rem] font-light mb-4 tracking-[-0.03em] leading-[1.15]">Pronto para dar vida ao seu <span class="font-editorial italic font-normal text-cyan-300">próximo projeto?</span></h2>
+                <p class="text-slate-300 text-sm sm:text-base font-normal leading-relaxed">
+                    Solicite uma análise ou proposta sem compromisso. Respondemos rapidamente pelo WhatsApp com atendimento direto do desenvolvedor.
+                </p>
             </div>
-            <h2 class="text-3xl sm:text-5xl font-black mb-5 tracking-tight">Pronto para dar vida ao seu próximo projeto?</h2>
-            <p class="text-slate-200 text-sm sm:text-base mb-8 font-normal leading-relaxed">
-                Solicite uma análise ou proposta sem compromisso. Respondemos rapidamente pelo WhatsApp com atendimento direto do desenvolvedor.
-            </p>
             <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20site%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20um%20orçamento." 
                target="_blank" 
-               class="touch-action inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-deep-cobalt via-blue-600 to-cyan-600 hover:from-blue-600 hover:to-cyan-500 text-white font-bold rounded-xl text-sm transition shadow-xl shadow-blue-900/60 border border-white/25 active:scale-95">
-                <i class="fa-brands fa-whatsapp text-lg text-green-300"></i> 
+               class="touch-action inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-deep-cobalt hover:bg-blue-600 text-white font-medium rounded-full text-sm transition active:scale-95 shrink-0">
+                <i class="fa-brands fa-whatsapp text-base text-green-300"></i> 
                 <span>Conversar pelo WhatsApp</span>
             </a>
         </div>
     </section>
 
-    <!-- 9. RODAPÉ OFICIAL -->
+    <!-- 9. RODAPÉ OFICIAL MINIMALISTA -->
     <footer class="relative z-10 py-10 bg-deep-base border-t border-deep-border text-xs text-slate-400">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <!-- Logo Marca -->
-            <div class="flex items-center gap-2">
-                <img src="Assets/imagens/logo-horiz-transp.png" alt="Oppikofer Studio Web" class="h-10 w-auto" onerror="this.style.display='none'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+            <!-- Logo Marca Discreta -->
+            <div class="flex items-center">
+                <img src="Assets/imagens/logo-horiz-transp.png" alt="Oppikofer Studio Web" class="h-7 sm:h-8 w-auto opacity-90" onerror="this.style.display='none'">
             </div>
 
-            <!-- Botão Clicável do Instagram Oficial -->
-            <div>
+            <!-- Link Limpo do Instagram Oficial -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
                 <a href="https://instagram.com/oppikofer_studioweb" target="_blank" rel="noopener noreferrer" 
-                   class="touch-action inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep-surface border border-deep-border text-slate-200 hover:text-white hover:border-cyan-400/50 hover:bg-slate-800 transition duration-300 shadow-sm"
+                   class="touch-action inline-flex items-center gap-2 text-slate-300 hover:text-cyan-300 transition duration-200"
                    title="Siga no Instagram">
-                    <i class="fa-brands fa-instagram text-base text-cyan-400"></i>
-                    <span class="text-xs font-semibold">@oppikofer_studioweb</span>
+                    <i class="fa-brands fa-instagram text-sm text-cyan-400"></i>
+                    <span class="text-xs font-medium">@oppikofer_studioweb ↗</span>
                 </a>
-            </div>
 
-            <!-- Copyright -->
-            <p>© 2026 Oppikofer • Studio Web. Todos os direitos reservados.</p>
+                <p class="text-[11px] text-slate-500">© 2026 Oppikofer • Studio Web. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
@@ -2034,6 +2052,26 @@
                 fecharMenuMobile();
             }
         });
+
+        // 6B. NAVBAR INTELIGENTE (RECOLHE AO DESCER, VOLTA AO SUBIR + HAIRLINE AO ROLAR)
+        const mainHeader = document.getElementById('main-header');
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            if (!mainHeader) return;
+            const currentY = window.scrollY;
+            if (currentY > 24) {
+                mainHeader.classList.add('is-scrolled');
+            } else {
+                mainHeader.classList.remove('is-scrolled');
+            }
+            if (menuAberto) return;
+            if (currentY > 120 && currentY > lastScrollY) {
+                mainHeader.style.transform = 'translateY(-100%)';
+            } else {
+                mainHeader.style.transform = 'translateY(0)';
+            }
+            lastScrollY = currentY;
+        }, { passive: true });
     </script>
 
     <!-- 7. COREOGRAFIA DE SCROLL PREMIUM (LENIS + GSAP SCROLLTRIGGER) -->
@@ -2042,7 +2080,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', function initScrollChoreography() {
-            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
                 return;
             }
 
@@ -2081,17 +2120,17 @@
                 });
             }
 
-            // B. Reveals calibrados para presença visual clara no Desktop e Mobile
+            // B. Reveals calibrados e contidos (estilo editorial minimalista)
             gsap.utils.toArray('.reveal-up').forEach((el) => {
                 gsap.from(el, {
-                    y: 36,
+                    y: 20,
                     opacity: 0,
-                    duration: 0.75,
+                    duration: 0.65,
                     ease: 'power3.out',
                     clearProps: 'transform,opacity',
                     scrollTrigger: {
                         trigger: el,
-                        start: 'top 84%',
+                        start: 'top 86%',
                         once: true,
                     }
                 });
@@ -2101,47 +2140,47 @@
             const mm = gsap.matchMedia();
             mm.add('(min-width: 640px)', () => {
                 gsap.from('.portfolio-item', {
-                    y: 38,
+                    y: 22,
                     opacity: 0,
-                    duration: 0.7,
-                    stagger: 0.1,
+                    duration: 0.65,
+                    stagger: 0.08,
                     ease: 'power3.out',
                     clearProps: 'transform,opacity',
                     scrollTrigger: {
                         trigger: '#portfolio-carousel',
-                        start: 'top 82%',
+                        start: 'top 84%',
                         once: true,
                     }
                 });
             });
             mm.add('(max-width: 639px)', () => {
                 gsap.from('#portfolio-carousel', {
-                    y: 28,
+                    y: 18,
                     opacity: 0,
-                    duration: 0.65,
+                    duration: 0.6,
                     ease: 'power3.out',
                     clearProps: 'transform,opacity',
                     scrollTrigger: {
                         trigger: '#portfolio-carousel',
-                        start: 'top 85%',
+                        start: 'top 86%',
                         once: true,
                     }
                 });
             });
 
-            // C. Stagger no Comparativo (PDFs vs Oppikofer)
+            // C. Stagger no Comparativo
             const compGrid = document.getElementById('comparativo-grid');
             if (compGrid) {
                 gsap.from('.comparativo-card', {
-                    y: 40,
+                    y: 22,
                     opacity: 0,
-                    duration: 0.75,
-                    stagger: 0.16,
+                    duration: 0.65,
+                    stagger: 0.14,
                     ease: 'power3.out',
                     clearProps: 'transform,opacity',
                     scrollTrigger: {
                         trigger: compGrid,
-                        start: 'top 82%',
+                        start: 'top 84%',
                         once: true,
                     }
                 });
@@ -2151,15 +2190,15 @@
             const metodoGrid = document.getElementById('metodo-grid');
             if (metodoGrid) {
                 gsap.from('.metodo-card', {
-                    y: 36,
+                    y: 20,
                     opacity: 0,
-                    duration: 0.7,
-                    stagger: 0.14,
+                    duration: 0.6,
+                    stagger: 0.12,
                     ease: 'power3.out',
                     clearProps: 'transform,opacity',
                     scrollTrigger: {
                         trigger: metodoGrid,
-                        start: 'top 82%',
+                        start: 'top 84%',
                         once: true,
                     }
                 });
@@ -2169,15 +2208,15 @@
             const faqItems = gsap.utils.toArray('.faq-item');
             if (faqItems.length > 0) {
                 gsap.from(faqItems, {
-                    y: 26,
+                    y: 16,
                     opacity: 0,
-                    duration: 0.6,
-                    stagger: 0.08,
+                    duration: 0.55,
+                    stagger: 0.07,
                     ease: 'power3.out',
                     clearProps: 'transform,opacity',
                     scrollTrigger: {
                         trigger: '#faq',
-                        start: 'top 80%',
+                        start: 'top 84%',
                         once: true,
                     }
                 });
