@@ -285,10 +285,7 @@
 
             <!-- BLOCO CENTRAL: MENU MATEMATICAMENTE CENTRALIZADO (DESKTOP COMPLETO) -->
             <nav class="hidden lg:flex items-center justify-center gap-7 text-[11px] uppercase tracking-[0.14em] font-medium text-slate-300">
-                <a href="#portfolio" class="hover:text-white transition flex items-center gap-1.5 py-1">
-                    <span>Portfólio</span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-deep-cyan"></span>
-                </a>
+                <a href="#portfolio" class="hover:text-white transition py-1">Portfólio</a>
                 <a href="#comparativo" class="hover:text-white transition py-1">Diferenciais</a>
                 <a href="#simulador" class="hover:text-cyan-300 transition py-1 text-cyan-300">Simulador</a>
                 <a href="#metodo" class="hover:text-white transition py-1">Processo</a>
@@ -315,49 +312,71 @@
             </div>
         </div>
 
-        <!-- PAINEL DE EXPANSÃO NATIVA DO CABEÇALHO (DESDOBRAMENTO FLUIDO DO PRÓPRIO HEADER) -->
+        <!-- PAINEL DE EXPANSÃO EDITORIAL MINIMALISTA -->
         <div id="mobile-menu-panel" 
-             class="lg:hidden overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-300 ease-in-out border-t border-transparent bg-deep-base/98">
-            <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 space-y-1">
-                <!-- LINKS COM A MESMA IDENTIDADE TIPOGRÁFICA DO DESKTOP -->
+             class="lg:hidden overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-300 ease-in-out border-t border-transparent bg-deep-base/98 backdrop-blur-xl">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-4 pb-7 space-y-6">
                 <nav class="flex flex-col">
-                    <a href="#portfolio" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
-                        <span>Portfólio</span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <a href="#portfolio" class="mobile-nav-link group flex items-center justify-between py-3.5 border-b border-white/[0.06] text-slate-200 hover:text-white transition">
+                        <span class="flex items-baseline gap-4">
+                            <span class="text-[11px] font-mono text-slate-500">01</span>
+                            <span class="text-2xl font-light tracking-[-0.02em]">Portfólio</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right text-[11px] text-slate-500 group-hover:text-cyan-300 transition"></i>
                     </a>
 
-                    <a href="#comparativo" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
-                        <span>Diferenciais</span>
+                    <a href="#comparativo" class="mobile-nav-link group flex items-center justify-between py-3.5 border-b border-white/[0.06] text-slate-200 hover:text-white transition">
+                        <span class="flex items-baseline gap-4">
+                            <span class="text-[11px] font-mono text-slate-500">02</span>
+                            <span class="text-2xl font-light tracking-[-0.02em]">Diferenciais</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right text-[11px] text-slate-500 group-hover:text-cyan-300 transition"></i>
                     </a>
 
-                    <a href="#simulador" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-cyan-300 hover:text-white transition">
-                        <span>Simulador Sob Medida</span>
-                        <span class="text-[9px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">Novo</span>
+                    <a href="#simulador" class="mobile-nav-link group flex items-center justify-between py-3.5 border-b border-white/[0.06] text-white transition">
+                        <span class="flex items-baseline gap-4">
+                            <span class="text-[11px] font-mono text-cyan-400">03</span>
+                            <span class="text-2xl font-editorial italic font-normal text-cyan-300">Simulador Sob Medida</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right text-[11px] text-cyan-300 transition"></i>
                     </a>
 
-                    <a href="#metodo" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
-                        <span>Como Funciona</span>
+                    <a href="#metodo" class="mobile-nav-link group flex items-center justify-between py-3.5 border-b border-white/[0.06] text-slate-200 hover:text-white transition">
+                        <span class="flex items-baseline gap-4">
+                            <span class="text-[11px] font-mono text-slate-500">04</span>
+                            <span class="text-2xl font-light tracking-[-0.02em]">Processo</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right text-[11px] text-slate-500 group-hover:text-cyan-300 transition"></i>
                     </a>
 
-                    <a href="#sobre" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
-                        <span>Sobre</span>
+                    <a href="#sobre" class="mobile-nav-link group flex items-center justify-between py-3.5 border-b border-white/[0.06] text-slate-200 hover:text-white transition">
+                        <span class="flex items-baseline gap-4">
+                            <span class="text-[11px] font-mono text-slate-500">05</span>
+                            <span class="text-2xl font-light tracking-[-0.02em]">Sobre</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right text-[11px] text-slate-500 group-hover:text-cyan-300 transition"></i>
                     </a>
 
-                    <a href="#faq" class="mobile-nav-link flex items-center justify-between py-3.5 border-b border-white/[0.06] text-xs uppercase tracking-wider font-bold text-slate-300 hover:text-cyan-400 transition">
-                        <span>Dúvidas</span>
+                    <a href="#faq" class="mobile-nav-link group flex items-center justify-between py-3.5 border-b border-white/[0.06] text-slate-200 hover:text-white transition">
+                        <span class="flex items-baseline gap-4">
+                            <span class="text-[11px] font-mono text-slate-500">06</span>
+                            <span class="text-2xl font-light tracking-[-0.02em]">Dúvidas</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right text-[11px] text-slate-500 group-hover:text-cyan-300 transition"></i>
                     </a>
                 </nav>
 
-                <!-- RODAPÉ INTEGRADO DO CABEÇALHO COM WHATSAPP E IDENTIFICAÇÃO FORMAL -->
-                <div class="pt-4 mt-2 flex flex-col gap-2">
+                <!-- RODAPÉ MINIMALISTA DO MENU -->
+                <div class="flex flex-col gap-3 pt-1">
                     <a href="https://wa.me/5511926834439?text=Olá,%20Wallace!%20Acessei%20o%20site%20da%20Oppikofer%20Studio%20e%20gostaria%20de%20um%20orçamento." 
                        target="_blank" 
-                       class="touch-action w-full py-3 px-4 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-cyan-400/40 text-slate-200 hover:text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition active:scale-[0.99]">
-                        <i class="fa-brands fa-whatsapp text-sm text-green-400"></i>
-                        <span class="uppercase tracking-wider">Conversar no WhatsApp</span>
+                       class="touch-action w-full py-3.5 px-5 bg-deep-cobalt hover:bg-blue-600 text-white font-medium rounded-full text-xs flex items-center justify-center gap-2 transition active:scale-[0.98]">
+                        <i class="fa-brands fa-whatsapp text-sm text-green-300"></i>
+                        <span>Conversar no WhatsApp</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
-                    <p class="text-[11px] text-center text-slate-400 font-medium">
-                        Atendimento direto com o desenvolvedor
+                    <p class="text-[11px] text-center text-slate-500 font-normal">
+                        Atendimento direto • Wallace Oppikofer
                     </p>
                 </div>
             </div>
@@ -1998,6 +2017,12 @@
         function abrirMenuMobile() {
             if (!mobileMenuPanel || !mobileMenuBackdrop) return;
             menuAberto = true;
+
+            // Travar rolagem da página enquanto o menu estiver aberto
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+            document.body.style.touchAction = 'none';
+            document.body.style.overscrollBehavior = 'none';
             
             // Expandir painel nativamente a partir do próprio cabeçalho
             mobileMenuPanel.style.maxHeight = mobileMenuPanel.scrollHeight + 'px';
@@ -2019,6 +2044,12 @@
         function fecharMenuMobile() {
             if (!mobileMenuPanel || !mobileMenuBackdrop) return;
             menuAberto = false;
+
+            // Destravar rolagem da página ao fechar o menu
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+            document.body.style.touchAction = '';
+            document.body.style.overscrollBehavior = '';
             
             // Recolher suavemente
             mobileMenuPanel.style.maxHeight = '0px';
@@ -2035,6 +2066,12 @@
             if (mobileMenuIcon) {
                 mobileMenuIcon.className = 'fa-solid fa-bars-staggered text-base';
             }
+        }
+
+        if (mobileMenuBackdrop) {
+            mobileMenuBackdrop.addEventListener('touchmove', (e) => {
+                if (menuAberto) e.preventDefault();
+            }, { passive: false });
         }
 
         function toggleMenuMobile() {
